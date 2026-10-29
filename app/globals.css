@@ -50,6 +50,7 @@
 
   body {
     min-height: 100dvh;
+    padding-bottom: calc(3.5625rem + env(safe-area-inset-bottom, 0px));
     background-color: var(--color-paper);
     color: var(--color-text);
     font-family: var(--font-body);
@@ -57,6 +58,12 @@
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+  }
+
+  @media (min-width: 768px) {
+    body {
+      padding-bottom: 0;
+    }
   }
 
   h1,
@@ -189,6 +196,32 @@
 
   .skip-link:focus-visible {
     transform: translateY(0);
+  }
+
+  .mobile-menu-panel {
+    animation: menu-slide-in var(--dur) var(--ease-brand);
+  }
+
+  .mobile-menu-backdrop {
+    animation: backdrop-fade var(--dur) var(--ease-brand);
+  }
+}
+
+@keyframes menu-slide-in {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes backdrop-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
 

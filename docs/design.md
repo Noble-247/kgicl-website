@@ -218,6 +218,9 @@ Each component lists purpose, anatomy, variants, states, responsive behaviour an
 **Floating WhatsApp button** (768 px and above)
 - 56 px circle, `--red`, white WhatsApp glyph, bottom-right 24 px, `--shadow-3`. Tooltip "Chat on WhatsApp" on hover and focus. The link text is in an `aria-label`.
 
+**Review badge** (review mode only)
+- Fixed bottom-left, 12 px from the edge on phones and 16 px from 1024 px. Small pill: `--ink-3` background, 1 px white at 18 % border, white 12 px semibold text "Review version", `--shadow-2`, z-index 46. Sits above the mobile action bar below 768 px. The container ignores pointer events; the text stays selectable. Never covers the action bar or a form control. Hidden entirely in live mode.
+
 **Footer** (dark)
 - Four columns on desktop: brand (mark, one-line description, "Nationwide delivery"), Products (four areas), Company (Services, Projects, About, Contact, Privacy notice), Visit us (address, hours, phones; email once confirmed).
 - Social icons render only when the environment variable holds a real URL.

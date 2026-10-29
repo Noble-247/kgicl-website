@@ -203,11 +203,7 @@ const typeRamp = [
 export default function DesignCheckPage() {
   return (
     <>
-      <a href="#main" className="skip-link">
-        Skip to content
-      </a>
-
-      <main id="main" tabIndex={-1} className="pb-24">
+      <div className="pb-24">
         <div className="container-site pt-16 pb-10">
           <p className="type-label text-red-deep">Design check</p>
           <h1 className="type-display mt-3">KGICL Goodnews Solar</h1>
@@ -395,7 +391,7 @@ export default function DesignCheckPage() {
             </div>
           </div>
         </section>
-      </main>
+      </div>
     </>
   );
 }
