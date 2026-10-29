@@ -140,10 +140,12 @@ Animate only `transform` and `opacity`. Entrance reveal: fade up 12 px, once, wi
   --color-ink-2: #121214;
   --color-ink-3: #1B1B1F;
   --color-paper: #F7F6F4;
+  --color-white: #FFFFFF;
   --color-stone-100: #EFEDEA;
   --color-stone-300: #D8D5D0;
   --color-text: #111114;
   --color-text-muted: #55555C;
+  --color-text-on-dark: #FFFFFF;
   --color-text-muted-on-dark: #B8B8BD;
   --color-amber: #FFB020;
   --color-success: #1F7A45;
@@ -155,10 +157,26 @@ Animate only `transform` and `opacity`. Entrance reveal: fade up 12 px, once, wi
   --radius-sm: 0.625rem;
   --radius-md: 0.875rem;
   --radius-lg: 1.5rem;
+  --radius-pill: 999px;
+
+  --shadow-1: 0 1px 2px rgba(17, 17, 20, 0.06);
+  --shadow-2: 0 6px 20px rgba(17, 17, 20, 0.1);
+  --shadow-3: 0 14px 40px rgba(17, 17, 20, 0.16);
 
   --ease-brand: cubic-bezier(.2, .7, .2, 1);
 }
 ```
+
+**Base styles shipped with the tokens.** `app/globals.css` also defines these shared rules so every component starts from the same foundation:
+
+- Body: `--color-paper` background, `--color-text` text, `--font-body`.
+- Heading defaults: H1 and H2 use `--font-display` at 600; H3 to H6 use `--font-body` at 700. Components may override size with the type utilities below.
+- Type utilities: `.type-display`, `.type-h2`, `.type-product-title`, `.type-h3`, `.type-body-lg`, `.type-body`, `.type-small`, `.type-label`, `.type-button`, `.type-spec` (values from 4.2).
+- `.section-y`: 64 px block padding on mobile, 96 px from 768 px.
+- `.container-site`: max 1200 px, centred, side padding 20 px (mobile), 32 px (md), 40 px (lg).
+- `.skip-link`: fixed at the top-left, white pill with `--color-text`, hidden off-screen until focused; it is the first focusable element on the page.
+- Focus: default `:focus-visible` ring is 3 px with 3 px offset in `--color-text`; inside a dark surface (`.on-dark`) the ring is white. Never remove it.
+- Reduced motion: `prefers-reduced-motion: reduce` disables animation, transitions and smooth scrolling.
 
 Naming rules to avoid known pitfalls:
 - **Do not** name custom spacing tokens `xs`, `sm`, `md`, `lg`, `xl` or `2xl`. In Tailwind v4 these clash with the container and max-width scale (`max-w-md` can silently resolve to a tiny value). Use Tailwind's default spacing, plus distinct names such as `--section-y`.
