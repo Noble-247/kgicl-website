@@ -7,7 +7,8 @@ import { X } from "lucide-react";
 import { FaPhoneAlt, FaWhatsapp } from "react-icons/fa";
 
 import { isActivePath, PRIMARY_NAV } from "@/data/nav";
-import { GENERAL_WHATSAPP_HREF, PRIMARY_PHONE_HREF } from "@/lib/site-links";
+import { SITE } from "@/data/site";
+import { messages, telLink, waLink } from "@/lib/whatsapp";
 
 type MobileMenuProps = {
   open: boolean;
@@ -139,7 +140,7 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
 
         <div className="shrink-0 space-y-3 border-t border-white/12 p-5 pb-[calc(1.25rem+env(safe-area-inset-bottom))]">
           <a
-            href={GENERAL_WHATSAPP_HREF}
+            href={waLink(messages.general)}
             target="_blank"
             rel="noopener noreferrer"
             className="type-button flex h-[52px] items-center justify-center gap-2 rounded-md bg-red text-white"
@@ -148,7 +149,7 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
             WhatsApp
           </a>
           <a
-            href={PRIMARY_PHONE_HREF}
+            href={telLink(SITE.phones[0].e164)}
             className="type-button flex h-[52px] items-center justify-center gap-2 rounded-md border border-white/35 text-white"
           >
             <FaPhoneAlt aria-hidden="true" size={18} />

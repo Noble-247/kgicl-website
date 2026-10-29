@@ -1,13 +1,13 @@
 import { FaWhatsapp } from "react-icons/fa";
 
-import { GENERAL_WHATSAPP_HREF } from "@/lib/site-links";
+import { messages, waLink } from "@/lib/whatsapp";
 
 /** Floating WhatsApp button, 768 px and above. */
 export function FloatingWhatsApp() {
   return (
     <div className="fixed right-6 bottom-6 z-50 hidden md:block">
       <a
-        href={GENERAL_WHATSAPP_HREF}
+        href={waLink(messages.general)}
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Chat on WhatsApp"

@@ -8,7 +8,7 @@ import { Menu } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
 
 import { isActivePath, PRIMARY_NAV } from "@/data/nav";
-import { GENERAL_WHATSAPP_HREF } from "@/lib/site-links";
+import { messages, waLink } from "@/lib/whatsapp";
 
 import { MobileActionBar } from "./mobile-action-bar";
 import { MobileMenu } from "./mobile-menu";
@@ -89,7 +89,7 @@ export function SiteHeader() {
 
           <div className="flex shrink-0 items-center gap-2">
             <a
-              href={GENERAL_WHATSAPP_HREF}
+              href={waLink(messages.general)}
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Chat on WhatsApp"
@@ -99,7 +99,7 @@ export function SiteHeader() {
             </a>
 
             <a
-              href={GENERAL_WHATSAPP_HREF}
+              href={waLink(messages.general)}
               target="_blank"
               rel="noopener noreferrer"
               className="type-button hidden h-11 items-center gap-1.5 rounded-md bg-red px-3 text-[0.8125rem] text-white transition-colors hover:bg-red-deep lg:inline-flex"

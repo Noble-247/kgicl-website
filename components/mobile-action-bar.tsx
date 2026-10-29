@@ -1,6 +1,7 @@
 import { FaPhoneAlt, FaWhatsapp } from "react-icons/fa";
 
-import { GENERAL_WHATSAPP_HREF, PRIMARY_PHONE_HREF } from "@/lib/site-links";
+import { SITE } from "@/data/site";
+import { messages, telLink, waLink } from "@/lib/whatsapp";
 
 type MobileActionBarProps = {
   hidden: boolean;
@@ -14,7 +15,7 @@ export function MobileActionBar({ hidden }: MobileActionBarProps) {
     <div className="fixed inset-x-0 bottom-0 z-[45] border-t border-white/12 bg-black pb-[env(safe-area-inset-bottom)] md:hidden">
       <div className="flex items-center gap-2 p-1">
         <a
-          href={GENERAL_WHATSAPP_HREF}
+          href={waLink(messages.general)}
           target="_blank"
           rel="noopener noreferrer"
           className="type-button flex h-12 flex-1 items-center justify-center gap-2 rounded-md bg-red text-white"
@@ -23,7 +24,7 @@ export function MobileActionBar({ hidden }: MobileActionBarProps) {
           WhatsApp
         </a>
         <a
-          href={PRIMARY_PHONE_HREF}
+          href={telLink(SITE.phones[0].e164)}
           className="type-button flex h-12 flex-1 items-center justify-center gap-2 rounded-md border border-white/35 text-white"
         >
           <FaPhoneAlt aria-hidden="true" size={18} />

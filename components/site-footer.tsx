@@ -3,7 +3,7 @@ import Link from "next/link";
 
 import { COMPANY_NAV, PRODUCT_AREAS } from "@/data/nav";
 import { SITE, type DayHours, type Weekday } from "@/data/site";
-import { telHref } from "@/lib/site-links";
+import { telLink } from "@/lib/whatsapp";
 
 import { SocialLinks } from "./social-links";
 
@@ -105,7 +105,7 @@ export function SiteFooter() {
             <ul className="type-small mt-4 space-y-1">
               {SITE.phones.map((phone) => (
                 <li key={phone.e164}>
-                  <a href={telHref(phone.e164)} className={linkClass}>
+                  <a href={telLink(phone.display)} className={linkClass}>
                     {phone.display}
                   </a>
                 </li>
