@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { FaWhatsapp } from "react-icons/fa";
 
 import { Breadcrumbs } from "@/components/breadcrumbs";
@@ -6,9 +7,16 @@ import { Button } from "@/components/button";
 import { Chip } from "@/components/chip";
 import { CloudImage } from "@/components/CloudImage";
 import { Container } from "@/components/container";
+import { EnquiryPanel } from "@/components/catalogue/enquiry-panel";
+import { ProductCard } from "@/components/catalogue/product-card";
+import { ProductGrid } from "@/components/catalogue/product-grid";
+import { SpecTable } from "@/components/catalogue/spec-table";
+import { WattageEmptyState, WattageFilter } from "@/components/catalogue/wattage-filter";
 import { Divider } from "@/components/divider";
 import { DottedRing } from "@/components/dotted-ring";
 import { SectionHeading } from "@/components/section-heading";
+import { getByArea, getBySlug } from "@/lib/catalogue";
+import { siteUrl } from "@/lib/mode";
 
 import { ChipDemo, ClickDemo } from "./primitives-demo";
 
@@ -214,6 +222,22 @@ const typeRamp = [
 ];
 
 export default function DesignCheckPage() {
+  const baseUrl = siteUrl();
+  const solarProducts = getByArea("solar-lighting");
+
+  const product = (slug: string) => {
+    const found = getBySlug(slug);
+    if (!found) throw new Error(`Design check product "${slug}" was not found.`);
+    return found;
+  };
+
+  const solarCard = product("120w-solar-street-light-12-eye");
+  const familyCard = product("pvc-single-core-copper-wire");
+  const longNameCard = product(
+    "ai-solar-camera-with-lighting-2-in-1-with-3-video-channels",
+  );
+  const compactCard = product("electrical-safety-helmet");
+
   return (
     <>
       <div className="pb-24">
@@ -441,6 +465,119 @@ export default function DesignCheckPage() {
                 <h3 className="type-h3">Dotted divider, light</h3>
                 <Divider className="mt-6" />
               </div>
+            </div>
+          </Container>
+        </section>
+
+        <section className="py-16" aria-labelledby="catalogue-cards">
+          <Container>
+            <SectionHeading
+              id="catalogue-cards"
+              eyebrow="Catalogue"
+              title="Product cards, spec table and enquiry panel"
+              intro="Standard, family and compact cards with long and short names. The whole card opens the product page; Enquire opens WhatsApp with the name, model code and page URL."
+            />
+
+            <div className="mt-8 grid grid-cols-1 gap-6 min-[480px]:grid-cols-2 lg:grid-cols-4">
+              <div>
+                <p className="type-label mb-3 text-text-muted">Standard</p>
+                <ProductCard
+                  product={solarCard}
+                  productUrl={`${baseUrl}/products/${solarCard.slug}`}
+                  variant="standard"
+                  sizes="(min-width: 1024px) 25vw, (min-width: 480px) 50vw, 100vw"
+                />
+              </div>
+              <div>
+                <p className="type-label mb-3 text-text-muted">
+                  Family · See sizes
+                </p>
+                <ProductCard
+                  product={familyCard}
+                  productUrl={`${baseUrl}/products/${familyCard.slug}`}
+                  variant="family"
+                  sizes="(min-width: 1024px) 25vw, (min-width: 480px) 50vw, 100vw"
+                />
+              </div>
+              <div>
+                <p className="type-label mb-3 text-text-muted">Long name</p>
+                <ProductCard
+                  product={longNameCard}
+                  productUrl={`${baseUrl}/products/${longNameCard.slug}`}
+                  sizes="(min-width: 1024px) 25vw, (min-width: 480px) 50vw, 100vw"
+                />
+              </div>
+              <div className="on-dark rounded-md bg-black p-3">
+                <p className="type-label mb-3 text-text-muted-on-dark">
+                  Compact, dark
+                </p>
+                <ProductCard
+                  product={compactCard}
+                  productUrl={`${baseUrl}/products/${compactCard.slug}`}
+                  variant="compact"
+                  sizes="(min-width: 1024px) 25vw, 50vw"
+                />
+              </div>
+            </div>
+
+            <div className="mt-12">
+              <h3 className="type-h3">Standard grid</h3>
+              <ProductGrid
+                products={solarProducts.slice(0, 4)}
+                baseUrl={baseUrl}
+                className="mt-4"
+              />
+            </div>
+
+            <div className="mt-12 grid grid-cols-1 gap-8 lg:grid-cols-2">
+              <div>
+                <h3 className="type-h3">Spec table</h3>
+                <SpecTable specs={solarCard.specs} className="mt-4" />
+              </div>
+              <div>
+                <h3 className="type-h3">Enquiry panel</h3>
+                <EnquiryPanel
+                  product={solarCard}
+                  productUrl={`${baseUrl}/products/${solarCard.slug}`}
+                  className="mt-4"
+                />
+              </div>
+            </div>
+          </Container>
+        </section>
+
+        <section
+          className="border-y border-stone-300 bg-stone-100 py-16"
+          aria-labelledby="wattage-filter"
+        >
+          <Container>
+            <SectionHeading
+              id="wattage-filter"
+              eyebrow="Solar Lighting"
+              title="Wattage filter"
+              intro="Chips are generated from the product data. Selection is kept in the URL and the count is announced to screen readers."
+            />
+
+            <Suspense
+              fallback={
+                <p className="type-small mt-8 text-text-muted">
+                  Loading the wattage filter…
+                </p>
+              }
+            >
+              <WattageFilter
+                products={solarProducts}
+                baseUrl={baseUrl}
+                className="mt-8"
+              />
+            </Suspense>
+
+            <div className="mt-12">
+              <h3 className="type-h3">Empty state</h3>
+              <p className="type-small mt-2 text-text-muted">
+                Shown when no light matches the chosen wattage.
+              </p>
+              <WattageEmptyState className="mt-4" />
             </div>
           </Container>
         </section>
