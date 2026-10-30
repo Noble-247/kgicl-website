@@ -79,6 +79,11 @@ export function generateMetadata(): Metadata {
       description: DEFAULT_DESCRIPTION,
       url: siteUrl(),
     },
+    twitter: {
+      card: "summary_large_image",
+      title: DEFAULT_TITLE,
+      description: DEFAULT_DESCRIPTION,
+    },
     robots: review
       ? { index: false, follow: false }
       : { index: true, follow: true },
