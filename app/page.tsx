@@ -1,3 +1,11 @@
+import type { Metadata } from "next";
+
+import { siteUrl } from "@/lib/mode";
+
+export const metadata: Metadata = {
+  alternates: { canonical: `${siteUrl()}/` },
+};
+
 export default function HomePage() {
   return (
     <section className="section-y on-dark bg-black">

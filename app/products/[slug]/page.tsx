@@ -15,6 +15,7 @@ import { AREA_BY_SLUG } from "@/lib/areas";
 import { getBySlug, getPublishedProducts, getRelated } from "@/lib/catalogue";
 import { cloudinaryUrl } from "@/lib/cloudinary";
 import { hideUnverifiedSpecs, siteUrl } from "@/lib/mode";
+import { buildDescription, buildTitle, productJsonLd } from "@/lib/seo";
 import { messages, waLink } from "@/lib/whatsapp";
 
 type ProductPageProps = {
@@ -39,16 +40,17 @@ export async function generateMetadata({
   const image = product.image.publicId
     ? cloudinaryUrl(product.image.publicId, { width: 1200 })
     : undefined;
-  const title = `${product.name} | KGICL Goodnews Solar, Port Harcourt`;
+  const title = buildTitle(product.name);
+  const description = buildDescription(product.summary);
 
   return {
     title: { absolute: title },
-    description: product.summary,
+    description,
     alternates: { canonical: url },
     openGraph: {
       type: "website",
       title,
-      description: product.summary,
+      description,
       url,
       images: image
         ? [
@@ -80,16 +82,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
     ? cloudinaryUrl(product.image.publicId, { width: 1200 })
     : undefined;
 
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Product",
-    name: product.name,
-    description: product.summary,
-    ...(image ? { image: [image] } : {}),
-    ...(product.modelCode ? { sku: product.modelCode } : {}),
-    brand: { "@type": "Brand", name: "KGICL Goodnews Solar" },
-    url: productUrl,
-  };
+  const jsonLd = productJsonLd(product, { url: productUrl, imageUrl: image });
 
   return (
     <>
