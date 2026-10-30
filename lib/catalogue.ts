@@ -45,7 +45,7 @@ export function getBySlug(slug: string): Product | undefined {
 
 /**
  * Related products: same group first, then the rest of the same area.
- * The product itself is always excluded.
+ * The product itself and unpublished products are always excluded.
  */
 export function getRelated(
   product: Product,
@@ -53,12 +53,14 @@ export function getRelated(
 ): readonly Product[] {
   const sameGroup = ALL_PRODUCTS.filter(
     (entry) =>
+      entry.published &&
       entry.slug !== product.slug &&
       entry.area === product.area &&
       entry.group === product.group,
   );
   const sameArea = ALL_PRODUCTS.filter(
     (entry) =>
+      entry.published &&
       entry.slug !== product.slug &&
       entry.area === product.area &&
       entry.group !== product.group,
