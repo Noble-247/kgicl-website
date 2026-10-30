@@ -16,11 +16,14 @@ Official website for Kris Goodnews Int'l Co. Ltd (KGICL), a Port Harcourt-based 
 The review build is deployed on Vercel as **`kriss-goodnews-solar`**:
 
 - Production URL: <https://kriss-goodnews-solar.vercel.app>
-- Repository branch: `main` (every push deploys automatically)
+- Production branch: `main` (pushes to `main` deploy production)
+- Development branch: `dev` (pushes create a Vercel **preview** deployment; merge to `main` after review)
 - Framework preset: Next.js
 - Build command: `npm run build`
 - Install command: `npm install`
 - Node.js: 22.x
+
+While a task is in progress, work on `dev` and review the Vercel preview deployment for that branch. `kriss-goodnews-solar.vercel.app` updates only when `dev` is merged into `main` and pushed.
 
 Environment variables (set for **all** environments in the Vercel project):
 
