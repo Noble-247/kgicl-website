@@ -4,6 +4,7 @@ import { FaWhatsapp } from "react-icons/fa";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { Button } from "@/components/button";
 import { Chip } from "@/components/chip";
+import { CloudImage } from "@/components/CloudImage";
 import { Container } from "@/components/container";
 import { Divider } from "@/components/divider";
 import { DottedRing } from "@/components/dotted-ring";
@@ -439,6 +440,70 @@ export default function DesignCheckPage() {
               <div>
                 <h3 className="type-h3">Dotted divider, light</h3>
                 <Divider className="mt-6" />
+              </div>
+            </div>
+          </Container>
+        </section>
+
+        <section
+          className="border-y border-stone-300 bg-stone-100 py-16"
+          aria-labelledby="cloudinary-images"
+        >
+          <Container>
+            <SectionHeading
+              id="cloudinary-images"
+              eyebrow="Images"
+              title="Cloudinary product images"
+              intro="Five real workbook public IDs through the custom loader, plus the no-photo placeholder. No request should go to /_next/image."
+            />
+
+            <div className="mt-8 grid grid-cols-1 gap-4 min-[480px]:grid-cols-2 lg:grid-cols-3">
+              {[
+                {
+                  publicId: "5-120W_12-eye",
+                  alt: "120W Solar Street Light, 12-Eye, KG-SL-120W",
+                },
+                {
+                  publicId: "1-CCTV_Camera_-_Dome_Indoor_2MP5M",
+                  alt: "Indoor Dome CCTV Camera",
+                },
+                {
+                  publicId: "1-PVC_Single_Copper_Wire",
+                  alt: "PVC Single-Core Copper Wire",
+                },
+                {
+                  publicId: "5-Wall_Switches_and_Sockets",
+                  alt: "Wall Switch and Socket",
+                },
+                {
+                  publicId: "1-Pure_Copper_Earth_Rod_-_Solid",
+                  alt: "Pure Copper Earth Rod, Solid",
+                },
+              ].map((image) => (
+                <div
+                  key={image.publicId}
+                  className="overflow-hidden rounded-md border border-stone-300 bg-white shadow-1"
+                >
+                  <div className="aspect-[4/3] bg-stone-100 p-3">
+                    <CloudImage
+                      publicId={image.publicId}
+                      alt={image.alt}
+                      sizes="(min-width: 1024px) 360px, (min-width: 480px) 50vw, 100vw"
+                    />
+                  </div>
+                  <p className="type-small break-all p-3 text-text-muted">
+                    {image.publicId}
+                  </p>
+                </div>
+              ))}
+
+              <div className="overflow-hidden rounded-md border border-stone-300 bg-white shadow-1">
+                <div className="bg-stone-100 p-3">
+                  <CloudImage publicId={null} alt="" />
+                </div>
+                <p className="type-small p-3 text-text-muted">
+                  Placeholder when publicId is null
+                </p>
               </div>
             </div>
           </Container>
