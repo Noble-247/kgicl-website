@@ -13,7 +13,42 @@ Official website for Kris Goodnews Int'l Co. Ltd (KGICL), a Port Harcourt-based 
 
 ## Deployment
 
-Instructions for deploying to Vercel will be added here.
+The review build is deployed on Vercel as **`kriss-goodnews-solar`**:
+
+- Production URL: <https://kriss-goodnews-solar.vercel.app>
+- Repository branch: `main` (every push deploys automatically)
+- Framework preset: Next.js
+- Build command: `npm run build`
+- Install command: `npm install`
+- Node.js: 22.x
+
+Environment variables (set for **all** environments in the Vercel project):
+
+| Variable | Review value |
+|---|---|
+| `SITE_MODE` | `review` |
+| `SITE_URL` | `https://kriss-goodnews-solar.vercel.app` |
+| `NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME` | See Vercel project settings |
+
+Resend and social variables are added in Task 03. After changing an environment
+variable, redeploy so the change takes effect.
+
+Review mode keeps the site out of search: `/robots.txt` disallows everything and
+responses send `x-robots-tag: noindex, nofollow`. The fixed "Review version"
+badge is visible only in review mode.
+
+> **This is a temporary review project.** Do not attach `kgiclsolar.com` to it and
+> do not reuse the existing `kgicl-solar` project. The production switch happens in
+> Task 04.
+
+To check a local production build:
+
+```bash
+npm run build
+npm run start
+```
+
+Then open <http://localhost:3000>. A missing `SITE_MODE` defaults to review mode.
 
 ## Development
 
