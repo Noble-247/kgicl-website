@@ -205,6 +205,29 @@
   .mobile-menu-backdrop {
     animation: backdrop-fade var(--dur) var(--ease-brand);
   }
+
+  .dotted-divider {
+    height: 3px;
+    border: 0;
+    background-image: radial-gradient(
+      circle,
+      currentColor 1px,
+      transparent 1.4px
+    );
+    background-size: 6px 6px;
+    background-position: center;
+  }
+
+  .dotted-ring {
+    animation: ring-spin var(--ring-rotation) linear infinite;
+    will-change: transform;
+  }
+}
+
+@keyframes ring-spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 @keyframes menu-slide-in {
@@ -258,5 +281,9 @@
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+
+  .dotted-ring {
+    animation: none !important;
   }
 }

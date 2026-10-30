@@ -1,7 +1,19 @@
 import type { Metadata } from "next";
+import { FaWhatsapp } from "react-icons/fa";
+
+import { Breadcrumbs } from "@/components/breadcrumbs";
+import { Button } from "@/components/button";
+import { Chip } from "@/components/chip";
+import { Container } from "@/components/container";
+import { Divider } from "@/components/divider";
+import { DottedRing } from "@/components/dotted-ring";
+import { SectionHeading } from "@/components/section-heading";
+
+import { ChipDemo, ClickDemo } from "./primitives-demo";
 
 export const metadata: Metadata = {
   title: "Design check",
+  description: "Temporary design reference for KGICL Goodnews Solar.",
   robots: { index: false, follow: false },
 };
 
@@ -208,9 +220,9 @@ export default function DesignCheckPage() {
           <p className="type-label text-red-deep">Design check</p>
           <h1 className="type-display mt-3">KGICL Goodnews Solar</h1>
           <p className="type-body-lg mt-4 max-w-[65ch] text-text-muted">
-            Temporary token and type reference. Not linked anywhere. It is
-            removed in Task 04. Buttons shown here are static references; the
-            real primitives arrive in sub-task 1.6.
+            Temporary token, type and primitive reference. Not linked anywhere.
+            It is removed in Task 04. Hover, focus and press the controls below
+            to check every state.
           </p>
         </div>
 
@@ -320,32 +332,28 @@ export default function DesignCheckPage() {
         </section>
 
         <section className="bg-black py-16" aria-labelledby="buttons">
-          <div className="container-site on-dark">
-            <h2 id="buttons" className="type-h2 text-white">
-              Buttons and focus rings
-            </h2>
-            <p className="type-body mt-2 max-w-[65ch] text-text-muted-on-dark">
-              Reference styles from design.md 6.2. The Button component replaces
-              these in sub-task 1.6.
-            </p>
+          <Container className="on-dark">
+            <SectionHeading
+              id="buttons"
+              eyebrow="Primitives"
+              title="Buttons and focus rings"
+              intro="Hover, focus and press each control. Disabled controls are skipped by the keyboard."
+              tone="dark"
+              withRule
+            />
 
             <div className="mt-8 flex flex-wrap items-center gap-4">
-              <span className="type-button inline-flex h-[52px] items-center rounded-md bg-red px-6 text-white shadow-2">
-                Primary
-              </span>
-              <span className="type-button inline-flex h-11 items-center rounded-md bg-red px-4 text-white">
-                Primary compact
-              </span>
-              <span className="type-button inline-flex h-[52px] items-center rounded-md border border-white/35 px-6 text-white">
-                Secondary on dark
-              </span>
-              <button
-                type="button"
-                disabled
-                className="type-button inline-flex h-[52px] cursor-not-allowed items-center rounded-md bg-red px-6 text-white opacity-50"
-              >
-                Disabled
-              </button>
+              <Button>Primary</Button>
+              <Button size="compact">Primary compact</Button>
+              <Button variant="secondary-dark">Secondary on dark</Button>
+              <Button variant="link" tone="dark">
+                Text link on dark
+              </Button>
+              <Button icon={<FaWhatsapp />}>WhatsApp</Button>
+              <Button href="#buttons" variant="secondary-dark">
+                Link button
+              </Button>
+              <Button disabled>Disabled</Button>
             </div>
 
             <div className="mt-10 grid grid-cols-1 gap-4 md:grid-cols-2">
@@ -353,43 +361,141 @@ export default function DesignCheckPage() {
                 <p className="type-small text-text-muted-on-dark">
                   Dark surface focus ring
                 </p>
-                <button
-                  type="button"
-                  className="type-button mt-3 inline-flex h-[52px] items-center rounded-md bg-red px-6 text-white"
-                >
-                  Focus me
-                </button>
+                <div className="mt-3 flex flex-wrap gap-3">
+                  <Button>Focus me</Button>
+                  <Button variant="secondary-dark">Focus me</Button>
+                </div>
               </div>
               <div className="rounded-md bg-paper p-6">
                 <p className="type-small text-text-muted">
                   Light surface focus ring
                 </p>
-                <button
-                  type="button"
-                  className="type-button mt-3 inline-flex h-[52px] items-center rounded-md border border-text px-6 text-text"
-                >
-                  Focus me
-                </button>
-                <p className="type-small mt-3 text-red-deep">
-                  Text link on light
-                </p>
+                <div className="mt-3 flex flex-wrap items-center gap-3">
+                  <Button variant="secondary-light">Focus me</Button>
+                  <Button variant="link">Text link</Button>
+                </div>
+              </div>
+            </div>
+          </Container>
+        </section>
+
+        <section className="py-16" aria-labelledby="light-controls">
+          <Container>
+            <SectionHeading
+              id="light-controls"
+              eyebrow="Primitives"
+              title="Light surfaces, chips and crumbs"
+              intro="Secondary buttons, text links, selectable chips, breadcrumbs and the dotted divider."
+            />
+
+            <div className="mt-8 flex flex-wrap items-center gap-4">
+              <Button>Primary</Button>
+              <Button variant="secondary-light">Secondary on light</Button>
+              <Button variant="link">Text link on light</Button>
+              <Button variant="secondary-light" disabled>
+                Disabled
+              </Button>
+            </div>
+
+            <div className="mt-10">
+              <h3 className="type-h3">Chips</h3>
+              <p className="type-small mt-2 max-w-[65ch] text-text-muted">
+                Unselected, selected and disabled. The selected state also adds
+                a check so colour is never the only signal.
+              </p>
+              <div className="mt-4 flex flex-wrap gap-2">
+                <Chip>All</Chip>
+                <Chip selected>120W</Chip>
+                <Chip disabled>300W</Chip>
               </div>
             </div>
 
-            <div className="mt-10 rounded-md bg-ink-2 p-6">
-              <p className="type-small text-text-muted-on-dark">
-                Reduced motion check: this square turns once per 120 s. With
-                reduced motion enabled it stops.
+            <div className="mt-10">
+              <h3 className="type-h3">Live states</h3>
+              <p className="type-small mt-2 max-w-[65ch] text-text-muted">
+                Chips are selectable and announce the change. The button below
+                uses the same component with an onClick handler.
               </p>
-              <div className="mt-4 flex h-16 w-16 items-center justify-center rounded-md border border-white/12">
-                <span
-                  aria-hidden="true"
-                  className="block h-8 w-8 animate-spin rounded-sm bg-red-soft"
-                  style={{ animationDuration: "120s" }}
-                />
+              <div className="mt-4 grid grid-cols-1 gap-6 md:grid-cols-2">
+                <ChipDemo />
+                <div>
+                  <ClickDemo />
+                </div>
               </div>
             </div>
-          </div>
+
+            <div className="mt-10 grid grid-cols-1 gap-8 md:grid-cols-2">
+              <div>
+                <h3 className="type-h3">Breadcrumbs</h3>
+                <Breadcrumbs
+                  className="mt-3"
+                  items={[
+                    { label: "Home", href: "/" },
+                    { label: "Solar Lighting", href: "/solar-lighting" },
+                    { label: "120W Solar Street Light" },
+                  ]}
+                />
+              </div>
+              <div>
+                <h3 className="type-h3">Dotted divider, light</h3>
+                <Divider className="mt-6" />
+              </div>
+            </div>
+          </Container>
+        </section>
+
+        <section
+          className="border-y border-stone-300 bg-stone-100 py-16"
+          aria-labelledby="section-heading"
+        >
+          <Container>
+            <SectionHeading
+              id="section-heading"
+              eyebrow="Eyebrow"
+              title="Section heading on light"
+              intro="Eyebrow, H2 and intro. The optional amber rule sits before the eyebrow."
+              withRule
+            />
+
+            <div className="mt-10 rounded-md bg-black p-8 on-dark">
+              <SectionHeading
+                eyebrow="Eyebrow"
+                title="Section heading on dark"
+                intro="The same component switches its text colours for dark bands."
+                tone="dark"
+                withRule
+              />
+              <Divider tone="dark" className="mt-8" />
+            </div>
+          </Container>
+        </section>
+
+        <section className="py-16" aria-labelledby="structure">
+          <Container>
+            <SectionHeading
+              id="structure"
+              eyebrow="Structure"
+              title="Container and dotted ring"
+              intro="The container sets the page gutters. The ring is decorative, aria-hidden, and turns once every 120 s."
+            />
+
+            <div className="mt-8 rounded-md border border-dashed border-stone-300 p-6">
+              <p className="type-small text-text-muted">
+                Container: max 1200 px, side padding 20 px mobile, 32 px from
+                768 px, 40 px from 1024 px.
+              </p>
+            </div>
+
+            <div className="mt-8 flex flex-col gap-6 sm:flex-row sm:items-center">
+              <div className="flex w-fit items-center justify-center overflow-hidden rounded-md bg-black p-6">
+                <DottedRing size={200} opacity={0.12} />
+              </div>
+              <p className="type-small max-w-[40ch] text-text-muted">
+                Rotation stops under <code>prefers-reduced-motion: reduce</code>.
+                The hero uses 520 to 720 px at 6 to 10% opacity.
+              </p>
+            </div>
+          </Container>
         </section>
       </div>
     </>
