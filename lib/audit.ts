@@ -54,6 +54,8 @@ const PLACEHOLDER_PATTERNS: readonly { label: string; pattern: RegExp }[] = [
   { label: "lorem", pattern: /lorem/i },
   { label: "Customer Name", pattern: /customer\s+name/i },
   { label: "Placeholder", pattern: /placeholder/i },
+  { label: "[To be confirmed", pattern: /\[To be confirmed/i },
+  { label: "Replace with a real", pattern: /Replace with a real/i },
 ];
 
 /** Normalise a local or international Nigerian number to `0XXXXXXXXXX`. */

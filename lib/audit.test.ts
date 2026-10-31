@@ -145,6 +145,26 @@ describe("findPlaceholderText", () => {
 
     expect(findPlaceholderText(products)).toEqual([]);
   });
+
+  it("catches the privacy marker and testimonial instruction", () => {
+    const products = [
+      makeProduct({
+        id: "P-001",
+        summary: "How long we keep enquiries: [To be confirmed by KGICL].",
+      }),
+      makeProduct({
+        id: "P-002",
+        summary: "Replace with a real customer's words.",
+      }),
+    ];
+
+    const findings = findPlaceholderText(products);
+
+    expect(findings.map((finding) => finding.location)).toEqual([
+      "P-001 summary",
+      "P-002 summary",
+    ]);
+  });
 });
 
 describe("findMissingAlt", () => {
