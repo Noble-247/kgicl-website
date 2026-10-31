@@ -267,6 +267,14 @@ function diffSummary(existing: string, generated: string): string {
   }`;
 }
 
+/**
+ * Git may check the generated files out with CRLF on Windows. Compare the
+ * content, not the checkout's line endings, so a second run is a true no-op.
+ */
+function normaliseNewlines(value: string): string {
+  return value.replace(/\r\n/g, "\n");
+}
+
 function countBy<T extends string>(values: T[]): Record<string, number> {
   return values.reduce<Record<string, number>>((counts, value) => {
     counts[value] = (counts[value] ?? 0) + 1;
@@ -376,12 +384,15 @@ function main(): void {
 
   for (const output of outputs) {
     if (!existsSync(output.absolutePath)) continue;
-    const existing = readFileSync(output.absolutePath, "utf8");
-    if (existing === output.content) {
+    const existing = normaliseNewlines(
+      readFileSync(output.absolutePath, "utf8"),
+    );
+    const generated = normaliseNewlines(output.content);
+    if (existing === generated) {
       console.log(`\n${output.relativePath}: no changes.`);
     } else {
       blocked.push(
-        `${output.relativePath}: ${diffSummary(existing, output.content)}`,
+        `${output.relativePath}: ${diffSummary(existing, generated)}`,
       );
     }
   }
