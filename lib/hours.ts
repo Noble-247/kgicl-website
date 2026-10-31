@@ -21,6 +21,75 @@ export function formatTime(value: string): string {
     : `${displayHour}:${minuteText}${suffix}`;
 }
 
+const WEEKDAY_BY_NAME: Record<string, Weekday> = {
+  Monday: "monday",
+  Tuesday: "tuesday",
+  Wednesday: "wednesday",
+  Thursday: "thursday",
+  Friday: "friday",
+  Saturday: "saturday",
+  Sunday: "sunday",
+};
+
+export type TodayHours = {
+  day: Weekday;
+  hours: DayHours;
+};
+
+function minutesFromTime(value: string): number {
+  const [hourText, minuteText] = value.split(":");
+  return Number(hourText) * 60 + Number(minuteText);
+}
+
+/** The weekday and minutes after midnight in Africa/Lagos, whatever the server zone. */
+function zonedNow(now: Date): { day: Weekday; minutes: number } {
+  if (Number.isNaN(now.getTime())) {
+    throw new Error("The date for the opening-hours check is not valid.");
+  }
+
+  const parts = new Intl.DateTimeFormat("en-GB", {
+    timeZone: SITE.hours.timeZone,
+    weekday: "long",
+    hour: "2-digit",
+    minute: "2-digit",
+    hourCycle: "h23",
+  }).formatToParts(now);
+
+  const values = new Map(parts.map((part) => [part.type, part.value]));
+  const weekday = values.get("weekday");
+  const hour = Number(values.get("hour"));
+  const minute = Number(values.get("minute"));
+  const day = weekday ? WEEKDAY_BY_NAME[weekday] : undefined;
+
+  if (!day || !Number.isFinite(hour) || !Number.isFinite(minute)) {
+    throw new Error("Could not read the current time in Africa/Lagos.");
+  }
+
+  return { day, minutes: hour * 60 + minute };
+}
+
+/** Today's row for the hours card, in Nigerian time. */
+export function todayHours(now = new Date()): TodayHours {
+  const { day } = zonedNow(now);
+  return { day, hours: SITE.hours.days[day] };
+}
+
+/**
+ * Open at the opening minute, closed at the closing minute. Sunday is closed
+ * all day. Uses Africa/Lagos (UTC+1, no daylight saving).
+ */
+export function isOpenNow(now = new Date()): boolean {
+  const { day, minutes } = zonedNow(now);
+  const hours = SITE.hours.days[day];
+
+  if (!hours) return false;
+
+  return (
+    minutes >= minutesFromTime(hours.opens) &&
+    minutes < minutesFromTime(hours.closes)
+  );
+}
+
 function hoursLabel(hours: DayHours): string {
   return hours ? `${formatTime(hours.opens)} to ${formatTime(hours.closes)}` : "closed";
 }
