@@ -8,8 +8,11 @@ type ProductGridProps = {
   /** Canonical site base URL, used for the WhatsApp page link. */
   baseUrl: string;
   variant?: ProductGridVariant;
-  /** The first image on the page is eager; the rest are lazy. */
-  prioritySlug?: string;
+  /**
+   * The first image on the page is eager; the rest are lazy. Pass `null` when
+   * another image on the page (for example the product hero) is already eager.
+   */
+  prioritySlug?: string | null;
   className?: string;
 };
 
@@ -46,9 +49,11 @@ export function ProductGrid({
           productUrl={productUrl(baseUrl, product.slug)}
           variant={variant === "compact" ? "compact" : undefined}
           priority={
-            prioritySlug === undefined
-              ? index === 0
-              : product.slug === prioritySlug
+            prioritySlug === null
+              ? false
+              : prioritySlug === undefined
+                ? index === 0
+                : product.slug === prioritySlug
           }
           sizes={SIZES[variant]}
         />

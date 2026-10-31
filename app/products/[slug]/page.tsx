@@ -205,6 +205,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
             <ProductGrid
               products={related}
               baseUrl={baseUrl}
+              prioritySlug={null}
               className="mt-8"
             />
           </Container>
