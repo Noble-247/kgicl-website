@@ -1,6 +1,11 @@
 import { z } from "zod";
 
-import { AREA_SLUGS, dataFileForArea, getAreaGroup } from "@/lib/areas";
+import {
+  AREA_SLUGS,
+  dataFileForArea,
+  getAreaGroup,
+  isAreaSlug,
+} from "@/lib/areas";
 
 export const PHOTO_STATUSES = ["real", "stock", "unverified", "missing"] as const;
 
@@ -52,7 +57,9 @@ export const productSchema = z.object({
 export type Product = z.infer<typeof productSchema>;
 
 function fileFor(product: Pick<Product, "area">): string {
-  return dataFileForArea(product.area);
+  return isAreaSlug(product.area)
+    ? dataFileForArea(product.area)
+    : "the matching file in data/products/";
 }
 
 /**
@@ -64,6 +71,14 @@ export function validateProducts(products: readonly Product[]): void {
 
   for (const product of products) {
     const file = fileFor(product);
+
+    if (!isAreaSlug(product.area)) {
+      throw new Error(
+        `Product ${product.id} uses the area "${product.area}", which is not a catalogue area. ` +
+          `Use "solar-lighting", "cctv-security", "electrical-supplies" or "industrial-supply". ` +
+          `Fix the area in ${file}.`,
+      );
+    }
 
     if (!KEBAB_CASE.test(product.slug)) {
       throw new Error(

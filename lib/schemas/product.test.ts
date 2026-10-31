@@ -80,6 +80,14 @@ describe("validateProducts", () => {
     );
   });
 
+  it("names the product ID and the possible data files for an unknown area", () => {
+    const product = makeProduct({ area: "toys" as Product["area"] });
+
+    expect(() => validateProducts([product])).toThrowError(
+      /Product P-001 uses the area "toys".*data[\\/]products[\\/]/,
+    );
+  });
+
   it("names the product ID and file for a slug that is not kebab-case", () => {
     const product = makeProduct({ slug: "120W_Solar_Light" });
 
