@@ -16,6 +16,11 @@ type ProductCardProps = {
   priority?: boolean;
   sizes?: string;
   className?: string;
+  /**
+   * Which approved WhatsApp template the Enquire button uses. The Industrial
+   * page asks for a quote instead of a product enquiry (design.md 11).
+   */
+  enquiry?: "product" | "industrial";
 };
 
 function specValue(product: Product, label: string): string {
@@ -55,23 +60,28 @@ export function productKeyLine(product: Product): string {
 function EnquiryButton({
   product,
   productUrl,
+  enquiry = "product",
   dark = false,
   className = "",
 }: {
   product: Product;
   productUrl: string;
+  enquiry?: "product" | "industrial";
   dark?: boolean;
   className?: string;
 }) {
-  return (
-    <Button
-      href={waLink(
-        messages.product({
+  const message =
+    enquiry === "industrial"
+      ? messages.industrial({ name: product.name, url: productUrl })
+      : messages.product({
           name: product.name,
           modelCode: product.modelCode,
           url: productUrl,
-        }),
-      )}
+        });
+
+  return (
+    <Button
+      href={waLink(message)}
       target="_blank"
       rel="noreferrer"
       variant={dark ? "secondary-dark" : "secondary-light"}
@@ -149,6 +159,7 @@ function CompactCard({
   productUrl,
   priority,
   sizes,
+  enquiry = "product",
   className = "",
 }: ProductCardProps) {
   return (
@@ -186,6 +197,7 @@ function CompactCard({
         <EnquiryButton
           product={product}
           productUrl={productUrl}
+          enquiry={enquiry}
           dark
           className="w-full"
         />

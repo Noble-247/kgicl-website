@@ -13,6 +13,8 @@ type ProductGridProps = {
    * another image on the page (for example the product hero) is already eager.
    */
   prioritySlug?: string | null;
+  /** Passed to each card; the Industrial page uses the quote template. */
+  enquiry?: "product" | "industrial";
   className?: string;
 };
 
@@ -38,6 +40,7 @@ export function ProductGrid({
   baseUrl,
   variant = "standard",
   prioritySlug,
+  enquiry = "product",
   className = "",
 }: ProductGridProps) {
   return (
@@ -48,6 +51,7 @@ export function ProductGrid({
           product={product}
           productUrl={productUrl(baseUrl, product.slug)}
           variant={variant === "compact" ? "compact" : undefined}
+          enquiry={enquiry}
           priority={
             prioritySlug === null
               ? false
