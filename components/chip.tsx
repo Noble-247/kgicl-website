@@ -1,4 +1,5 @@
 import { Check } from "lucide-react";
+import Link from "next/link";
 import type { ButtonHTMLAttributes, ReactNode } from "react";
 
 export type ChipProps = Omit<
@@ -32,5 +33,35 @@ export function Chip({
       {selected ? <Check aria-hidden="true" size={16} /> : null}
       {children}
     </button>
+  );
+}
+
+type ChipLinkProps = {
+  href: string;
+  /** Dark pills sit on the home hero. */
+  tone?: "light" | "dark";
+  className?: string;
+  children: ReactNode;
+};
+
+/** The chip pill used as a navigation link (home hero, design.md 6.2). */
+export function ChipLink({
+  href,
+  tone = "light",
+  className = "",
+  children,
+}: ChipLinkProps) {
+  const palette =
+    tone === "dark"
+      ? "border-white/25 text-white hover:border-white hover:bg-white/[0.06]"
+      : "border-stone-300 bg-white text-text hover:border-text";
+
+  return (
+    <Link
+      href={href}
+      className={`inline-flex h-10 items-center rounded-full border px-4 text-sm font-semibold transition-colors ${palette} ${className}`}
+    >
+      {children}
+    </Link>
   );
 }

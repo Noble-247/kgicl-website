@@ -5,6 +5,7 @@ import {
   DESCRIPTION_MAX_LENGTH,
   buildDescription,
   buildTitle,
+  localBusinessJsonLd,
   productJsonLd,
 } from "./seo";
 
@@ -127,5 +128,52 @@ describe("productJsonLd", () => {
 
     expect("image" in jsonLd).toBe(false);
     expect("sku" in jsonLd).toBe(false);
+  });
+});
+
+describe("localBusinessJsonLd", () => {
+  it("describes the company, address and phones", () => {
+    const jsonLd = localBusinessJsonLd("https://kgiclsolar.com/");
+
+    expect(jsonLd).toMatchObject({
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      name: "KGICL Goodnews Solar",
+      legalName: "KRIS GOODNEWS INT'L CO. LTD",
+      url: "https://kgiclsolar.com/",
+      telephone: ["+2348036136883", "+2348054207519"],
+      address: {
+        "@type": "PostalAddress",
+        streetAddress:
+          "No. 7 Ada George Road, opposite Cosy Plaza, by Wide Choice Supermarket",
+        addressLocality: "Port Harcourt",
+        addressRegion: "Rivers State",
+        addressCountry: "NG",
+      },
+    });
+  });
+
+  it("lists the opening days and leaves Sunday out", () => {
+    const jsonLd = localBusinessJsonLd("https://kgiclsolar.com/");
+    const hours = jsonLd.openingHoursSpecification as Array<
+      Record<string, string>
+    >;
+
+    expect(hours).toHaveLength(6);
+    expect(hours.map((entry) => entry.dayOfWeek)).toEqual([
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+    ]);
+    expect(hours[0]).toMatchObject({
+      "@type": "OpeningHoursSpecification",
+      opens: "07:00",
+      closes: "22:00",
+    });
+    expect(hours[5]).toMatchObject({ opens: "07:00", closes: "20:00" });
+    expect(hours.some((entry) => entry.dayOfWeek === "Sunday")).toBe(false);
   });
 });

@@ -1,3 +1,4 @@
+import { SITE, WEEKDAYS, type Weekday } from "@/data/site";
 import type { Product } from "@/lib/schemas/product";
 
 export const SITE_NAME = "KGICL Goodnews Solar";
@@ -58,5 +59,53 @@ export function productJsonLd(
     ...(product.modelCode ? { sku: product.modelCode } : {}),
     brand: { "@type": "Brand", name: SITE_NAME },
     url,
+  };
+}
+
+const SCHEMA_DAYS: Record<Weekday, string> = {
+  monday: "Monday",
+  tuesday: "Tuesday",
+  wednesday: "Wednesday",
+  thursday: "Thursday",
+  friday: "Friday",
+  saturday: "Saturday",
+  sunday: "Sunday",
+};
+
+/**
+ * LocalBusiness structured data for Home and Contact (task 3.9).
+ * Opening hours come from `data/site.ts`; closed days are left out.
+ */
+export function localBusinessJsonLd(url: string): Record<string, unknown> {
+  const openingHoursSpecification = WEEKDAYS.flatMap((day) => {
+    const hours = SITE.hours.days[day];
+
+    if (!hours) return [];
+
+    return [
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: SCHEMA_DAYS[day],
+        opens: hours.opens,
+        closes: hours.closes,
+      },
+    ];
+  });
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    name: SITE.tradeName,
+    legalName: SITE.name,
+    url,
+    telephone: SITE.phones.map((phone) => phone.e164),
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: `${SITE.address.street}, ${SITE.address.extended}`,
+      addressLocality: SITE.address.city,
+      addressRegion: SITE.address.region,
+      addressCountry: "NG",
+    },
+    openingHoursSpecification,
   };
 }

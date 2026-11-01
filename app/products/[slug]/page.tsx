@@ -7,6 +7,7 @@ import { Breadcrumbs } from "@/components/breadcrumbs";
 import { Button } from "@/components/button";
 import { CloudImage } from "@/components/CloudImage";
 import { Container } from "@/components/container";
+import { JsonLd } from "@/components/json-ld";
 import { EnquiryPanel } from "@/components/catalogue/enquiry-panel";
 import { ProductGrid } from "@/components/catalogue/product-grid";
 import { SpecTable } from "@/components/catalogue/spec-table";
@@ -86,12 +87,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
-        }}
-      />
+      <JsonLd data={jsonLd} />
 
       <div className="bg-paper pb-14 pt-8">
         <Container>

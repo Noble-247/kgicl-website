@@ -236,6 +236,7 @@ Each component lists purpose, anatomy, variants, states, responsive behaviour an
 | **Text link** | `--red-deep` on light, `--red-soft` on dark, underline on hover, arrow icon optional |
 | **Icon** | Lucide for UI icons. WhatsApp, Facebook, Instagram and LinkedIn glyphs from react-icons (`fa`). 20 px default, `aria-hidden` unless alone in a button |
 | **Chip / filter chip** | Pill, 40 px high, 1 px `--stone-300`, `--white` fill. Selected: `--text` fill, white text. Focus ring visible |
+| **Chip link (home hero)** | Same pill as the chip, used as a link. On dark: transparent fill, 1 px white at 25% border, white text. Hover: white border, white at 6% fill |
 | **Eyebrow label** | Uppercase label style, `--red-deep` on light, `--red-soft` on dark, optional 24 px amber rule before it |
 | **Breadcrumbs** | Small text, `--text-muted`, "/" separators, current page not a link, `aria-label="Breadcrumb"` |
 | **Dotted divider** | 6 px dots, `--stone-300` on light, `--ink-3` on dark |
@@ -258,8 +259,9 @@ Focus ring (all interactive elements): 3 px outline, 3 px offset. White on dark 
 - Six standard cards: 1 column below 480 px, 2 from 480, 3 from 1024. Section title "Popular products", with a text link "See all products" to the catalogue.
 
 **Pillar tile (home)**
-- Four tiles: image, area name (H3), one-line description, arrow. 2 × 2 on tablet, 4 across on desktop.
-- **Image treatment: product-card style.** The client's photos are product shots, mostly on plain backgrounds and at modest resolution, so each tile shows its featured product `object-contain` on a `--stone-100` panel (4:3) with the text below the image on a white card. This is more reliable than a full-bleed photo with a gradient, which needs high-resolution lifestyle shots. A full-bleed tile with a dark gradient is allowed only if a real, high-resolution (1280 px wide or more) photo exists. Text on any gradient must reach 7:1.
+- Four tiles: area name (H3), one-line description, arrow. 2 × 2 on phones and tablets, 4 across on desktop.
+- **Default state: dark gradient with the dotted ring** (approved in `00-shared-context.md` section 3). Text sits at the bottom on a near-black gradient so it reaches 7:1.
+- **Photo state:** when `SITE_IMAGES.tiles.<area>` holds a real Cloudinary public ID, the tile switches to that photo, `object-cover`, with the same dark gradient over it. The photo must be a real, high-resolution (1280 px wide or more) image. No other code change is needed.
 
 **Wattage filter (Solar Lighting)**
 - Row of filter chips: All, 80W, 100W, 120W, 150W, 180W, 200W, 300W. Horizontally scrollable on mobile, no wrapping. A live count "Showing 3 of 17" under the chips. Selection is stored in the URL (`?watt=120`) and announced to screen readers (`aria-live="polite"`).
