@@ -290,6 +290,7 @@ Focus ring (all interactive elements): 3 px outline, 3 px offset. White on dark 
 | **Testimonial card** | Quote in Cormorant italic, name and role, optional initials avatar. The placeholder variant exists for development only (dashed border, "Placeholder" tag) and is blocked from production |
 | **Hours card** | Table of days and hours, today's row highlighted, a "Open now / Closed now" pill in Nigerian time |
 | **Terms list** | Four items with check icons (consultation, 1-year solar warranty, 6-month installation warranty, corporate payment terms) |
+| **CTA band (dark)** | `--black` band: H2, optional one-line intro, WhatsApp button on the right. Used at the foot of Services, Projects and About |
 | **Social links** | Row of 40 px icon buttons, each rendered only when its variable holds a valid URL. Hidden entirely when none exist |
 | **Prose (Privacy page)** | Max 70ch, H2/H3 in Manrope 700, lists with 8 px gaps, links in `--red-deep` |
 | **Toast** | Not used. Form results use inline panels |

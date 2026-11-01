@@ -25,6 +25,7 @@ import { ProjectCard } from "@/components/projects/project-card";
 import { ProductGrid } from "@/components/catalogue/product-grid";
 import { SectionHeading } from "@/components/section-heading";
 import { ServiceCard } from "@/components/service-card";
+import { WHY_CHOOSE_US } from "@/data/about";
 import { SITE_IMAGES } from "@/data/images";
 import { PROJECTS } from "@/data/projects";
 import { SERVICES } from "@/data/services";
@@ -83,29 +84,7 @@ const PILLARS: readonly Pillar[] = [
   },
 ];
 
-type Reason = {
-  icon: LucideIcon;
-  title: string;
-  text: string;
-};
-
-const REASONS: readonly Reason[] = [
-  {
-    icon: ShieldCheck,
-    title: "Original products with warranty",
-    text: "No fake products.",
-  },
-  {
-    icon: Truck,
-    title: "Fast local delivery and installation",
-    text: "Based in Port Harcourt, with WhatsApp support.",
-  },
-  {
-    icon: Building2,
-    title: "Trusted since 2005",
-    text: "Trusted by estates, churches, businesses and oil and gas companies.",
-  },
-];
+const REASON_ICONS: readonly LucideIcon[] = [ShieldCheck, Truck, Building2];
 
 const SERVICE_ICONS: readonly LucideIcon[] = [
   Sun,
@@ -248,8 +227,8 @@ export default function HomePage() {
               />
 
               <ul className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-3">
-                {REASONS.map((reason) => {
-                  const Icon = reason.icon;
+                {WHY_CHOOSE_US.map((reason, index) => {
+                  const Icon = REASON_ICONS[index];
 
                   return (
                     <li key={reason.title}>

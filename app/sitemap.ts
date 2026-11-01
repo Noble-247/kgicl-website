@@ -4,8 +4,8 @@ import { getPublishedProducts } from "@/lib/catalogue";
 import { siteUrl } from "@/lib/mode";
 
 /**
- * Routes that exist today. Services, projects, about, contact and privacy are
- * added with Task 03. `/design-check` is a build aid and never appears here.
+ * Routes that exist today. Contact and privacy are added with Task 03.
+ * `/design-check` is a build aid and never appears here.
  */
 const AREA_ROUTES = [
   "/solar-lighting",
@@ -13,6 +13,8 @@ const AREA_ROUTES = [
   "/electrical-supplies",
   "/industrial-supply",
 ] as const;
+
+const COMPANY_ROUTES = ["/services", "/projects", "/about"] as const;
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = siteUrl();
@@ -30,6 +32,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified,
       changeFrequency: "weekly" as const,
       priority: 0.8,
+    })),
+    ...COMPANY_ROUTES.map((route) => ({
+      url: `${base}${route}`,
+      lastModified,
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
     })),
     ...getPublishedProducts().map((product) => ({
       url: `${base}/products/${product.slug}`,
