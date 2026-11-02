@@ -18,7 +18,7 @@ export const products: Product[] = [
       },
       {
         label: "Battery",
-        value: "3.2V 320WH"
+        value: "3.2V 288WH"
       },
       {
         label: "Backup",
@@ -30,7 +30,7 @@ export const products: Product[] = [
       },
       {
         label: "Lumens",
-        value: "10000lm"
+        value: "14800lm"
       },
       {
         label: "Best for",
@@ -70,7 +70,7 @@ export const products: Product[] = [
       },
       {
         label: "Battery",
-        value: "3.2V 320WH"
+        value: "3.2V 288WH"
       },
       {
         label: "Backup",
@@ -82,7 +82,7 @@ export const products: Product[] = [
       },
       {
         label: "Lumens",
-        value: "10300lm"
+        value: "14800lm"
       },
       {
         label: "Best for",
@@ -122,7 +122,7 @@ export const products: Product[] = [
       },
       {
         label: "Battery",
-        value: "3.2V 320WH"
+        value: "3.2V 288WH"
       },
       {
         label: "Backup",
@@ -134,7 +134,7 @@ export const products: Product[] = [
       },
       {
         label: "Lumens",
-        value: "10000lm"
+        value: "14800lm"
       },
       {
         label: "Best for",
@@ -174,7 +174,7 @@ export const products: Product[] = [
       },
       {
         label: "Battery",
-        value: "3.2V 360WH"
+        value: "3.2V 320WH"
       },
       {
         label: "Backup",
@@ -186,7 +186,7 @@ export const products: Product[] = [
       },
       {
         label: "Lumens",
-        value: "12000lm"
+        value: "16800lm"
       },
       {
         label: "Best for",
@@ -226,7 +226,7 @@ export const products: Product[] = [
       },
       {
         label: "Battery",
-        value: "3.2V 360WH"
+        value: "3.2V 320WH"
       },
       {
         label: "Backup",
@@ -238,7 +238,7 @@ export const products: Product[] = [
       },
       {
         label: "Lumens",
-        value: "12500lm"
+        value: "16800lm"
       },
       {
         label: "Best for",
@@ -278,7 +278,7 @@ export const products: Product[] = [
       },
       {
         label: "Battery",
-        value: "3.2V 360WH"
+        value: "3.2V 320WH"
       },
       {
         label: "Backup",
@@ -290,7 +290,7 @@ export const products: Product[] = [
       },
       {
         label: "Lumens",
-        value: "12000lm"
+        value: "16800lm"
       },
       {
         label: "Best for",
@@ -330,7 +330,7 @@ export const products: Product[] = [
       },
       {
         label: "Battery",
-        value: "3.2V 360WH"
+        value: "3.2V 320WH"
       },
       {
         label: "Backup",
@@ -342,7 +342,7 @@ export const products: Product[] = [
       },
       {
         label: "Lumens",
-        value: "12000lm"
+        value: "16800lm"
       },
       {
         label: "Best for",
@@ -394,7 +394,7 @@ export const products: Product[] = [
       },
       {
         label: "Lumens",
-        value: "15000lm"
+        value: "17800lm"
       },
       {
         label: "Best for",
@@ -446,7 +446,7 @@ export const products: Product[] = [
       },
       {
         label: "Lumens",
-        value: "15000lm"
+        value: "17800lm"
       },
       {
         label: "Best for",
@@ -498,7 +498,7 @@ export const products: Product[] = [
       },
       {
         label: "Lumens",
-        value: "15000lm"
+        value: "17800lm"
       },
       {
         label: "Best for",
@@ -694,7 +694,7 @@ export const products: Product[] = [
       },
       {
         label: "Battery",
-        value: "3.2V 700WH"
+        value: "3.2V 799WH"
       },
       {
         label: "Backup",
@@ -798,7 +798,7 @@ export const products: Product[] = [
       },
       {
         label: "Battery",
-        value: "3.2V 320WH"
+        value: "3.2V 240WH"
       },
       {
         label: "Backup",
@@ -810,7 +810,7 @@ export const products: Product[] = [
       },
       {
         label: "Lumens",
-        value: "8000lm"
+        value: "13800lm"
       },
       {
         label: "Best for",
@@ -850,7 +850,7 @@ export const products: Product[] = [
       },
       {
         label: "Battery",
-        value: "3.2V 320WH"
+        value: "3.2V 240WH"
       },
       {
         label: "Backup",
@@ -862,7 +862,7 @@ export const products: Product[] = [
       },
       {
         label: "Lumens",
-        value: "8000lm"
+        value: "13800lm"
       },
       {
         label: "Best for",
