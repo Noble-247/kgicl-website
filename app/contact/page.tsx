@@ -4,6 +4,7 @@ import { FaWhatsapp } from "react-icons/fa";
 
 import { Button } from "@/components/button";
 import { Container } from "@/components/container";
+import { JsonLd } from "@/components/json-ld";
 import { PageHero } from "@/components/page-hero";
 import { SectionHeading } from "@/components/section-heading";
 import { SocialLinks } from "@/components/social-links";
@@ -11,7 +12,7 @@ import { SITE, WEEKDAYS, type Weekday } from "@/data/site";
 import { getBySlug } from "@/lib/catalogue";
 import { formatTime, isOpenNow, todayHours } from "@/lib/hours";
 import { siteUrl } from "@/lib/mode";
-import { buildDescription, buildTitle } from "@/lib/seo";
+import { buildDescription, buildTitle, localBusinessJsonLd } from "@/lib/seo";
 import { getSocialLinks } from "@/lib/social";
 import { messages, telLink, waLink } from "@/lib/whatsapp";
 
@@ -75,6 +76,8 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
 
   return (
     <>
+      <JsonLd data={localBusinessJsonLd(`${siteUrl()}/`)} />
+
       <PageHero
         title="Contact us"
         intro="Call, message or visit us in Port Harcourt. We reply within working hours."
