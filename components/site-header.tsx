@@ -73,7 +73,6 @@ export function SiteHeader() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  prefetch={false}
                   aria-current={active ? "page" : undefined}
                   className={`relative inline-flex h-11 items-center whitespace-nowrap text-xs font-semibold transition-colors after:absolute after:inset-x-0 after:bottom-1 after:h-0.5 after:origin-left after:scale-x-0 after:transition-transform after:duration-150 hover:text-white hover:after:scale-x-100 hover:after:bg-red-soft xl:text-sm ${
                     active

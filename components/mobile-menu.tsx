@@ -123,7 +123,6 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    prefetch={false}
                     onClick={onClose}
                     aria-current={active ? "page" : undefined}
                     className={`flex h-14 items-center border-b border-white/10 text-lg font-semibold ${

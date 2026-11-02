@@ -3,10 +3,6 @@ export type NavItem = {
   href: string;
 };
 
-// Routes arrive in Tasks 02–03. Until then the shell sets prefetch={false}
-// on these links so the review deployment has no 404 prefetch noise.
-// Remove those props once every route exists.
-
 /** The four catalogue areas. Shared by the header and the footer. */
 export const PRODUCT_AREAS = [
   { label: "Solar Lighting", href: "/solar-lighting" },

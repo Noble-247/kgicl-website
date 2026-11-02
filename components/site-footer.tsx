@@ -65,7 +65,7 @@ export function SiteFooter() {
             <ul className="mt-4 space-y-3">
               {PRODUCT_AREAS.map((item) => (
                 <li key={item.href}>
-                  <Link href={item.href} prefetch={false} className={linkClass}>
+                  <Link href={item.href} className={linkClass}>
                     {item.label}
                   </Link>
                 </li>
@@ -80,7 +80,7 @@ export function SiteFooter() {
             <ul className="mt-4 space-y-3">
               {COMPANY_NAV.map((item) => (
                 <li key={item.href}>
-                  <Link href={item.href} prefetch={false} className={linkClass}>
+                  <Link href={item.href} className={linkClass}>
                     {item.label}
                   </Link>
                 </li>
