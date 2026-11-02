@@ -20,9 +20,9 @@ export const PRIVACY_INTRO =
 /**
  * The privacy notice required by PRD section 9.4.
  *
- * Two items are still with the client: the privacy contact and the retention
- * period. They stay as visible `[To be confirmed by KGICL]` markers, and the
- * pre-launch audit blocks live mode while any marker remains.
+ * Contact and retention follow the defaults the client approved on
+ * 2 November 2026. The pre-launch audit blocks live mode while any
+ * `[To be confirmed by KGICL]` marker remains.
  */
 export function getPrivacySections(): readonly PrivacySection[] {
   const address = [
@@ -76,7 +76,9 @@ export function getPrivacySections(): readonly PrivacySection[] {
     {
       id: "how-long-we-keep-enquiries",
       heading: "How long we keep enquiries",
-      paragraphs: ["Retention period: [To be confirmed by KGICL]."],
+      paragraphs: [
+        "We retain enquiry data for up to 3 years from the date of your last interaction, unless an ongoing business or client relationship is established, or longer if required by Nigerian statutory and tax accounting obligations.",
+      ],
     },
     {
       id: "your-rights",
@@ -106,9 +108,8 @@ export function getPrivacySections(): readonly PrivacySection[] {
       id: "privacy-contact",
       heading: "Contact for privacy requests",
       paragraphs: [
-        SITE.emailVerified
-          ? `Email ${SITE.emails[0]} with your request.`
-          : "Privacy contact: [To be confirmed by KGICL].",
+        `Email ${SITE.emails[0]} with your request.`,
+        `You can also write to us at ${SITE.address.lines.join(", ")}.`,
       ],
     },
   ];
