@@ -55,7 +55,7 @@ export function SiteFooter() {
             <p className="type-small mt-3 font-semibold text-white">
               {SITE.coverage}
             </p>
-            <SocialLinks />
+            <SocialLinks className="mt-5" />
           </div>
 
           <nav aria-labelledby="footer-products">

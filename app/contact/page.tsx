@@ -6,11 +6,13 @@ import { Button } from "@/components/button";
 import { Container } from "@/components/container";
 import { PageHero } from "@/components/page-hero";
 import { SectionHeading } from "@/components/section-heading";
+import { SocialLinks } from "@/components/social-links";
 import { SITE, WEEKDAYS, type Weekday } from "@/data/site";
 import { getBySlug } from "@/lib/catalogue";
 import { formatTime, isOpenNow, todayHours } from "@/lib/hours";
 import { siteUrl } from "@/lib/mode";
 import { buildDescription, buildTitle } from "@/lib/seo";
+import { getSocialLinks } from "@/lib/social";
 import { messages, telLink, waLink } from "@/lib/whatsapp";
 
 import { ContactForm } from "./ContactForm";
@@ -69,6 +71,7 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
   const now = new Date();
   const today = todayHours(now);
   const open = isOpenNow(now);
+  const socialLinks = getSocialLinks();
 
   return (
     <>
@@ -213,6 +216,17 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
                   Opening hours are in Nigerian time (WAT).
                 </p>
               </div>
+
+              {socialLinks.length > 0 ? (
+                <div className="rounded-md border border-stone-300 bg-white p-6 shadow-1">
+                  <h2 className="type-h3">Follow us</h2>
+                  <SocialLinks
+                    links={socialLinks}
+                    tone="light"
+                    className="mt-4"
+                  />
+                </div>
+              ) : null}
             </div>
 
             <div>

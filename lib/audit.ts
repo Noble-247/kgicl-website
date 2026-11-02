@@ -1,7 +1,10 @@
 import { FEATURED_COUNT, HOME_FEATURED } from "@/data/featured";
 import { SITE } from "@/data/site";
+import { TESTIMONIALS, type Testimonial } from "@/data/testimonials";
+import { REQUIRED_IN_LIVE, type EnvSource } from "@/lib/env";
 import type { SiteMode } from "@/lib/mode";
 import type { Product } from "@/lib/schemas/product";
+import { invalidSocialVariables } from "@/lib/social";
 import { GATES, type Severity } from "@/config/launch-gates";
 import { validateFeatured } from "@/lib/featured";
 
@@ -33,14 +36,6 @@ export type AuditReport = {
   blockingFindings: number;
   failed: boolean;
 };
-
-/** Rules completed in Task 03. They are listed but not run yet. */
-export const STUB_RULES = [
-  "testimonialPlaceholders",
-  "socialInvalid",
-  "missingEnv",
-  "modeMismatch",
-] as const;
 
 /** Local Nigerian mobile numbers, with optional spaces or hyphens. */
 const LOCAL_PHONE = /(?<!\d)0[789](?:[\s-]?\d){9}(?!\d)/g;
@@ -206,6 +201,110 @@ export function findUnverifiedClaims(
     }));
 }
 
+const LIVE_SITE_URL = "https://kgiclsolar.com";
+
+function hostnameOf(value: string): string | null {
+  try {
+    return new URL(value).hostname.toLowerCase();
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * Always on, in both modes. Catches the two launch mistakes that matter most:
+ * a production build with no `SITE_MODE`, and a mode that disagrees with the
+ * address it is deployed on.
+ */
+export function findModeMismatch(
+  env: EnvSource = process.env,
+): AuditFinding[] {
+  const findings: AuditFinding[] = [];
+  const rawMode = env.SITE_MODE?.trim() ?? "";
+  const siteUrl = env.SITE_URL?.trim() ?? "";
+
+  if (env.VERCEL_ENV?.trim() === "production" && rawMode === "") {
+    findings.push({
+      location: "SITE_MODE",
+      message: "SITE_MODE is not set on a Vercel production build.",
+    });
+  }
+
+  if (rawMode !== "" && rawMode !== "live" && rawMode !== "review") {
+    findings.push({
+      location: "SITE_MODE",
+      message: 'SITE_MODE must be "review" or "live".',
+    });
+  }
+
+  const mode: SiteMode = rawMode === "live" ? "live" : "review";
+
+  if (mode === "live") {
+    const normalised = siteUrl.replace(/\/+$/, "").toLowerCase();
+
+    if (normalised !== LIVE_SITE_URL) {
+      findings.push({
+        location: "SITE_URL",
+        message: `SITE_MODE is "live" but SITE_URL is not ${LIVE_SITE_URL}.`,
+      });
+    }
+
+    return findings;
+  }
+
+  const host = hostnameOf(siteUrl);
+
+  if (host === "kgiclsolar.com" || host?.endsWith(".kgiclsolar.com")) {
+    findings.push({
+      location: "SITE_URL",
+      message:
+        'SITE_MODE is "review" but SITE_URL uses the live domain kgiclsolar.com.',
+    });
+  }
+
+  return findings;
+}
+
+export function findTestimonialPlaceholders(
+  testimonials: readonly Testimonial[] = TESTIMONIALS,
+): AuditFinding[] {
+  return testimonials.flatMap((testimonial, index) =>
+    testimonial.isPlaceholder
+      ? [
+          {
+            location: "data/testimonials.ts",
+            message: `Testimonial ${index + 1} is still marked as a placeholder.`,
+          },
+        ]
+      : [],
+  );
+}
+
+/** A social variable that is set but fails the https/host/placeholder rules. */
+export function findSocialInvalid(
+  env: EnvSource = process.env,
+): AuditFinding[] {
+  return invalidSocialVariables(env).map((variable) => ({
+    location: variable.env,
+    message: `${variable.env} is set but is not a valid https://${variable.expectedHost}/ link.`,
+  }));
+}
+
+/** Live mode needs every production variable. Review mode may leave them blank. */
+export function findMissingEnv(
+  mode: SiteMode,
+  env: EnvSource = process.env,
+): AuditFinding[] {
+  if (mode !== "live") return [];
+
+  return REQUIRED_IN_LIVE.filter((name) => !(env[name]?.trim() ?? "")).map(
+    (name) => ({
+      location: name,
+      message: `${name} is not set for live mode.`,
+    }),
+  );
+}
+
 export type AuditInput = {
   mode: SiteMode;
   products: readonly Product[];
@@ -214,6 +313,10 @@ export type AuditInput = {
   /** Test seam; the build uses data/featured.ts. */
   featuredList?: readonly string[];
   featuredCount?: number;
+  /** Test seam; the build reads process.env. */
+  env?: EnvSource;
+  /** Test seam; the build reads data/testimonials.ts. */
+  testimonials?: readonly Testimonial[];
 };
 
 /**
@@ -227,6 +330,8 @@ export function runAudit({
   allowedNumbers = allowedSiteNumbers(),
   featuredList = HOME_FEATURED,
   featuredCount = FEATURED_COUNT,
+  env = process.env,
+  testimonials = TESTIMONIALS,
 }: AuditInput): AuditReport {
   const findingsByRule: Record<string, AuditFinding[]> = {
     featuredInvalid: findFeaturedInvalid(products, featuredList, featuredCount),
@@ -236,6 +341,10 @@ export function runAudit({
     placeholderText: findPlaceholderText(products),
     missingAlt: findMissingAlt(products),
     unverifiedClaims: findUnverifiedClaims(products),
+    modeMismatch: findModeMismatch(env),
+    testimonialPlaceholders: findTestimonialPlaceholders(testimonials),
+    socialInvalid: findSocialInvalid(env),
+    missingEnv: findMissingEnv(mode, env),
   };
 
   const results: AuditRuleResult[] = Object.entries(GATES).map(

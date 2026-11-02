@@ -1,13 +1,19 @@
 import { describe, expect, it } from "vitest";
 
+import type { Testimonial } from "@/data/testimonials";
+import { REQUIRED_IN_LIVE } from "@/lib/env";
 import type { Product } from "@/lib/schemas/product";
 import {
   allowedSiteNumbers,
   findMissingAlt,
+  findMissingEnv,
+  findModeMismatch,
   findPhotoNotReal,
   findPlaceholderText,
   findPrivateNumbers,
   findProvisionalSlugs,
+  findSocialInvalid,
+  findTestimonialPlaceholders,
   findUnverifiedClaims,
   formatReport,
   runAudit,
@@ -42,6 +48,20 @@ function makeProduct(overrides: Partial<Product> = {}): Product {
   };
 }
 
+const REVIEW_ENV = {
+  SITE_MODE: "review",
+  SITE_URL: "https://kriss-goodnews-solar.vercel.app",
+} as const;
+
+const LIVE_ENV = {
+  SITE_MODE: "live",
+  SITE_URL: "https://kgiclsolar.com",
+  NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME: "test-cloud",
+  RESEND_API_KEY: "test-key",
+  CONTACT_FROM_EMAIL: "KGICL Website <website@notify.kgiclsolar.com>",
+  CONTACT_TO_EMAIL: "info@kgiclsolar.com",
+} as const;
+
 function run(
   products: readonly Product[],
   mode: "review" | "live" = "review",
@@ -51,6 +71,8 @@ function run(
     mode,
     products,
     dataFiles,
+    env: mode === "live" ? LIVE_ENV : REVIEW_ENV,
+    testimonials: [],
     featuredList: products.filter((product) => product.published).map((product) => product.slug),
     featuredCount: products.filter((product) => product.published).length,
   });
@@ -300,6 +322,8 @@ describe("runAudit exit logic", () => {
       mode: "review",
       products,
       dataFiles: [],
+      env: REVIEW_ENV,
+      testimonials: [],
       featuredList: ["missing-product"],
       featuredCount: 1,
     });
@@ -307,6 +331,8 @@ describe("runAudit exit logic", () => {
       mode: "live",
       products,
       dataFiles: [],
+      env: LIVE_ENV,
+      testimonials: [],
       featuredList: ["missing-product"],
       featuredCount: 1,
     });
@@ -315,16 +341,11 @@ describe("runAudit exit logic", () => {
     expect(live.failed).toBe(true);
   });
 
-  it("leaves the four Task 03 rules as stubs", () => {
+  it("implements every audit rule", () => {
     const report = run([makeProduct()]);
     const stubs = report.results.filter((result) => !result.implemented);
 
-    expect(stubs.map((result) => result.rule).sort()).toEqual([
-      "missingEnv",
-      "modeMismatch",
-      "socialInvalid",
-      "testimonialPlaceholders",
-    ]);
+    expect(stubs).toEqual([]);
   });
 
   it("prints every rule and always ends with the total", () => {
@@ -333,9 +354,155 @@ describe("runAudit exit logic", () => {
 
     expect(text).toContain("- photoNotReal [warn] 0 findings");
     expect(text).toContain("- unverifiedClaims [off] 0 findings");
-    expect(text).toContain("missingEnv [warn] not implemented yet (Task 03)");
+    expect(text).toContain("- missingEnv [warn] 0 findings");
     expect(lines[lines.length - 1]).toBe(
       "Total: 0 findings; 0 blocking in review mode.",
     );
+  });
+});
+
+describe("findModeMismatch", () => {
+  it("requires SITE_MODE on a Vercel production build", () => {
+    expect(
+      findModeMismatch({
+        VERCEL_ENV: "production",
+        SITE_URL: "https://kriss-goodnews-solar.vercel.app",
+      }),
+    ).toHaveLength(1);
+  });
+
+  it("accepts review mode on the review URL", () => {
+    expect(findModeMismatch(REVIEW_ENV)).toEqual([]);
+  });
+
+  it("requires the live domain in live mode", () => {
+    expect(
+      findModeMismatch({
+        SITE_MODE: "live",
+        SITE_URL: "https://kriss-goodnews-solar.vercel.app",
+      }),
+    ).toHaveLength(1);
+  });
+
+  it("accepts live mode on the live domain", () => {
+    expect(findModeMismatch(LIVE_ENV)).toEqual([]);
+  });
+
+  it("rejects the live domain in review mode", () => {
+    expect(
+      findModeMismatch({
+        SITE_MODE: "review",
+        SITE_URL: "https://kgiclsolar.com",
+      }),
+    ).toHaveLength(1);
+    expect(
+      findModeMismatch({
+        SITE_MODE: "review",
+        SITE_URL: "https://www.kgiclsolar.com",
+      }),
+    ).toHaveLength(1);
+  });
+
+  it("rejects an unknown SITE_MODE", () => {
+    expect(
+      findModeMismatch({
+        SITE_MODE: "production",
+        SITE_URL: "https://kriss-goodnews-solar.vercel.app",
+      }),
+    ).toHaveLength(1);
+  });
+});
+
+describe("findTestimonialPlaceholders", () => {
+  const placeholders: Testimonial[] = [
+    {
+      quote: "A real quote from a customer.",
+      name: "Ada Okafor",
+      role: "Estate manager",
+      isPlaceholder: false,
+    },
+    {
+      quote: "Placeholder text for layout only.",
+      name: "Customer Name",
+      role: "Role, Company",
+      isPlaceholder: true,
+    },
+  ];
+
+  it("reports only the records still marked as placeholders", () => {
+    const findings = findTestimonialPlaceholders(placeholders);
+
+    expect(findings).toHaveLength(1);
+    expect(findings[0].location).toBe("data/testimonials.ts");
+    expect(findings[0].message).toContain("Testimonial 2");
+  });
+
+  it("fails live mode while a placeholder remains", () => {
+    const report = runAudit({
+      mode: "live",
+      products: [makeProduct()],
+      dataFiles: [],
+      env: LIVE_ENV,
+      testimonials: placeholders,
+      featuredList: ["fixture-product"],
+      featuredCount: 1,
+    });
+
+    expect(
+      report.results.find((result) => result.rule === "testimonialPlaceholders")
+        ?.count,
+    ).toBe(1);
+    expect(report.failed).toBe(true);
+  });
+
+  it("keeps placeholders non-blocking in review mode", () => {
+    const report = runAudit({
+      mode: "review",
+      products: [makeProduct()],
+      dataFiles: [],
+      env: REVIEW_ENV,
+      testimonials: placeholders,
+      featuredList: ["fixture-product"],
+      featuredCount: 1,
+    });
+
+    expect(report.failed).toBe(false);
+  });
+});
+
+describe("findSocialInvalid", () => {
+  it("reports a variable that is set but invalid", () => {
+    const findings = findSocialInvalid({
+      FACEBOOK_URL: "https://facebook.com/example",
+    });
+
+    expect(findings).toHaveLength(1);
+    expect(findings[0].location).toBe("FACEBOOK_URL");
+    expect(findings[0].message).toContain("facebook.com");
+  });
+
+  it("ignores blank and valid variables", () => {
+    expect(
+      findSocialInvalid({
+        FACEBOOK_URL: "",
+        INSTAGRAM_URL: "https://instagram.com/kgiclsolar",
+      }),
+    ).toEqual([]);
+  });
+});
+
+describe("findMissingEnv", () => {
+  it("lists every missing live variable", () => {
+    expect(findMissingEnv("live", {}).map((finding) => finding.location)).toEqual(
+      [...REQUIRED_IN_LIVE],
+    );
+  });
+
+  it("accepts a complete live environment", () => {
+    expect(findMissingEnv("live", LIVE_ENV)).toEqual([]);
+  });
+
+  it("ignores missing variables in review mode", () => {
+    expect(findMissingEnv("review", {})).toEqual([]);
   });
 });
