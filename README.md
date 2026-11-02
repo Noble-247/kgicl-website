@@ -32,9 +32,13 @@ Environment variables (set for **all** environments in the Vercel project):
 | `SITE_MODE` | `review` |
 | `SITE_URL` | `https://kriss-goodnews-solar.vercel.app` |
 | `NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME` | See Vercel project settings |
+| `RESEND_API_KEY` | Resend sending key (set in Vercel, never committed) |
+| `CONTACT_FROM_EMAIL` | Verified Resend sender, for example `KGICL Website <website@notify.kgiclsolar.com>` |
+| `CONTACT_TO_EMAIL` | Inbox that receives enquiries |
+| `FACEBOOK_URL`, `INSTAGRAM_URL`, `LINKEDIN_URL` | Optional; leave blank until the client provides the links |
 
-Resend and social variables are added in Task 03. After changing an environment
-variable, redeploy so the change takes effect.
+Live mode also requires the same variables. See `lib/env.ts` for the enforced list.
+After changing an environment variable, redeploy so the change takes effect.
 
 Review mode keeps the site out of search: `/robots.txt` disallows everything and
 responses send `x-robots-tag: noindex, nofollow`. The fixed "Review version"
