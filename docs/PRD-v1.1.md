@@ -433,7 +433,7 @@ The change is charged as a content update (₦5,000 a request) and takes minutes
 | Services list                                                | Confirmed                                                                                              | Done              | n/a                                          |
 | Testimonials (2 promised)                                    | Not received. Placeholders in development only                                                         | Client            | Before launch, or launch without the section |
 | Social page links                                            | Pages not created yet. Environment variables stay blank until real                                     | Client / Emmanuel | Before launch, or hidden                     |
-| Privacy notice decisions (privacy contact, retention period) | Open                                                                                                   | Client            | Before launch                                |
+| Privacy notice decisions (privacy contact, retention period) | Decided 2 November 2026: info@kgiclsolar.com with the Port Harcourt address; 3-year default retention | Done              | n/a                                          |
 | Business email mailbox and email address in footer           | Mailbox to be confirmed live                                                                           | Emmanuel          | Before launch                                |
 | Certificates                                                 | Not displayed (client decision)                                                                        | n/a               | n/a                                          |
 
@@ -635,7 +635,7 @@ Roughly 19 to 26 working days of effort, inside the 30-day window if essential c
 | 4      | Verify standards and other safety claims for earthing and PPE                                                                                          | Emmanuel          | Showing those specs         |
 | 5      | Two testimonials with names, roles and permission                                                                                                      | Client            | Testimonials section        |
 | 6      | Facebook, Instagram, LinkedIn pages (separate quote) and the links                                                                                     | Client / Emmanuel | Social icons                |
-| 7      | Privacy contact and retention period                                                                                                                   | Client            | Privacy notice              |
+| 7      | Privacy contact and retention period — decided 2 November 2026 (info@kgiclsolar.com, Port Harcourt address, 3-year default)                            | Done              | Nothing                     |
 | 8      | Confirm “24/7 WhatsApp support” wording; update “registered since 2018” to 2005                                                                        | Client / Emmanuel | Why-choose-us text          |
 | 9      | Resend account, DNS records and info@ mailbox                                                                                                          | Emmanuel          | Contact form                |
 | 10     | Domain registrant contact change to the company, and Vercel DNS records                                                                                | Emmanuel          | Launch                      |
@@ -657,6 +657,8 @@ Roughly 19 to 26 working days of effort, inside the 30-day window if essential c
 - Primary domain kgiclsolar.com. Brand names omitted for now. No certificates on the site.
 
 - Contact form uses Resend on the subdomain notify.kgiclsolar.com.
+
+- Privacy notice follows the client's 2 November 2026 decision: requests go to info@kgiclsolar.com, with the Port Harcourt address as fallback. Enquiry data is kept for up to 3 years from the last interaction, or longer where an ongoing relationship or Nigerian statutory and tax duties require it.
 
 - Social links through environment variables. Testimonial placeholders only in development, blocked at launch.
 
