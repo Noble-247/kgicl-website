@@ -4,7 +4,7 @@ import { getPublishedProducts } from "@/lib/catalogue";
 import { siteUrl } from "@/lib/mode";
 
 /**
- * Routes that exist today. Privacy is added with Task 03.
+ * Routes that exist today.
  * `/design-check` is a build aid and never appears here.
  */
 const AREA_ROUTES = [
@@ -14,7 +14,13 @@ const AREA_ROUTES = [
   "/industrial-supply",
 ] as const;
 
-const COMPANY_ROUTES = ["/services", "/projects", "/about", "/contact"] as const;
+const COMPANY_ROUTES = [
+  "/services",
+  "/projects",
+  "/about",
+  "/contact",
+  "/privacy",
+] as const;
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = siteUrl();

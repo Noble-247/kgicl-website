@@ -1,6 +1,7 @@
 import { readdirSync, readFileSync } from "node:fs";
 import path from "node:path";
 
+import { getPrivacySections } from "@/data/privacy";
 import { getAllProducts } from "@/lib/catalogue";
 import { formatReport, runAudit, type DataFile } from "@/lib/audit";
 import { getSiteMode } from "@/lib/mode";
@@ -31,6 +32,7 @@ const report = runAudit({
   mode: getSiteMode(),
   products: getAllProducts(),
   dataFiles: readDataFiles(path.join(process.cwd(), "data")),
+  privacySections: getPrivacySections(),
 });
 
 console.log(formatReport(report));

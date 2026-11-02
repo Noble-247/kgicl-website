@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 
+import type { PrivacySection } from "@/data/privacy";
 import type { Testimonial } from "@/data/testimonials";
 import { REQUIRED_IN_LIVE } from "@/lib/env";
 import type { Product } from "@/lib/schemas/product";
@@ -10,6 +11,7 @@ import {
   findModeMismatch,
   findPhotoNotReal,
   findPlaceholderText,
+  findPrivacyMarkers,
   findPrivateNumbers,
   findProvisionalSlugs,
   findSocialInvalid,
@@ -186,6 +188,64 @@ describe("findPlaceholderText", () => {
       "P-001 summary",
       "P-002 summary",
     ]);
+  });
+});
+
+describe("findPrivacyMarkers", () => {
+  const sections: PrivacySection[] = [
+    {
+      id: "who-we-are",
+      heading: "Who we are",
+      paragraphs: ["A complete paragraph."],
+    },
+    {
+      id: "how-long-we-keep-enquiries",
+      heading: "How long we keep enquiries",
+      paragraphs: ["Retention period: [To be confirmed by KGICL]."],
+    },
+  ];
+
+  it("reports each section that still holds a visible marker", () => {
+    const findings = findPrivacyMarkers(sections);
+
+    expect(findings).toHaveLength(1);
+    expect(findings[0].location).toBe(
+      "data/privacy.ts#how-long-we-keep-enquiries",
+    );
+    expect(findings[0].message).toContain("How long we keep enquiries");
+  });
+
+  it("blocks live mode while a privacy marker remains", () => {
+    const report = runAudit({
+      mode: "live",
+      products: [makeProduct()],
+      dataFiles: [],
+      env: LIVE_ENV,
+      testimonials: [],
+      privacySections: sections,
+      featuredList: ["fixture-product"],
+      featuredCount: 1,
+    });
+
+    expect(
+      report.results.find((result) => result.rule === "placeholderText")?.count,
+    ).toBe(1);
+    expect(report.failed).toBe(true);
+  });
+
+  it("stays non-blocking in review mode", () => {
+    const report = runAudit({
+      mode: "review",
+      products: [makeProduct()],
+      dataFiles: [],
+      env: REVIEW_ENV,
+      testimonials: [],
+      privacySections: sections,
+      featuredList: ["fixture-product"],
+      featuredCount: 1,
+    });
+
+    expect(report.failed).toBe(false);
   });
 });
 

@@ -1,4 +1,5 @@
 import { FEATURED_COUNT, HOME_FEATURED } from "@/data/featured";
+import { getPrivacySections, type PrivacySection } from "@/data/privacy";
 import { SITE } from "@/data/site";
 import { TESTIMONIALS, type Testimonial } from "@/data/testimonials";
 import { REQUIRED_IN_LIVE, type EnvSource } from "@/lib/env";
@@ -140,6 +141,26 @@ export function findPlaceholderText(
   }
 
   return findings;
+}
+
+/** Visible `[To be confirmed by KGICL]` markers still in the privacy notice. */
+export function findPrivacyMarkers(
+  sections: readonly PrivacySection[] = getPrivacySections(),
+): AuditFinding[] {
+  return sections.flatMap((section) => {
+    const text = [
+      ...section.paragraphs,
+      ...(section.items ?? []),
+      ...(section.after ?? []),
+    ].join("\n");
+
+    return PLACEHOLDER_PATTERNS.filter((placeholder) =>
+      placeholder.pattern.test(text),
+    ).map((placeholder) => ({
+      location: `data/privacy.ts#${section.id}`,
+      message: `Privacy notice ("${section.heading}") contains "${placeholder.label}".`,
+    }));
+  });
 }
 
 export function findMissingAlt(products: readonly Product[]): AuditFinding[] {
@@ -317,6 +338,8 @@ export type AuditInput = {
   env?: EnvSource;
   /** Test seam; the build reads data/testimonials.ts. */
   testimonials?: readonly Testimonial[];
+  /** Test seam; the build reads data/privacy.ts. */
+  privacySections?: readonly PrivacySection[];
 };
 
 /**
@@ -332,13 +355,17 @@ export function runAudit({
   featuredCount = FEATURED_COUNT,
   env = process.env,
   testimonials = TESTIMONIALS,
+  privacySections = [],
 }: AuditInput): AuditReport {
   const findingsByRule: Record<string, AuditFinding[]> = {
     featuredInvalid: findFeaturedInvalid(products, featuredList, featuredCount),
     privateNumbers: findPrivateNumbers(dataFiles, allowedNumbers),
     photoNotReal: findPhotoNotReal(products),
     provisionalSlug: findProvisionalSlugs(products),
-    placeholderText: findPlaceholderText(products),
+    placeholderText: [
+      ...findPlaceholderText(products),
+      ...findPrivacyMarkers(privacySections),
+    ],
     missingAlt: findMissingAlt(products),
     unverifiedClaims: findUnverifiedClaims(products),
     modeMismatch: findModeMismatch(env),
