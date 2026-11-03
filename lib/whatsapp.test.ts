@@ -1,6 +1,12 @@
 import { describe, expect, it } from "vitest";
 
-import { messages, telLink, waLink } from "./whatsapp";
+import {
+  messages,
+  telLink,
+  toWhatsAppDigits,
+  waLink,
+  waNumberLink,
+} from "./whatsapp";
 
 function decoded(href: string): string {
   const text = new URL(href).searchParams.get("text");
@@ -73,6 +79,29 @@ describe("waLink", () => {
       "Hello KGICL, I'd like a quote for: Safety Helmet. https://kgiclsolar.com/industrial-supply",
     );
     expect(decoded(waLink(message))).toBe(message);
+  });
+});
+
+describe("toWhatsAppDigits", () => {
+  it.each([
+    ["0803 613 6883", "2348036136883"],
+    ["+234 803 613 6883", "2348036136883"],
+    ["2348036136883", "2348036136883"],
+    ["(0803) 613-6883", "2348036136883"],
+    ["8036136883", "8036136883"],
+  ])("turns %s into %s", (phone, expected) => {
+    expect(toWhatsAppDigits(phone)).toBe(expected);
+  });
+});
+
+describe("waNumberLink", () => {
+  it("builds a chat link for the visitor's number without a message", () => {
+    expect(waNumberLink("0803 613 6883")).toBe(
+      "https://wa.me/2348036136883",
+    );
+    expect(waNumberLink("+234 803 613 6883")).toBe(
+      "https://wa.me/2348036136883",
+    );
   });
 });
 

@@ -5,7 +5,6 @@ import type { ContactInput } from "@/app/contact/schema";
 import {
   buildEnquiryEmail,
   escapeHtml,
-  toWhatsAppDigits,
 } from "./email";
 
 const enquiry: ContactInput = {
@@ -34,18 +33,6 @@ describe("escapeHtml", () => {
     expect(escapeHtml("12 solar lights, Port Harcourt")).toBe(
       "12 solar lights, Port Harcourt",
     );
-  });
-});
-
-describe("toWhatsAppDigits", () => {
-  it.each([
-    ["0803 613 6883", "2348036136883"],
-    ["+234 803 613 6883", "2348036136883"],
-    ["2348036136883", "2348036136883"],
-    ["(0803) 613-6883", "2348036136883"],
-    ["8036136883", "8036136883"],
-  ])("turns %s into %s", (phone, expected) => {
-    expect(toWhatsAppDigits(phone)).toBe(expected);
   });
 });
 

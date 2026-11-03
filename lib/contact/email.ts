@@ -1,5 +1,6 @@
 import type { ContactInput } from "@/app/contact/schema";
 import { isReview } from "@/lib/mode";
+import { waNumberLink } from "@/lib/whatsapp";
 
 /** Escapes every value the visitor typed before it goes into the HTML email. */
 export function escapeHtml(value: string): string {
@@ -13,14 +14,6 @@ export function escapeHtml(value: string): string {
 
 const oneLine = (value: string) => value.replace(/[\r\n]+/g, " ").trim();
 
-/** "0803 613 6883" or "+234 803 613 6883" becomes "2348036136883". */
-export function toWhatsAppDigits(phone: string): string {
-  const digits = phone.replace(/\D/g, "");
-  if (digits.startsWith("234")) return digits;
-  if (digits.startsWith("0")) return `234${digits.slice(1)}`;
-  return digits;
-}
-
 export type EnquiryEmail = {
   subject: string;
   text: string;
@@ -33,7 +26,7 @@ export function buildEnquiryEmail(data: ContactInput): EnquiryEmail {
     `New website enquiry: ${data.need} (${data.name})`,
   );
   const subject = isReview() ? `[REVIEW] ${subjectLine}` : subjectLine;
-  const whatsapp = `https://wa.me/${toWhatsAppDigits(data.phone)}`;
+  const whatsapp = waNumberLink(data.phone);
 
   const rows: [string, string][] = [
     ["Name", data.name],

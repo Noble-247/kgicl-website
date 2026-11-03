@@ -43,7 +43,7 @@ Assets (in `public/assets/img/`): `logo-mark-white.svg`, `logo-mark-red.svg`, `l
 | Hero decoration | White ring at 6 to 10% opacity, 520 to 720 px | Decorative, `aria-hidden` |
 | Favicon / app icons | Red tile with white monogram | Provided |
 
-Rules: never stretch, recolour or add effects to the mark; clear space at least 25% of the mark's width on every side; red mark never on black for text-sized use (4.05:1). Next to the mark, the wordmark text reads **KGICL** (Manrope 700, tracking .12em) over **Goodnews Solar** (Manrope 500, muted).
+Rules: never stretch, recolour or add effects to the mark; clear space at least 25% of the mark's width on every side; red mark never on black for text-sized use (4.05:1). Next to the mark, the wordmark text reads **KGICL** (Manrope 700, tracking .12em) over **Goodnews Solar** (Manrope 600, muted; only 400, 600 and 700 are self-hosted).
 
 ---
 
@@ -181,7 +181,7 @@ Animate only `transform` and `opacity`. Entrance reveal: fade up 12 px, once, wi
 Naming rules to avoid known pitfalls:
 - **Do not** name custom spacing tokens `xs`, `sm`, `md`, `lg`, `xl` or `2xl`. In Tailwind v4 these clash with the container and max-width scale (`max-w-md` can silently resolve to a tiny value). Use Tailwind's default spacing, plus distinct names such as `--section-y`.
 - **next/font variable names must differ from the `@theme` names.** Set the `next/font` variables to `--font-cormorant` and `--font-manrope`, and alias them in `@theme` as `--font-display` and `--font-body` (as above). Using identical names makes the variables point to themselves and no brand font loads.
-- Verify in the browser's computed styles that the headline font really is Cormorant Garamond before moving on.
+- Verify in the browser's DevTools that the headline uses `--font-display`, that **Rendered Fonts** names Cormorant Garamond, and that the `.woff2` is served from `/_next/static/media`. `next/font/local` generates a scoped family name, so do not expect the computed `font-family` string to read "Cormorant Garamond".
 
 ---
 
@@ -207,22 +207,22 @@ Each component lists purpose, anatomy, variants, states, responsive behaviour an
 - Below 1024: logo, WhatsApp icon button, menu button. Eight links plus a button need the 1024 breakpoint.
 - A11y: `<nav aria-label="Primary">`, visible focus, current page `aria-current="page"`.
 
-**Mobile menu** (slide-in panel from the right, 88% width, backdrop dims the page)
+**Mobile menu** (slide-in panel from the right, 88% width on phones, capped at 384 px from 640 px, backdrop dims the page)
 - Links stacked at 18 px with 56 px rows; WhatsApp and Call buttons at the bottom.
 - Closes on backdrop tap, Escape, link tap. Focus is trapped while open, and returns to the menu button when closed. Body scroll locked.
 
 **Mobile action bar** (below 768 px)
 - Fixed bottom bar, `--black`, two equal buttons: **WhatsApp** (red) and **Call** (outline). 56 px tall plus safe-area inset.
-- Hides while the mobile menu is open or the keyboard is up. Page content gets bottom padding equal to the bar height.
+- Hides while the mobile menu is open, or while focus is inside a text-entry control (the keyboard proxy). Focus is used instead of `visualViewport` because pinch-zoom and browser chrome also shrink the viewport. If a field keeps focus after the keyboard closes, the bar stays hidden until focus moves.
 
 **Floating WhatsApp button** (768 px and above)
 - 56 px circle, `--red`, white WhatsApp glyph, bottom-right 24 px, `--shadow-3`. Tooltip "Chat on WhatsApp" on hover and focus. The link text is in an `aria-label`.
 
 **Review badge** (review mode only)
-- Fixed bottom-left, 12 px from the edge on phones and 16 px from 1024 px. Small pill: `--ink-3` background, 1 px white at 18 % border, white 12 px semibold text "Review version", `--shadow-2`, z-index 46. Sits above the mobile action bar below 768 px. The container ignores pointer events; the text stays selectable. Never covers the action bar or a form control. Hidden entirely in live mode.
+- Fixed bottom-left, 12 px from the edge on phones and 16 px from 768 px. Small pill: `--ink-3` background, 1 px white at 18 % border, white 12 px semibold text "Review version", `--shadow-2`, z-index 46. Sits above the mobile action bar below 768 px. The container ignores pointer events; the text stays selectable. Never covers the action bar or a form control. Hidden entirely in live mode.
 
 **Footer** (dark)
-- Four columns on desktop: brand (mark, one-line description, "Nationwide delivery"), Products (four areas), Company (Services, Projects, About, Contact, Privacy notice), Visit us (address, hours, phones; email once confirmed).
+- Four columns on desktop: brand (mark, one-line description, "Nationwide delivery"), Products (four areas), Company (Services, Projects, About, Contact, Privacy notice), Visit us (address, hours, phones; info@kgiclsolar.com and sales@kgiclsolar.com, both verified).
 - Social icons render only when the environment variable holds a real URL.
 - Bottom line: © {year} Kris Goodnews Int'l Co. Ltd. All rights reserved.
 
@@ -291,7 +291,7 @@ Focus ring (all interactive elements): 3 px outline, 3 px offset. White on dark 
 | **Hours card** | Table of days and hours, today's row highlighted, a "Open now / Closed now" pill in Nigerian time |
 | **Terms list** | Four items with check icons (consultation, 1-year solar warranty, 6-month installation warranty, corporate payment terms) |
 | **CTA band (dark)** | `--black` band: H2, optional one-line intro, WhatsApp button on the right. Used at the foot of Services, Projects and About |
-| **Social links** | Row of 40 px icon buttons, each rendered only when its variable holds a valid URL (`https://` on the matching network host, no placeholder words). Dark variant in the footer, light variant on Contact. Hidden entirely when none exist |
+| **Social links** | Row of 44 px icon buttons, each rendered only when its variable holds a valid URL (`https://` on the matching network host, no placeholder words). Dark variant in the footer, light variant on Contact. Hidden entirely when none exist |
 | **Prose (Privacy page)** | Max 70ch, H2/H3 in Manrope 700, lists with 8 px gaps, links in `--red-deep` |
 | **Toast** | Not used. Form results use inline panels |
 
@@ -481,6 +481,8 @@ Mobile: contact details first (call and WhatsApp buttons), then the form.
 - General: `Hello KGICL, I'd like to make an enquiry.`
 - Product: `Hello KGICL, I'm interested in the {product name} ({model code}). {page URL}`
 - Industrial: `Hello KGICL, I'd like a quote for: {product name}. {page URL}`
+
+All WhatsApp URLs are built in `lib/whatsapp.ts`; no component or email template hard-codes `wa.me`.
 
 ---
 

@@ -16,6 +16,19 @@ export function waLink(message: string): string {
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeMessage(message)}`;
 }
 
+/** "0803 613 6883" or "+234 803 613 6883" becomes "2348036136883". */
+export function toWhatsAppDigits(phone: string): string {
+  const digits = phone.replace(/\D/g, "");
+  if (digits.startsWith("234")) return digits;
+  if (digits.startsWith("0")) return `234${digits.slice(1)}`;
+  return digits;
+}
+
+/** Chat link for any Nigerian number, without a prefilled message. */
+export function waNumberLink(phone: string): string {
+  return `https://wa.me/${toWhatsAppDigits(phone)}`;
+}
+
 /** Approved templates from design.md section 11. */
 export const messages = {
   general: "Hello KGICL, I'd like to make an enquiry.",

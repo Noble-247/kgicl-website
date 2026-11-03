@@ -94,5 +94,5 @@ export const SITE = {
   },
   coverage: "Nationwide delivery",
   emails: ["info@kgiclsolar.com", "sales@kgiclsolar.com"],
-  emailVerified: false,
+  emailVerified: true,
 } as const satisfies Site;
