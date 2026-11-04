@@ -57,9 +57,7 @@ export const productSchema = z.object({
 export type Product = z.infer<typeof productSchema>;
 
 function fileFor(product: Pick<Product, "area">): string {
-  return isAreaSlug(product.area)
-    ? dataFileForArea(product.area)
-    : "the matching file in data/products/";
+  return dataFileForArea(product.area);
 }
 
 /**
@@ -70,15 +68,15 @@ export function validateProducts(products: readonly Product[]): void {
   const seenSlugs = new Map<string, string>();
 
   for (const product of products) {
-    const file = fileFor(product);
-
     if (!isAreaSlug(product.area)) {
       throw new Error(
         `Product ${product.id} uses the area "${product.area}", which is not a catalogue area. ` +
           `Use "solar-lighting", "cctv-security", "electrical-supplies" or "industrial-supply". ` +
-          `Fix the area in ${file}.`,
+          `Fix the area in the file under data/products/ that holds this product.`,
       );
     }
+
+    const file = fileFor(product);
 
     if (!KEBAB_CASE.test(product.slug)) {
       throw new Error(

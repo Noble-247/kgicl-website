@@ -53,16 +53,9 @@ export async function generateMetadata({
       title,
       description,
       url,
-      images: image
-        ? [
-            {
-              url: image,
-              width: 1200,
-              height: 900,
-              alt: product.image.alt,
-            },
-          ]
-        : undefined,
+      // No width/height: the Cloudinary asset keeps its natural ratio, so a
+      // fixed 1200x900 claim would be wrong for most products.
+      images: image ? [{ url: image, alt: product.image.alt }] : undefined,
     },
   };
 }
@@ -101,15 +94,17 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
           <div className="mt-6 grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(320px,400px)] lg:items-start lg:gap-x-12">
             <div className="lg:col-start-1 lg:row-start-1">
-              <div className="rounded-md border border-stone-300 bg-stone-100 p-3">
-                <CloudImage
-                  publicId={product.image.publicId}
-                  alt={product.image.alt}
-                  priority
-                  sizes="(min-width: 1024px) 60vw, 100vw"
-                  width={1200}
-                  height={900}
-                />
+              <div className="max-w-[600px] rounded-md border border-stone-300 bg-stone-100 p-3">
+                <div className="aspect-[4/3]">
+                  <CloudImage
+                    publicId={product.image.publicId}
+                    alt={product.image.alt}
+                    priority
+                    sizes="(min-width: 1024px) 600px, 100vw"
+                    width={1200}
+                    height={900}
+                  />
+                </div>
               </div>
             </div>
 

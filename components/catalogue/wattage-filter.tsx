@@ -64,13 +64,18 @@ export function WattageFilter({
     [products],
   );
 
-  const requested = Number(searchParams.get("watt"));
-  const selected = wattages.includes(requested) ? requested : null;
+  const wattParam = searchParams.get("watt");
+  const requested = wattParam === null ? null : Number(wattParam);
+  const selected =
+    requested !== null && wattages.includes(requested) ? requested : null;
 
+  // A present-but-unknown wattage is a real "no match", not "All" (design.md 6.3).
   const filtered =
-    selected === null
+    wattParam === null
       ? products
-      : products.filter((product) => product.wattage === selected);
+      : selected === null
+        ? []
+        : products.filter((product) => product.wattage === selected);
 
   function choose(wattage: number | null) {
     const params = new URLSearchParams(searchParams.toString());
@@ -94,7 +99,7 @@ export function WattageFilter({
         className="flex flex-nowrap gap-2 overflow-x-auto pb-2"
       >
         <Chip
-          selected={selected === null}
+          selected={wattParam === null}
           onClick={() => choose(null)}
           className="shrink-0"
         >
