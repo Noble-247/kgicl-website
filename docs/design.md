@@ -251,7 +251,7 @@ Focus ring (all interactive elements): 3 px outline, 3 px offset. White on dark 
 - Hover: image scales 1.03, shadow `--shadow-2`. Focus: ring on the card.
 - No price. No stock badge. Never show "Photo coming soon" in production (such products are unpublished).
 
-**Product card, family:** same layout, key line shows the range, for example "Available in 1 mm to 16 mm" or "3 W to 50 W", and the button reads "See sizes".
+**Product card, family:** same layout, key line lists the variants that were received, prefixed "Available in ", for example "Available in 1mm, 1.5mm, 2.5mm, 4mm…". The line cuts at a comma boundary, never computes a range ("1 mm to 16 mm"), because the workbook mixes units and product types and 21 of the 28 family lists are marked "Possibly cut off" — a range would assert continuity the data does not guarantee. The button reads "See sizes".
 
 **Product card, compact (Industrial page, dark):** 1:1 image, `--ink-3` card, name and a one-line group label, button "Enquire". No key line.
 

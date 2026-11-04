@@ -57,6 +57,51 @@ export function productKeyLine(product: Product): string {
   return cutAtWord(details, 80);
 }
 
+/** Longest family key line, including the "Available in " prefix. */
+const FAMILY_KEY_LINE_MAX = 80;
+
+function trimSeparators(value: string): string {
+  return value.replace(/[\s,;|–-]+$/u, "");
+}
+
+function cutAtComma(value: string, maxLength: number): string {
+  if (value.length <= maxLength) return value;
+
+  const slice = value.slice(0, maxLength - 1);
+  const lastComma = slice.lastIndexOf(", ");
+
+  if (lastComma > 0) return `${trimSeparators(slice.slice(0, lastComma))}…`;
+
+  return cutAtWord(value, maxLength);
+}
+
+/**
+ * Family card key line (design.md 6.3). The workbook lists the variants that
+ * were received; it never guarantees an unbroken range, and some lists mix
+ * units or product types, so the line repeats the list instead of computing
+ * a range.
+ */
+export function familyKeyLine(product: Product): string {
+  const details =
+    specValue(product, "Details") || product.specs[0]?.value || product.summary;
+
+  let variants = details.replace(/\s*\|\s*/g, ", ");
+
+  // A dash tail ("– Twin & Earth", "- Square 300x3") is a label only when the
+  // head is already a comma list. Otherwise it belongs to the variant text,
+  // as in "25kg Bag - Bentonite, Marconite, Furse".
+  const dash = variants.search(/\s[–-]\s/);
+  if (dash > 0) {
+    const head = variants.slice(0, dash);
+    if (head.includes(",")) variants = head;
+  }
+
+  return cutAtComma(
+    `Available in ${trimSeparators(variants)}`,
+    FAMILY_KEY_LINE_MAX,
+  );
+}
+
 function EnquiryButton({
   product,
   productUrl,
@@ -131,7 +176,7 @@ function LightCard({
           </p>
           <h3 className="type-h3 mt-2 line-clamp-2">{product.name}</h3>
           <p className="type-small mt-2 line-clamp-2 text-text-muted">
-            {productKeyLine(product)}
+            {family ? familyKeyLine(product) : productKeyLine(product)}
           </p>
         </div>
       </div>

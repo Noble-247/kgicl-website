@@ -130,7 +130,7 @@ Build in `components/catalogue/`:
    - Standard: image area (4:3, `--color-stone-100`, `object-contain`, 12 px padding), group eyebrow, name (H3, two lines), one key line, "Enquire" button (opens WhatsApp with `messages.product`).
    - Family (when `familyLikely` is true): same, but the button reads "See sizes" and goes to the product page.
    - Compact (Industrial page, dark): 1:1 image, `--color-ink-3` card, name, group label, "Enquire".
-   - Key line: solar `"{Type} · {wattage}W · {Backup} backup"`; others the first 80 characters of the details, cut at a word boundary with "…".
+   - Key line: solar `"{Type} · {wattage}W · {Backup} backup"`; family cards `"Available in {variants}"` from the received list, cut at a comma boundary (never a computed range, because the workbook data is unverified and mixed); others the first 80 characters of the details, cut at a word boundary with "…".
    - The whole card links to the product page; the button is a separate control.
 2. `WattageFilter` (client): chips All, 80, 100, 120, 150, 180, 200, 300 W (generate from the data, not hard-coded), horizontally scrollable on mobile, selection stored in the URL (`?watt=120`), live count "Showing X of Y" with `aria-live="polite"`, empty state text from `design.md` 6.3.
 3. `SpecTable` (two columns, zebra, label muted) and `EnquiryPanel` (heading "Interested in {name}?", primary WhatsApp button with `messages.product`, secondary Call, link "Or send a message" to `/contact?product={slug}`, opening-hours line from `data/site.ts`).
