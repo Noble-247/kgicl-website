@@ -23,6 +23,7 @@ import { Testimonials } from "@/components/home/Testimonials";
 import { JsonLd } from "@/components/json-ld";
 import { ProjectCard } from "@/components/projects/project-card";
 import { ProductGrid } from "@/components/catalogue/product-grid";
+import { Reveal } from "@/components/Reveal";
 import { SectionHeading } from "@/components/section-heading";
 import { ServiceCard } from "@/components/service-card";
 import { WHY_CHOOSE_US } from "@/data/about";
@@ -198,18 +199,21 @@ export default function HomePage() {
 
       <section className="section-y border-y border-stone-300 bg-white">
         <Container>
-          <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-            <SectionHeading eyebrow="Featured" title="Popular products" />
-            <Button href="/solar-lighting" variant="link">
-              See all products
-              <ArrowRight aria-hidden="true" size={18} />
-            </Button>
-          </div>
+          <Reveal>
+            <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+              <SectionHeading eyebrow="Featured" title="Popular products" />
+              <Button href="/solar-lighting" variant="link">
+                See all products
+                <ArrowRight aria-hidden="true" size={18} />
+              </Button>
+            </div>
+          </Reveal>
 
           <ProductGrid
             products={featured}
             baseUrl={baseUrl}
             prioritySlug={null}
+            reveal
             className="mt-8"
           />
         </Container>
@@ -217,7 +221,7 @@ export default function HomePage() {
 
       <section className="on-dark section-y bg-black">
         <Container>
-          <div className="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-center">
+          <Reveal className="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-center">
             <div>
               <SectionHeading
                 eyebrow="Why choose us"
@@ -255,7 +259,7 @@ export default function HomePage() {
                 Years of proven experience
               </p>
             </div>
-          </div>
+          </Reveal>
         </Container>
       </section>
 
@@ -269,11 +273,11 @@ export default function HomePage() {
             </Button>
           </div>
 
-          <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-3">
+          <Reveal className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-3">
             {PROJECTS.slice(0, 3).map((project) => (
               <ProjectCard key={project.id} project={project} />
             ))}
-          </div>
+          </Reveal>
         </Container>
       </section>
 
@@ -287,7 +291,7 @@ export default function HomePage() {
             intro="Installation, supply and procurement for homes, businesses and industrial sites."
           />
 
-          <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+          <Reveal className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
             {SERVICES.map((service, index) => (
               <ServiceCard
                 key={service.title}
@@ -295,46 +299,48 @@ export default function HomePage() {
                 icon={SERVICE_ICONS[index]}
               />
             ))}
-          </div>
+          </Reveal>
         </Container>
       </section>
 
       <section className="on-dark section-y bg-black">
-        <Container className="grid grid-cols-1 gap-8 md:grid-cols-[minmax(0,1fr)_auto] md:items-center">
-          <div>
-            <SectionHeading eyebrow="Contact" title="Talk to us" tone="dark" />
+        <Container>
+          <Reveal className="grid grid-cols-1 gap-8 md:grid-cols-[minmax(0,1fr)_auto] md:items-center">
+            <div>
+              <SectionHeading eyebrow="Contact" title="Talk to us" tone="dark" />
 
-            <address className="type-body mt-4 not-italic text-text-muted-on-dark">
-              {SITE.address.lines.map((line) => (
-                <span key={line} className="block">
-                  {line}
-                </span>
-              ))}
-            </address>
+              <address className="type-body mt-4 not-italic text-text-muted-on-dark">
+                {SITE.address.lines.map((line) => (
+                  <span key={line} className="block">
+                    {line}
+                  </span>
+                ))}
+              </address>
 
-            <p className="type-small mt-3 text-text-muted-on-dark">
-              {openingHoursLine()}
-            </p>
-          </div>
+              <p className="type-small mt-3 text-text-muted-on-dark">
+                {openingHoursLine()}
+              </p>
+            </div>
 
-          <div className="flex flex-col gap-3 sm:flex-row md:flex-col">
-            <Button
-              href={waLink(messages.general)}
-              target="_blank"
-              rel="noreferrer"
-              icon={<FaWhatsapp />}
-            >
-              WhatsApp
-            </Button>
-            <Button
-              href={telLink(SITE.phones[0].e164)}
-              variant="secondary-dark"
-              icon={<Phone aria-hidden="true" size={18} />}
-              aria-label={`Call us on ${SITE.phones[0].display}`}
-            >
-              Call us
-            </Button>
-          </div>
+            <div className="flex flex-col gap-3 sm:flex-row md:flex-col">
+              <Button
+                href={waLink(messages.general)}
+                target="_blank"
+                rel="noreferrer"
+                icon={<FaWhatsapp />}
+              >
+                WhatsApp
+              </Button>
+              <Button
+                href={telLink(SITE.phones[0].e164)}
+                variant="secondary-dark"
+                icon={<Phone aria-hidden="true" size={18} />}
+                aria-label={`Call us on ${SITE.phones[0].display}`}
+              >
+                Call us
+              </Button>
+            </div>
+          </Reveal>
         </Container>
       </section>
     </>

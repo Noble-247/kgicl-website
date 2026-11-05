@@ -4,6 +4,7 @@ import { Building2, ShieldCheck, Truck, type LucideIcon } from "lucide-react";
 import { Container } from "@/components/container";
 import { CtaBand } from "@/components/cta-band";
 import { PageHero } from "@/components/page-hero";
+import { Reveal } from "@/components/Reveal";
 import { SectionHeading } from "@/components/section-heading";
 import {
   HISTORY,
@@ -42,7 +43,7 @@ export default function AboutPage() {
 
       <section className="section-y bg-paper">
         <Container>
-          <div className="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,1fr)_280px] lg:items-start lg:gap-16">
+          <Reveal className="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,1fr)_280px] lg:items-start lg:gap-16">
             <div>
               <SectionHeading eyebrow="Our history" title="Since 2005" />
 
@@ -61,9 +62,9 @@ export default function AboutPage() {
                 Years of proven experience
               </p>
             </div>
-          </div>
+          </Reveal>
 
-          <div className="mt-14 grid grid-cols-1 gap-4 md:mt-20 md:grid-cols-2">
+          <Reveal className="mt-14 grid grid-cols-1 gap-4 md:mt-20 md:grid-cols-2">
             <div className="rounded-md border border-stone-300 bg-white p-6 shadow-1">
               <h2 className="type-h3">Mission</h2>
               <p className="type-body mt-3 text-text-muted">{MISSION}</p>
@@ -73,21 +74,23 @@ export default function AboutPage() {
               <h2 className="type-h3">Vision</h2>
               <p className="type-body mt-3 text-text-muted">{VISION}</p>
             </div>
-          </div>
+          </Reveal>
 
           <div className="mt-14 md:mt-20">
             <SectionHeading eyebrow="Values" title="What we stand for" />
 
-            <ul className="mt-6 flex flex-wrap gap-2">
-              {VALUES.map((value) => (
-                <li
-                  key={value}
-                  className="type-small inline-flex h-10 items-center rounded-full border border-stone-300 bg-white px-4 font-semibold text-text"
-                >
-                  {value}
-                </li>
-              ))}
-            </ul>
+            <Reveal>
+              <ul className="mt-6 flex flex-wrap gap-2">
+                {VALUES.map((value) => (
+                  <li
+                    key={value}
+                    className="type-small inline-flex h-10 items-center rounded-full border border-stone-300 bg-white px-4 font-semibold text-text"
+                  >
+                    {value}
+                  </li>
+                ))}
+              </ul>
+            </Reveal>
           </div>
         </Container>
       </section>
@@ -101,23 +104,27 @@ export default function AboutPage() {
             withRule
           />
 
-          <ul className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-3">
-            {WHY_CHOOSE_US.map((reason, index) => {
-              const Icon = REASON_ICONS[index];
+          <Reveal>
+            <ul className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-3">
+              {WHY_CHOOSE_US.map((reason, index) => {
+                const Icon = REASON_ICONS[index];
 
-              return (
-                <li key={reason.title}>
-                  <span className="flex h-12 w-12 items-center justify-center rounded-full bg-white/[0.06] text-red-soft">
-                    <Icon aria-hidden="true" size={22} />
-                  </span>
-                  <h3 className="type-h3 mt-4 text-white">{reason.title}</h3>
-                  <p className="type-small mt-2 text-text-muted-on-dark">
-                    {reason.text}
-                  </p>
-                </li>
-              );
-            })}
-          </ul>
+                return (
+                  <li key={reason.title}>
+                    <span className="flex h-12 w-12 items-center justify-center rounded-full bg-white/[0.06] text-red-soft">
+                      <Icon aria-hidden="true" size={22} />
+                    </span>
+                    <h3 className="type-h3 mt-4 text-white">
+                      {reason.title}
+                    </h3>
+                    <p className="type-small mt-2 text-text-muted-on-dark">
+                      {reason.text}
+                    </p>
+                  </li>
+                );
+              })}
+            </ul>
+          </Reveal>
         </Container>
       </section>
 

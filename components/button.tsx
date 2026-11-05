@@ -44,9 +44,9 @@ const VARIANTS: Record<ButtonVariant, string> = {
   primary:
     "bg-red text-white hover:-translate-y-px hover:bg-red-deep hover:shadow-[0_6px_20px_rgba(227,6,19,0.35)] active:translate-y-0",
   "secondary-dark":
-    "border border-white/35 text-white hover:border-white hover:bg-white/[0.06]",
+    "border border-white/35 text-white hover:-translate-y-px hover:border-white hover:bg-white/[0.06] active:translate-y-0",
   "secondary-light":
-    "border border-text text-text hover:bg-text hover:text-white",
+    "border border-text text-text hover:-translate-y-px hover:bg-text hover:text-white active:translate-y-0",
   link: "rounded-sm underline-offset-4 hover:underline",
 };
 

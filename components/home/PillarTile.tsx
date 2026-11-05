@@ -67,6 +67,15 @@ export function PillarTile({
         </>
       )}
 
+      <span
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 rounded-md opacity-0 ring-1 ring-inset ring-white/30 transition-opacity duration-150 group-hover:opacity-100 group-focus-visible:opacity-100"
+        style={{
+          backgroundImage:
+            "radial-gradient(70% 70% at 100% 0%, rgba(227, 6, 19, 0.22), transparent 70%)",
+        }}
+      />
+
       <ArrowUpRight
         aria-hidden="true"
         size={20}

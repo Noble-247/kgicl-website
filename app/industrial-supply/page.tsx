@@ -5,6 +5,7 @@ import { Button } from "@/components/button";
 import { Container } from "@/components/container";
 import { PageHero } from "@/components/page-hero";
 import { ProductGrid } from "@/components/catalogue/product-grid";
+import { Reveal } from "@/components/Reveal";
 import { SectionHeading } from "@/components/section-heading";
 import { AREA_BY_SLUG } from "@/lib/areas";
 import { getByGroup } from "@/lib/catalogue";
@@ -106,6 +107,7 @@ export default function IndustrialSupplyPage() {
                 variant="compact"
                 enquiry="industrial"
                 prioritySlug={firstSlug}
+                reveal
                 className="mt-6"
               />
             </section>
@@ -121,7 +123,7 @@ export default function IndustrialSupplyPage() {
               tone="dark"
             />
 
-            <div className="mt-6 rounded-md border border-white/12 bg-ink-3 p-6 md:max-w-2xl">
+            <Reveal className="mt-6 rounded-md border border-white/12 bg-ink-3 p-6 md:max-w-2xl">
               <p className="type-body text-text-muted-on-dark">
                 Safety pipes and anchor chains, supplied on request. Ask us on
                 WhatsApp.
@@ -136,7 +138,7 @@ export default function IndustrialSupplyPage() {
               >
                 Ask about pipes and marine
               </Button>
-            </div>
+            </Reveal>
           </section>
 
           <section
@@ -150,22 +152,24 @@ export default function IndustrialSupplyPage() {
               tone="dark"
             />
 
-            <ol className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-3">
-              {STEPS.map((step, index) => (
-                <li key={step.title}>
-                  <span
-                    aria-hidden="true"
-                    className="flex h-10 w-10 items-center justify-center rounded-full border border-white/25 text-sm font-bold text-red-soft"
-                  >
-                    {index + 1}
-                  </span>
-                  <h3 className="type-h3 mt-4 text-white">{step.title}</h3>
-                  <p className="type-small mt-2 text-text-muted-on-dark">
-                    {step.text}
-                  </p>
-                </li>
-              ))}
-            </ol>
+            <Reveal>
+              <ol className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-3">
+                {STEPS.map((step, index) => (
+                  <li key={step.title}>
+                    <span
+                      aria-hidden="true"
+                      className="flex h-10 w-10 items-center justify-center rounded-full border border-white/25 text-sm font-bold text-red-soft"
+                    >
+                      {index + 1}
+                    </span>
+                    <h3 className="type-h3 mt-4 text-white">{step.title}</h3>
+                    <p className="type-small mt-2 text-text-muted-on-dark">
+                      {step.text}
+                    </p>
+                  </li>
+                ))}
+              </ol>
+            </Reveal>
 
             <Button
               href={quoteLink}

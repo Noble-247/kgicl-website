@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Container } from "@/components/container";
 import { CtaBand } from "@/components/cta-band";
 import { PageHero } from "@/components/page-hero";
+import { Reveal } from "@/components/Reveal";
 import { SectionHeading } from "@/components/section-heading";
 import { ProjectCard } from "@/components/projects/project-card";
 import { PROJECTS } from "@/data/projects";
@@ -36,11 +37,11 @@ export default function ProjectsPage() {
             intro="Transformer installation, solar lighting, electrical work and industrial supply."
           />
 
-          <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2">
+          <Reveal className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2">
             {PROJECTS.map((project) => (
               <ProjectCard key={project.id} project={project} />
             ))}
-          </div>
+          </Reveal>
         </Container>
       </section>
 

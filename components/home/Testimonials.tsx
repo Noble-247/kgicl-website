@@ -1,4 +1,5 @@
 import { Container } from "@/components/container";
+import { Reveal } from "@/components/Reveal";
 import { SectionHeading } from "@/components/section-heading";
 import { TESTIMONIALS, type Testimonial } from "@/data/testimonials";
 import { isReview } from "@/lib/mode";
@@ -57,14 +58,14 @@ export function Testimonials({ className = "" }: { className?: string }) {
       <Container>
         <SectionHeading eyebrow="Testimonials" title="What customers say" />
 
-        <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-3">
+        <Reveal className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-3">
           {visible.map((testimonial, index) => (
             <TestimonialCard
               key={`${testimonial.name}-${index}`}
               testimonial={testimonial}
             />
           ))}
-        </div>
+        </Reveal>
       </Container>
     </section>
   );

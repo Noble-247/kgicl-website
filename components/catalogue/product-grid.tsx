@@ -1,4 +1,5 @@
 import { ProductCard } from "@/components/catalogue/product-card";
+import { Reveal } from "@/components/Reveal";
 import type { Product } from "@/lib/schemas/product";
 
 export type ProductGridVariant = "standard" | "compact";
@@ -15,6 +16,8 @@ type ProductGridProps = {
   prioritySlug?: string | null;
   /** Passed to each card; the Industrial page uses the quote template. */
   enquiry?: "product" | "industrial";
+  /** Fades the cards up in a 70 ms stagger (design.md 4.4 and 9). */
+  reveal?: boolean;
   className?: string;
 };
 
@@ -41,27 +44,32 @@ export function ProductGrid({
   variant = "standard",
   prioritySlug,
   enquiry = "product",
+  reveal = false,
   className = "",
 }: ProductGridProps) {
-  return (
-    <div className={`${GRID_CLASSES[variant]} ${className}`}>
-      {products.map((product, index) => (
-        <ProductCard
-          key={product.id}
-          product={product}
-          productUrl={productUrl(baseUrl, product.slug)}
-          variant={variant === "compact" ? "compact" : undefined}
-          enquiry={enquiry}
-          priority={
-            prioritySlug === null
-              ? false
-              : prioritySlug === undefined
-                ? index === 0
-                : product.slug === prioritySlug
-          }
-          sizes={SIZES[variant]}
-        />
-      ))}
-    </div>
-  );
+  const classes = `${GRID_CLASSES[variant]} ${className}`;
+
+  const cards = products.map((product, index) => (
+    <ProductCard
+      key={product.id}
+      product={product}
+      productUrl={productUrl(baseUrl, product.slug)}
+      variant={variant === "compact" ? "compact" : undefined}
+      enquiry={enquiry}
+      priority={
+        prioritySlug === null
+          ? false
+          : prioritySlug === undefined
+            ? index === 0
+            : product.slug === prioritySlug
+      }
+      sizes={SIZES[variant]}
+    />
+  ));
+
+  if (reveal) {
+    return <Reveal className={classes}>{cards}</Reveal>;
+  }
+
+  return <div className={classes}>{cards}</div>;
 }

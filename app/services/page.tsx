@@ -12,6 +12,7 @@ import {
 import { Container } from "@/components/container";
 import { CtaBand } from "@/components/cta-band";
 import { PageHero } from "@/components/page-hero";
+import { Reveal } from "@/components/Reveal";
 import { SectionHeading } from "@/components/section-heading";
 import { ServiceCard } from "@/components/service-card";
 import { OTHER_SERVICES, SERVICES } from "@/data/services";
@@ -54,7 +55,7 @@ export default function ServicesPage() {
             intro="Five services, from advice and installation to sourcing and delivery."
           />
 
-          <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <Reveal className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {SERVICES.map((service, index) => (
               <ServiceCard
                 key={service.title}
@@ -62,47 +63,49 @@ export default function ServicesPage() {
                 icon={SERVICE_ICONS[index]}
               />
             ))}
-          </div>
+          </Reveal>
         </Container>
       </section>
 
       <section className="section-y border-t border-stone-300 bg-white">
-        <Container className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:gap-16">
-          <div>
-            <SectionHeading
-              eyebrow="Terms"
-              title="Warranty and payment terms"
-            />
+        <Container>
+          <Reveal className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:gap-16">
+            <div>
+              <SectionHeading
+                eyebrow="Terms"
+                title="Warranty and payment terms"
+              />
 
-            <ul className="mt-6 space-y-4">
-              {TERMS.map((term) => (
-                <li key={term} className="flex gap-3">
-                  <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-red/10 text-red-deep">
-                    <Check aria-hidden="true" size={14} strokeWidth={3} />
-                  </span>
-                  <span className="type-body">{term}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
+              <ul className="mt-6 space-y-4">
+                {TERMS.map((term) => (
+                  <li key={term} className="flex gap-3">
+                    <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-red/10 text-red-deep">
+                      <Check aria-hidden="true" size={14} strokeWidth={3} />
+                    </span>
+                    <span className="type-body">{term}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
 
-          <div>
-            <SectionHeading eyebrow="Also available" title="Other services" />
+            <div>
+              <SectionHeading eyebrow="Also available" title="Other services" />
 
-            <ul className="mt-6 space-y-3">
-              {OTHER_SERVICES.map((service) => (
-                <li
-                  key={service}
-                  className="type-body flex gap-3 border-b border-stone-300 pb-3 last:border-0"
-                >
-                  <span aria-hidden="true" className="text-red-deep">
-                    &bull;
-                  </span>
-                  {service}
-                </li>
-              ))}
-            </ul>
-          </div>
+              <ul className="mt-6 space-y-3">
+                {OTHER_SERVICES.map((service) => (
+                  <li
+                    key={service}
+                    className="type-body flex gap-3 border-b border-stone-300 pb-3 last:border-0"
+                  >
+                    <span aria-hidden="true" className="text-red-deep">
+                      &bull;
+                    </span>
+                    {service}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </Reveal>
         </Container>
       </section>
 
