@@ -5,7 +5,7 @@
 **Result:** a polished review site the client can approve, a finished README, and a go-live runbook that switches the same code to `live` on kgiclsolar.com.
 
 This task has two parts:
-- **Part A (4.1 to 4.7):** polish and hand over the **review** site at kriss-goodnews-solar.vercel.app. Do these first.
+- **Part A (4.1 to 4.8):** polish and hand over the **review** site at kriss-goodnews-solar.vercel.app. Do these first.
 - **Part B (4.9 to 4.11):** the **go-live runbook**. Run it only after the client has reviewed and approved, and after Emmanuel has made the content decisions the launch gates require.
 
 Each sub-task has: **Agent Context**, **Prompt**, **Verify**.

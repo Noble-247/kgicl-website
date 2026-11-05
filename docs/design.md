@@ -233,6 +233,7 @@ Each component lists purpose, anatomy, variants, states, responsive behaviour an
 | **Button, primary** | `--red` fill, white text, 52 px high (44 px compact), radius 14. Hover `--red-deep` + 1 px lift + soft red shadow. Active no lift. Disabled 50% opacity, no pointer |
 | **Button, secondary (on dark)** | Transparent, 1 px white at 35% border, white text. Hover: border white, fill white at 6% |
 | **Button, secondary (on light)** | Transparent, 1 px `--text` border, `--text` text. Hover: fill `--text`, text white |
+| **Button label wrapping** | Long labels wrap onto a second line at narrow widths instead of overflowing. The button keeps its 52 px (44 px compact) minimum height and gains vertical padding |
 | **Text link** | `--red-deep` on light, `--red-soft` on dark, underline on hover, arrow icon optional |
 | **Icon** | Lucide for UI icons. WhatsApp, Facebook, Instagram and LinkedIn glyphs from react-icons (`fa`). 20 px default, `aria-hidden` unless alone in a button |
 | **Chip / filter chip** | Pill, 40 px high, 1 px `--stone-300`, `--white` fill. Selected: `--text` fill, white text. Focus ring visible |

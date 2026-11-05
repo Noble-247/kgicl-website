@@ -133,6 +133,7 @@ export default function IndustrialSupplyPage() {
                 target="_blank"
                 rel="noreferrer"
                 variant="secondary-dark"
+                wrap
                 icon={<FaWhatsapp />}
                 className="mt-5"
               >
@@ -175,6 +176,7 @@ export default function IndustrialSupplyPage() {
               href={quoteLink}
               target="_blank"
               rel="noreferrer"
+              wrap
               icon={<FaWhatsapp />}
               className="mt-8"
             >

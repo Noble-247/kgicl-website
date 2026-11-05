@@ -46,7 +46,10 @@ export function MobileActionBar({ hidden }: MobileActionBarProps) {
   if (hidden || typing) return null;
 
   return (
-    <div className="fixed inset-x-0 bottom-0 z-[45] border-t border-white/12 bg-black pb-[env(safe-area-inset-bottom)] md:hidden">
+    <nav
+      aria-label="Quick contact"
+      className="fixed inset-x-0 bottom-0 z-[45] border-t border-white/12 bg-black pb-[env(safe-area-inset-bottom)] md:hidden"
+    >
       <div className="flex items-center gap-2 p-1">
         <a
           href={waLink(messages.general)}
@@ -65,6 +68,6 @@ export function MobileActionBar({ hidden }: MobileActionBarProps) {
           Call
         </a>
       </div>
-    </div>
+    </nav>
   );
 }

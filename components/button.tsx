@@ -19,6 +19,8 @@ type SharedProps = {
   size?: ButtonSize;
   /** Text-link colour on light or dark surfaces. Ignored by the other variants. */
   tone?: ButtonTone;
+  /** Let a long label wrap instead of overflowing at narrow widths. */
+  wrap?: boolean;
   icon?: ReactNode;
   className?: string;
   children: ReactNode;
@@ -40,6 +42,9 @@ export type ButtonProps = ButtonElementProps | LinkElementProps;
 const BASE =
   "type-button inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md transition-[translate,background-color,border-color,color,box-shadow] duration-150 disabled:pointer-events-none disabled:opacity-50";
 
+const BASE_WRAP =
+  "type-button inline-flex items-center justify-center gap-2 whitespace-normal text-center rounded-md transition-[translate,background-color,border-color,color,box-shadow] duration-150 disabled:pointer-events-none disabled:opacity-50";
+
 const VARIANTS: Record<ButtonVariant, string> = {
   primary:
     "bg-red text-white hover:-translate-y-px hover:bg-red-deep hover:shadow-[0_6px_20px_rgba(227,6,19,0.35)] active:translate-y-0",
@@ -55,18 +60,26 @@ const SIZES: Record<ButtonSize, string> = {
   compact: "h-11 px-4",
 };
 
+const WRAP_SIZES: Record<ButtonSize, string> = {
+  default: "min-h-[52px] px-6 py-3",
+  compact: "min-h-11 px-4 py-2",
+};
+
 function buttonClasses(
   variant: ButtonVariant,
   size: ButtonSize,
   tone: ButtonTone,
+  wrap: boolean,
   className: string,
 ): string {
   const surface =
     variant === "link"
       ? `px-0 text-left ${tone === "dark" ? "text-red-soft" : "text-red-deep"}`
-      : SIZES[size];
+      : wrap
+        ? WRAP_SIZES[size]
+        : SIZES[size];
 
-  return [BASE, VARIANTS[variant], surface, className]
+  return [wrap ? BASE_WRAP : BASE, VARIANTS[variant], surface, className]
     .filter(Boolean)
     .join(" ");
 }
@@ -93,12 +106,13 @@ export function Button(props: ButtonProps) {
     variant = "primary",
     size = "default",
     tone = "light",
+    wrap = false,
     icon,
     className = "",
     children,
     ...rest
   } = props;
-  const classes = buttonClasses(variant, size, tone, className);
+  const classes = buttonClasses(variant, size, tone, wrap, className);
   const content = <ButtonContent icon={icon}>{children}</ButtonContent>;
 
   if (rest.href !== undefined) {
