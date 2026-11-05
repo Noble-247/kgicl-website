@@ -9,7 +9,7 @@ import { PageHero } from "@/components/page-hero";
 import { SectionHeading } from "@/components/section-heading";
 import { SocialLinks } from "@/components/social-links";
 import { SITE, WEEKDAYS, type Weekday } from "@/data/site";
-import { getBySlug } from "@/lib/catalogue";
+import { getPublishedProducts } from "@/lib/catalogue";
 import { formatTime, isOpenNow, todayHours } from "@/lib/hours";
 import { siteUrl } from "@/lib/mode";
 import { buildDescription, buildTitle, localBusinessJsonLd } from "@/lib/seo";
@@ -23,6 +23,13 @@ import { ContactForm } from "./ContactForm";
  * visitor waiting on a stuck request.
  */
 export const maxDuration = 15;
+
+/**
+ * Static so the title, description, robots and canonical tags stay in `<head>`.
+ * The page is regenerated every minute so the "Open now" pill and the day
+ * highlight do not freeze at build time.
+ */
+export const revalidate = 60;
 
 const PAGE_DESCRIPTION =
   "Call, WhatsApp or send a message to KGICL Goodnews Solar in Port Harcourt. Address, opening hours and directions.";
@@ -53,22 +60,16 @@ const DIRECTIONS_URL = `https://www.google.com/maps/search/?api=1&query=${encode
   ].join(", "),
 )}`;
 
-type ContactPageProps = {
-  searchParams: Promise<{ product?: string | string[] }>;
-};
+/**
+ * Slug to product name, for the `?product=` prefill from the enquiry panel.
+ * Resolved in the browser so the page itself stays static; only published
+ * products are included, so an unknown or hidden slug shows no prefill.
+ */
+const PRODUCT_NAMES: Record<string, string> = Object.fromEntries(
+  getPublishedProducts().map((product) => [product.slug, product.name]),
+);
 
-export default async function ContactPage({ searchParams }: ContactPageProps) {
-  /*
-   * `?product={slug}` comes from the product enquiry panel. Resolving the slug
-   * here means the form posts the product name, not a URL. Reading searchParams
-   * makes this one route dynamic; every other page stays static.
-   */
-  const params = await searchParams;
-  const slug =
-    typeof params.product === "string" ? params.product.trim() : "";
-  const product = slug ? getBySlug(slug) : undefined;
-  const productName = product?.published ? product.name : "";
-
+export default function ContactPage() {
   const now = new Date();
   const today = todayHours(now);
   const open = isOpenNow(now);
@@ -239,17 +240,7 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
                 intro="Share your power needs, the application and the quantity. We will reply with the next step."
               />
 
-              {productName ? (
-                <p className="type-small mt-4 text-text-muted">
-                  Enquiry about{" "}
-                  <span className="font-semibold text-text">
-                    {productName}
-                  </span>
-                  .
-                </p>
-              ) : null}
-
-              <ContactForm product={productName} />
+              <ContactForm products={PRODUCT_NAMES} />
             </div>
           </div>
         </Container>

@@ -337,7 +337,7 @@ Wireframes show structure and order, not final spacing. `[D]` = dark band, `[L]`
 [D] CONTACT  H2 "Talk to us"   address · hours · [WhatsApp] [Call]
 [D] FOOTER
 ```
-Mobile: single column, the hero text is centred with the ring smaller (260 px) above the text, tiles 2 × 2, cards in one column, sticky action bar at the bottom.
+Mobile: single column, the hero text stays left-aligned with the ring smaller (320 px) as a faint halo at the top-right, tiles 2 × 2, cards in one column, sticky action bar at the bottom. Keeping the ring out of the flow is deliberate: it holds the headline and both buttons above the fold at 360 × 640 (task 3.3).
 
 ### 7.2 Product area page (Solar Lighting)
 
