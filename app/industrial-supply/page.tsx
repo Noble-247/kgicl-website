@@ -84,7 +84,7 @@ export default function IndustrialSupplyPage() {
         </Button>
       </PageHero>
 
-      <section className="on-dark bg-black pb-16 md:pb-24">
+      <section className="on-dark bg-black py-16 md:py-24">
         <Container className="space-y-14 md:space-y-20">
           {groups.map((group) => (
             <section
