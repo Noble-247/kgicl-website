@@ -10,6 +10,7 @@
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "audit": "tsx scripts/audit.ts",
+    "smoke": "tsx scripts/smoke.ts",
     "import-products": "tsx scripts/import-products.ts",
     "prebuild": "npm run audit"
   },
