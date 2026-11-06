@@ -546,7 +546,7 @@ flowchart TD
 6. No price, no stock badge, no "New" or "Sale" badges.
 7. Open/closed pill uses Nigerian time (WAT, UTC+1).
 
-8. **Home tiles use a product photo each** (confirmed), in the product-card treatment (6.3). Solar and Electrical use their featured products. CCTV and Industrial have no featured product, so each needs one real, good-resolution product photo chosen (see Open item 2).
+8. **Home tiles default to a dark gradient with the dotted ring** (6.3), which is the approved treatment when no verified photo exists. A real, good-resolution photo is optional: adding a Cloudinary public ID to `data/images.ts` (`SITE_IMAGES.tiles`) switches that tile to its photo state with the dark gradient kept over it for legibility. Never use a stock or unverified image to fill a tile.
 9. **Wordmark "KGICL Goodnews Solar" beside the mark** (confirmed by the client).
 10. **Industrial page keeps the 3-step "How it works" band** (confirmed).
 

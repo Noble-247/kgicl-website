@@ -3,10 +3,7 @@ import type { MetadataRoute } from "next";
 import { getPublishedProducts } from "@/lib/catalogue";
 import { siteUrl } from "@/lib/mode";
 
-/**
- * Routes that exist today.
- * `/design-check` is a build aid and never appears here.
- */
+/** Routes that exist today. */
 const AREA_ROUTES = [
   "/solar-lighting",
   "/cctv-security",
