@@ -1,3 +1,4 @@
+import { Analytics } from "@vercel/analytics/next";
 import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 import { preconnect } from "react-dom";
@@ -7,7 +8,7 @@ import { FloatingWhatsApp } from "@/components/floating-whatsapp";
 import { ReviewBadge } from "@/components/review-badge";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
-import { isReview, siteUrl } from "@/lib/mode";
+import { isLive, isReview, siteUrl } from "@/lib/mode";
 
 import "./globals.css";
 
@@ -124,6 +125,9 @@ export default function RootLayout({
         <SiteFooter />
         <FloatingWhatsApp />
         <ReviewBadge />
+        {/* Page views only, and only on the live site. The review site has no
+            analytics script at all (task 4.5). */}
+        {isLive() ? <Analytics /> : null}
       </body>
     </html>
   );
