@@ -1,5 +1,3 @@
-import { Suspense } from "react";
-
 import { HelpBand } from "@/components/catalogue/help-band";
 import { ProductGrid } from "@/components/catalogue/product-grid";
 import { WattageFilter } from "@/components/catalogue/wattage-filter";
@@ -70,33 +68,39 @@ export function AreaPage({ area }: AreaPageProps) {
 
               {area.slug === "solar-lighting" ? (
                 /*
-                 * `WattageFilter` reads the query string, so it renders on the
-                 * client. The fallback is the full, static grid: crawlers and
-                 * visitors without JavaScript still see every light, and the
-                 * client takes over to apply `?watt=120` after hydration.
+                 * The grid is server-rendered and passed into the client
+                 * filter as children, so the cards never hydrate as part of
+                 * the filter. `WattageFilter` only hides cards that do not
+                 * match the URL, keeping `?watt=120` shareable.
                  */
-                <Suspense
-                  fallback={
-                    <div className="mt-6">
-                      <p className="type-small text-text-muted">
-                        Showing {group.products.length} of{" "}
-                        {group.products.length}
-                      </p>
-                      <ProductGrid
-                        products={group.products}
-                        baseUrl={baseUrl}
-                        prioritySlug={firstSlug}
-                        className="mt-6"
-                      />
-                    </div>
-                  }
+                <WattageFilter
+                  options={Array.from(
+                    new Set(
+                      group.products
+                        .map((product) => product.wattage)
+                        .filter(
+                          (wattage): wattage is number =>
+                            typeof wattage === "number",
+                        ),
+                    ),
+                  )
+                    .sort((left, right) => left - right)
+                    .map((wattage) => ({
+                      wattage,
+                      count: group.products.filter(
+                        (product) => product.wattage === wattage,
+                      ).length,
+                    }))}
+                  total={group.products.length}
+                  className="mt-6"
                 >
-                  <WattageFilter
+                  <ProductGrid
                     products={group.products}
                     baseUrl={baseUrl}
+                    prioritySlug={firstSlug}
                     className="mt-6"
                   />
-                </Suspense>
+                </WattageFilter>
               ) : (
                 <ProductGrid
                   products={group.products}

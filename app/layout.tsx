@@ -1,6 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
+import { preconnect } from "react-dom";
 
+import { DottedRingSprite } from "@/components/dotted-ring";
 import { FloatingWhatsApp } from "@/components/floating-whatsapp";
 import { ReviewBadge } from "@/components/review-badge";
 import { SiteFooter } from "@/components/site-footer";
@@ -101,9 +103,14 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // Product photos are served from Cloudinary; open the connection before the
+  // first image request so the LCP image is not delayed by TLS setup.
+  preconnect("https://res.cloudinary.com", { crossOrigin: "anonymous" });
+
   return (
     <html lang="en" className={`${cormorant.variable} ${manrope.variable}`}>
       <body className="antialiased">
+        <DottedRingSprite />
         <a href="#main" className="skip-link">
           Skip to content
         </a>

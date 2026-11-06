@@ -49,7 +49,7 @@ export function SiteHeader() {
               alt=""
               width={44}
               height={44}
-              priority
+              loading="eager"
               className="h-11 w-11"
             />
             <span className="flex flex-col leading-none">

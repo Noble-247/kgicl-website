@@ -149,6 +149,7 @@ function LightCard({
 }: ProductCardProps & { family: boolean }) {
   return (
     <article
+      data-wattage={product.wattage ?? undefined}
       className={`group relative flex flex-col overflow-hidden rounded-md border border-stone-300 bg-white shadow-1 transition-[translate,box-shadow] duration-150 hover:-translate-y-0.5 hover:shadow-2 ${className}`}
     >
       <Link
@@ -209,6 +210,7 @@ function CompactCard({
 }: ProductCardProps) {
   return (
     <article
+      data-wattage={product.wattage ?? undefined}
       className={`on-dark group relative flex flex-col overflow-hidden rounded-md border border-white/12 bg-ink-3 p-3 transition-[translate,box-shadow] duration-150 hover:-translate-y-0.5 hover:shadow-3 ${className}`}
     >
       <Link

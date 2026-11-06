@@ -66,6 +66,7 @@ export function CloudImage({
       height={height}
       sizes={sizes}
       priority={priority}
+      fetchPriority={priority ? "high" : undefined}
       className={`h-full w-full ${
         fit === "cover" ? "object-cover" : "object-contain"
       } ${className}`}

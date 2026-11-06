@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Suspense } from "react";
 import { FaWhatsapp } from "react-icons/fa";
 
 import { Breadcrumbs } from "@/components/breadcrumbs";
@@ -558,19 +557,33 @@ export default function DesignCheckPage() {
               intro="Chips are generated from the product data. Selection is kept in the URL and the count is announced to screen readers."
             />
 
-            <Suspense
-              fallback={
-                <p className="type-small mt-8 text-text-muted">
-                  Loading the wattage filter…
-                </p>
-              }
+            <WattageFilter
+              options={Array.from(
+                new Set(
+                  solarProducts
+                    .map((product) => product.wattage)
+                    .filter(
+                      (wattage): wattage is number =>
+                        typeof wattage === "number",
+                    ),
+                ),
+              )
+                .sort((left, right) => left - right)
+                .map((wattage) => ({
+                  wattage,
+                  count: solarProducts.filter(
+                    (product) => product.wattage === wattage,
+                  ).length,
+                }))}
+              total={solarProducts.length}
+              className="mt-8"
             >
-              <WattageFilter
+              <ProductGrid
                 products={solarProducts}
                 baseUrl={baseUrl}
-                className="mt-8"
+                className="mt-6"
               />
-            </Suspense>
+            </WattageFilter>
 
             <div className="mt-12">
               <h3 className="type-h3">Empty state</h3>

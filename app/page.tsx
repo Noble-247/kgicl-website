@@ -132,7 +132,6 @@ export default function HomePage() {
         <DottedRing
           size={320}
           opacity={0.08}
-          priority
           className="pointer-events-none absolute -right-24 -top-24 md:hidden"
         />
         <DottedRing
