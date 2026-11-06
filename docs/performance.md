@@ -55,9 +55,9 @@ problem:
 
 The page still scores 93 and the rest of the page is fast. Further reducing the
 image would mean shipping a visibly softer product photo, so this narrow,
-explained miss is accepted for the review build. It should be rechecked in 4.8
-on the real review deployment, where the host and network differ from this
-Windows machine.
+explained miss is accepted for the review build. It was rechecked in 4.8 on the
+real review deployment (see below): the font preloads appear on the Linux build
+and the product LCP fell to 1.8 s.
 
 ### Contact TBT
 
@@ -115,6 +115,27 @@ Even locally, the two font families load from the render-blocking stylesheet
 with VeryHigh priority. The only layout shift Lighthouse records on Home is the
 web font swap (CLS 0.035, well inside the 0.1 target); the review deployment in
 4.8 is the place to confirm the preload links on Linux and recheck that shift.
+
+## Review deployment check (4.8)
+
+The final review build was deployed from `main` to
+<https://kriss-goodnews-solar.vercel.app> and measured on the same Windows host.
+
+- **Font preloads:** the Linux build emits **4** `<link rel="preload" as="font">`
+  links on both the home page and the product page. The empty local manifest is
+  confirmed to be a Windows-only build issue.
+- **Product page:** **97**, LCP **1.8 s**, FCP 1.8 s, TBT 90 ms, CLS 0. The
+  2.94 s LCP miss recorded above does not occur on the review deployment.
+- **Home page:** LCP **2.2 s** median across five runs (1.6 s to 2.8 s), inside
+  the 2.5 s target. Nature of the score: performance varied from 65 to 97
+  (median 82) with TBT between 160 ms and 1,140 ms. The same build served locally
+  scored 92 and 95 while those runs were taken, and the home page code did not
+  change after 4.3, so the spread is host and network scheduling on the shared
+  Windows machine, not a deployment regression.
+- **Headers:** the deployment sends the exact production CSP (no `unsafe-eval`
+  or `ws:`), HSTS, `nosniff`, `frame-ancestors 'none'`, the review
+  `X-Robots-Tag: noindex, nofollow`, and immutable one-year caching for
+  `/_next/static/*` and `/assets/*`.
 
 ## Reproducing
 
