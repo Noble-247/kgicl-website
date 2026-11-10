@@ -160,7 +160,7 @@ A draft `README.md` is provided with this task set (repo root). It contains the 
 6. Set `emailVerified: true` in `data/site.ts` once the `info@` and `sales@` mailboxes are confirmed live.
 
 ### Verify
-- [ ] `SITE_MODE=live npm run audit` exits 0.
+- [x] `SITE_MODE=live npm run audit` exits 0. (10 Nov 2026: 0 findings, all 11 gates; client confirmed 57 photos, 10 truncated names and 27 claim sets, `HIDE_UNVERIFIED_SPECS=false`.)
 
 ## Task 4.10: Switch the production project to the new repository
 
@@ -210,11 +210,18 @@ Add the Vercel Firewall rate-limit rule for `POST /contact` (resend guide, Part 
 If something serious appears after the switch: Deployments tab, open the last good coming-soon deployment, **Instant Rollback** (or "Promote to Production"). The site is back in seconds. Fix the problem on a branch and try again. As a last resort, reconnect the old repository in Settings, Git.
 
 ### Verify
-- [ ] The first build succeeded. The build log shows the audit ran in live mode.
-- [ ] The test table in `domain-setup-guide.md` section 4 passes for all four hostnames.
-- [ ] `npm run smoke -- https://kgiclsolar.com` passes. There is **no** `x-robots-tag: noindex` header, and `robots.txt` allows crawling and lists the sitemap.
-- [ ] A real form submission from kgiclsolar.com arrives in `info@kgiclsolar.com`, not in spam.
-- [ ] The "Review version" tag is gone and the analytics script loads.
+- [x] The first build succeeded. The build log shows the audit ran in live mode. (10 Nov 2026: `Total: 0 findings; 0 blocking in live mode`, 79 pages generated.)
+- [x] The test table in `domain-setup-guide.md` section 4 passes for all four hostnames. (Apex serves 200; `www.kgiclsolar.com`, `krisgoodnewssolar.com` and `www.krisgoodnewssolar.com` return 308 to `https://kgiclsolar.com/`.)
+- [x] `npm run smoke -- https://kgiclsolar.com` passes. There is **no** `x-robots-tag: noindex` header, and `robots.txt` allows crawling and lists the sitemap. (18/18 checks passed.)
+- [x] A real form submission from kgiclsolar.com arrives in `info@kgiclsolar.com`, not in spam. (Delivered to the `info@` inbox, not spam.)
+- [x] The "Review version" tag is gone and the analytics script loads. (No badge; Vercel Analytics `script.js` and the `/view` beacon both returned 200 in the browser.)
+
+### Launch record (10 Nov 2026)
+- Production project `kgicl-solar` switched from the coming-soon repository to `Noble-247/kgicl-website`, branch `main`.
+- Live commit: `24a2532` (`go live: retry deploy after SITE_URL and LINKEDIN_URL env fixes`); release tag `v1.0.0` on `9c8b091`.
+- First attempt failed the `socialInvalid` (stray `LINKEDIN_URL`) and `modeMismatch` (`SITE_URL` not the apex) gates; both were environment fixes, and the audit correctly blocked the deploy without affecting the running site.
+- Domain direction was www-first after the switch and was corrected to apex-primary to match `SITE_URL`, the canonical tags and the sitemap.
+- Firewall rate-limit rule `POST /contact`, about 5 requests per minute per IP, added in the production project.
 
 ## Task 4.11: After going live
 
