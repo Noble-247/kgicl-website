@@ -700,7 +700,7 @@ Draft names and flags for all 63 products. Full detail, source rows and Cloudina
 | P-024  | CCTV DVR / NVR Recorder                                     | CCTV & Security: Recorders & Accessories           | Check     | N         |
 | P-025  | PVC Single-Core Copper Wire                                 | Electrical Supplies: Cables & Wiring               | Real      | F5        |
 | P-026  | Flat Twin & 3Core Surface Wiring Cables                     | Electrical Supplies: Cables & Wiring               | Check     |           |
-| P-027  | Flexible Cables - 3Core, 4Core & All Sizes                  | Electrical Supplies: Cables & Wiring               | Check     | D         |
+| P-027  | Flexible Cables – 3Core, 4Core & All Sizes                  | Electrical Supplies: Cables & Wiring               | Check     | D         |
 | P-028  | LED Bulb                                                    | Electrical Supplies: Lighting & Fans               | Real      | D F6      |
 | P-029  | Wall Switch and Socket                                      | Electrical Supplies: Switches, Sockets & Conduit   | Real      | F4        |
 | P-030  | PVC and Iron Electrical Box                                 | Electrical Supplies: Switches, Sockets & Conduit   | Check     | D         |
