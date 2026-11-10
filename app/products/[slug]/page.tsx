@@ -70,7 +70,9 @@ export default async function ProductPage({ params }: ProductPageProps) {
   const baseUrl = siteUrl();
   const productUrl = `${baseUrl}/products/${product.slug}`;
   const related = getRelated(product, 4);
-  const hideSpecs = hideUnverifiedSpecs() && !product.claimsVerified;
+  const hideSpecs =
+    product.specs.length === 0 ||
+    (hideUnverifiedSpecs() && !product.claimsVerified);
 
   const image = product.image.publicId
     ? cloudinaryUrl(product.image.publicId, { width: 1200 })

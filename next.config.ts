@@ -44,6 +44,42 @@ const nextConfig: NextConfig = {
     loader: "custom",
     loaderFile: "./lib/image-loader.ts",
   },
+  async redirects() {
+    // The client-approved renames changed six product slugs. Keep the review
+    // links working while sending visitors and search engines to the new URL.
+    return [
+      {
+        source: "/products/pvc-surface-wiring-cable",
+        destination: "/products/flat-twin-3core-surface-wiring-cables",
+        permanent: true,
+      },
+      {
+        source: "/products/flexible-cable",
+        destination: "/products/flexible-cables-3core-4core-all-sizes",
+        permanent: true,
+      },
+      {
+        source: "/products/pure-copper-earth-rod-solid",
+        destination: "/products/copper-thunder-arrestor",
+        permanent: true,
+      },
+      {
+        source: "/products/copper-bonded-earth-rod",
+        destination: "/products/copper-mat-copper-earthing-tape",
+        permanent: true,
+      },
+      {
+        source: "/products/bare-copper-earth-wire",
+        destination: "/products/4ft-and-6ft-copper-earthing-rods",
+        permanent: true,
+      },
+      {
+        source: "/products/insulated-copper-earth-cable",
+        destination: "/products/insulated-copper-rods",
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     return [
       {

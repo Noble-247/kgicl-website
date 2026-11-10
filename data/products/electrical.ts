@@ -34,22 +34,22 @@ export const products: Product[] = [
   },
   {
     id: "P-026",
-    slug: "pvc-surface-wiring-cable",
-    name: "PVC Surface Wiring Cable",
+    slug: "flat-twin-3core-surface-wiring-cables",
+    name: "Flat Twin & 3Core Surface Wiring Cables",
     area: "electrical-supplies",
     group: "cables-wiring",
-    summary: "1.5mm, 2.5mm, 4mm, 6mm – Twin & Earth",
+    summary: "1.5mm, 2.5mm, 4mm, 6mm",
     specs: [
       {
         label: "Details",
-        value: "1.5mm, 2.5mm, 4mm, 6mm – Twin & Earth"
+        value: "1.5mm, 2.5mm, 4mm, 6mm"
       }
     ],
     claimsVerified: true,
     familyLikely: true,
     image: {
       publicId: "2-PVC_Single_Copper_Wire",
-      alt: "PVC Surface Wiring Cable",
+      alt: "Flat Twin & 3Core Surface Wiring Cables",
       status: "unverified"
     },
     published: true,
@@ -63,22 +63,22 @@ export const products: Product[] = [
   },
   {
     id: "P-027",
-    slug: "flexible-cable",
-    name: "Flexible Cable",
+    slug: "flexible-cables-3core-4core-all-sizes",
+    name: "Flexible Cables – 3Core, 4Core & All Sizes",
     area: "electrical-supplies",
     group: "cables-wiring",
-    summary: "0.75mm, 1mm, 1.5mm, 2.5mm, 4mm, 6mm, 10mm | 2",
+    summary: "0.75mm, 1mm, 1.5mm, 2.5mm, 4mm, 6mm, 10mm",
     specs: [
       {
         label: "Details",
-        value: "0.75mm, 1mm, 1.5mm, 2.5mm, 4mm, 6mm, 10mm | 2"
+        value: "0.75mm, 1mm, 1.5mm, 2.5mm, 4mm, 6mm, 10mm"
       }
     ],
     claimsVerified: true,
     familyLikely: true,
     image: {
       publicId: "3-Flexible_Cables_All_Sizes",
-      alt: "Flexible Cable",
+      alt: "Flexible Cables – 3Core, 4Core & All Sizes",
       status: "unverified"
     },
     published: true,

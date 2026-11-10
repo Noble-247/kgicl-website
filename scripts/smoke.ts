@@ -20,7 +20,7 @@ const HTML_PATHS = [
   "/products/indoor-dome-cctv-camera",
   "/products/ai-solar-camera-with-lighting-2-in-1",
   "/products/pvc-single-core-copper-wire",
-  "/products/pure-copper-earth-rod-solid",
+  "/products/copper-thunder-arrestor",
   "/services",
   "/projects",
   "/about",

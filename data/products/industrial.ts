@@ -5,68 +5,56 @@ import type { Product } from "@/lib/schemas/product";
 export const products: Product[] = [
   {
     id: "P-040",
-    slug: "pure-copper-earth-rod-solid",
-    name: "Pure Copper Earth Rod, Solid",
+    slug: "copper-thunder-arrestor",
+    name: "Copper Thunder Arrestor",
     area: "industrial-supply",
     group: "earthing-lightning-protection",
-    summary: "Dia 16mm, 20mm | Length 1.2m, 1.5m, 2m",
-    specs: [
-      {
-        label: "Details",
-        value: "Dia 16mm, 20mm | Length 1.2m, 1.5m, 2m"
-      },
-      {
-        label: "Standard / material",
-        value: "99.9% Pure Copper, BS"
-      }
-    ],
+    summary: "Available on request",
+    specs: [],
     claimsVerified: false,
     familyLikely: true,
     image: {
       publicId: "1-Pure_Copper_Earth_Rod_-_Solid",
-      alt: "Pure Copper Earth Rod, Solid",
+      alt: "Copper Thunder Arrestor",
       status: "unverified"
     },
     published: true,
     review: {
       nameStatus: "Complete",
-      detailsStatus: "Possibly cut off",
+      detailsStatus: "Pending confirmation",
       claimsStatus: "Unverified",
       photoStatus: "Link present: real or stock to confirm",
-      notes: ""
+      notes:
+        "Renamed by client after review. Previous rod specifications removed pending confirmation."
     }
   },
   {
     id: "P-041",
-    slug: "copper-bonded-earth-rod",
-    name: "Copper Bonded Earth Rod",
+    slug: "copper-mat-copper-earthing-tape",
+    name: "Copper Mat & Copper Earthing Tape",
     area: "industrial-supply",
     group: "earthing-lightning-protection",
-    summary: "Dia 14.2mm, 17.2mm | Length 1.2m, 1.5m",
+    summary: "20mm / 25mm",
     specs: [
       {
         label: "Details",
-        value: "Dia 14.2mm, 17.2mm | Length 1.2m, 1.5m"
-      },
-      {
-        label: "Standard / material",
-        value: "Copper Bonded Steel, U"
+        value: "20mm / 25mm"
       }
     ],
     claimsVerified: false,
     familyLikely: true,
     image: {
       publicId: "2-Copper_Bonded_Earth_Rod_-_Low",
-      alt: "Copper Bonded Earth Rod",
+      alt: "Copper Mat & Copper Earthing Tape",
       status: "unverified"
     },
     published: true,
     review: {
-      nameStatus: "Cut off in source: confirm full name",
-      detailsStatus: "Possibly cut off",
+      nameStatus: "Complete",
+      detailsStatus: "Complete",
       claimsStatus: "Unverified",
       photoStatus: "Link present: real or stock to confirm",
-      notes: ""
+      notes: "Renamed by client after review. Sizes supplied: 20mm / 25mm."
     }
   },
   {
@@ -104,68 +92,57 @@ export const products: Product[] = [
   },
   {
     id: "P-043",
-    slug: "bare-copper-earth-wire",
-    name: "Bare Copper Earth Wire",
+    slug: "4ft-and-6ft-copper-earthing-rods",
+    name: "4ft and 6ft Copper Earthing Rods",
     area: "industrial-supply",
     group: "earthing-lightning-protection",
-    summary: "16mm², 25mm², 35mm², 50mm², 70mm², 95m",
+    summary: "4ft and 6ft",
     specs: [
       {
         label: "Details",
-        value: "16mm², 25mm², 35mm², 50mm², 70mm², 95m"
-      },
-      {
-        label: "Standard / material",
-        value: "Bare Copper, Class 2,"
+        value: "4ft and 6ft"
       }
     ],
     claimsVerified: false,
     familyLikely: true,
     image: {
       publicId: "4-Bare_Copper_Earth_Wire_and_Cable",
-      alt: "Bare Copper Earth Wire",
+      alt: "4ft and 6ft Copper Earthing Rods",
       status: "unverified"
     },
     published: true,
     review: {
       nameStatus: "Complete",
-      detailsStatus: "Possibly cut off",
+      detailsStatus: "Complete",
       claimsStatus: "Unverified",
       photoStatus: "Link present: real or stock to confirm",
-      notes: ""
+      notes:
+        "Renamed by client after review. Lengths supplied in the approved name: 4ft and 6ft."
     }
   },
   {
     id: "P-044",
-    slug: "insulated-copper-earth-cable",
-    name: "Insulated Copper Earth Cable",
+    slug: "insulated-copper-rods",
+    name: "Insulated Copper Rods",
     area: "industrial-supply",
     group: "earthing-lightning-protection",
-    summary: "16mm², 25mm², 35mm², 50mm², 70mm² - PV",
-    specs: [
-      {
-        label: "Details",
-        value: "16mm², 25mm², 35mm², 50mm², 70mm² - PV"
-      },
-      {
-        label: "Standard / material",
-        value: "PVC Insulated Copper,"
-      }
-    ],
+    summary: "Available on request",
+    specs: [],
     claimsVerified: false,
     familyLikely: true,
     image: {
       publicId: "5-Insulated_Copper_Earth_Cable",
-      alt: "Insulated Copper Earth Cable",
+      alt: "Insulated Copper Rods",
       status: "unverified"
     },
     published: true,
     review: {
       nameStatus: "Complete",
-      detailsStatus: "Possibly cut off",
+      detailsStatus: "Pending confirmation",
       claimsStatus: "Unverified",
       photoStatus: "Link present: real or stock to confirm",
-      notes: ""
+      notes:
+        "Renamed by client after review. Previous cable specifications removed pending confirmation."
     }
   },
   {
