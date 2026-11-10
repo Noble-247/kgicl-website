@@ -16,19 +16,19 @@ export const products: Product[] = [
         value: "1.1ft and 2ft"
       }
     ],
-    claimsVerified: false,
+    claimsVerified: true,
     familyLikely: true,
     image: {
       publicId: "1-Pure_Copper_Earth_Rod_-_Solid",
       alt: "Copper Thunder Arrestor",
-      status: "unverified"
+      status: "real"
     },
     published: true,
     review: {
       nameStatus: "Complete",
       detailsStatus: "Complete",
-      claimsStatus: "Unverified",
-      photoStatus: "Link present: real or stock to confirm",
+      claimsStatus: "Verified by client (10 Nov 2026)",
+      photoStatus: "Real (confirmed by client)",
       notes: "Renamed by client after review. Spec supplied: 1.1ft and 2ft."
     }
   },
@@ -45,19 +45,19 @@ export const products: Product[] = [
         value: "20mm / 25mm"
       }
     ],
-    claimsVerified: false,
+    claimsVerified: true,
     familyLikely: true,
     image: {
       publicId: "2-Copper_Bonded_Earth_Rod_-_Low",
       alt: "Copper Mat & Copper Earthing Tape",
-      status: "unverified"
+      status: "real"
     },
     published: true,
     review: {
       nameStatus: "Complete",
       detailsStatus: "Complete",
-      claimsStatus: "Unverified",
-      photoStatus: "Link present: real or stock to confirm",
+      claimsStatus: "Verified by client (10 Nov 2026)",
+      photoStatus: "Real (confirmed by client)",
       notes:
         "Renamed by client after review. Sizes supplied: 20mm / 25mm for both the copper mat and the copper earthing tape."
     }
@@ -79,19 +79,19 @@ export const products: Product[] = [
         value: "Bare Copper, 99.9% Cu,"
       }
     ],
-    claimsVerified: false,
+    claimsVerified: true,
     familyLikely: true,
     image: {
       publicId: "3-Bare_Copper_Earth_Tape_and_Strip",
       alt: "Bare Copper Earth Tape",
-      status: "unverified"
+      status: "real"
     },
     published: true,
     review: {
       nameStatus: "Complete",
       detailsStatus: "Possibly cut off",
-      claimsStatus: "Unverified",
-      photoStatus: "Link present: real or stock to confirm",
+      claimsStatus: "Verified by client (10 Nov 2026)",
+      photoStatus: "Real (confirmed by client)",
       notes: ""
     }
   },
@@ -108,19 +108,19 @@ export const products: Product[] = [
         value: "4ft and 6ft"
       }
     ],
-    claimsVerified: false,
+    claimsVerified: true,
     familyLikely: true,
     image: {
       publicId: "4-Bare_Copper_Earth_Wire_and_Cable",
       alt: "4ft and 6ft Copper Earthing Rods",
-      status: "unverified"
+      status: "real"
     },
     published: true,
     review: {
       nameStatus: "Complete",
       detailsStatus: "Complete",
-      claimsStatus: "Unverified",
-      photoStatus: "Link present: real or stock to confirm",
+      claimsStatus: "Verified by client (10 Nov 2026)",
+      photoStatus: "Real (confirmed by client)",
       notes:
         "Renamed by client after review. Lengths supplied in the approved name: 4ft and 6ft."
     }
@@ -138,19 +138,19 @@ export const products: Product[] = [
         value: "4ft, 6ft & 8ft"
       }
     ],
-    claimsVerified: false,
+    claimsVerified: true,
     familyLikely: true,
     image: {
       publicId: "5-Insulated_Copper_Earth_Cable",
       alt: "Insulated Copper Rods",
-      status: "unverified"
+      status: "real"
     },
     published: true,
     review: {
       nameStatus: "Complete",
       detailsStatus: "Complete",
-      claimsStatus: "Unverified",
-      photoStatus: "Link present: real or stock to confirm",
+      claimsStatus: "Verified by client (10 Nov 2026)",
+      photoStatus: "Real (confirmed by client)",
       notes: "Renamed by client after review. Spec supplied: 4ft, 6ft & 8ft."
     }
   },
@@ -171,19 +171,19 @@ export const products: Product[] = [
         value: "Gunmetal / Brass, High"
       }
     ],
-    claimsVerified: false,
+    claimsVerified: true,
     familyLikely: false,
     image: {
       publicId: "6-Heavy-Copper_Earth_Rod_Clamp",
       alt: "Heavy Copper Earth Rod Clamp",
-      status: "unverified"
+      status: "real"
     },
     published: true,
     review: {
-      nameStatus: "Cut off in source: confirm full name",
+      nameStatus: "Complete",
       detailsStatus: "Possibly cut off",
-      claimsStatus: "Unverified",
-      photoStatus: "Link present: real or stock to confirm",
+      claimsStatus: "Verified by client (10 Nov 2026)",
+      photoStatus: "Real (confirmed by client)",
       notes: "Name ends with a dash in the source."
     }
   },
@@ -204,19 +204,19 @@ export const products: Product[] = [
         value: "Gunmetal / Brass, BS 9"
       }
     ],
-    claimsVerified: false,
+    claimsVerified: true,
     familyLikely: false,
     image: {
       publicId: "7-Copper_Earth_Tape_Clamp_and_Tee",
       alt: "Copper Earth Tape Clamp",
-      status: "unverified"
+      status: "real"
     },
     published: true,
     review: {
       nameStatus: "Complete",
       detailsStatus: "Possibly cut off",
-      claimsStatus: "Unverified",
-      photoStatus: "Link present: real or stock to confirm",
+      claimsStatus: "Verified by client (10 Nov 2026)",
+      photoStatus: "Real (confirmed by client)",
       notes: ""
     }
   },
@@ -237,19 +237,19 @@ export const products: Product[] = [
         value: "Hard Drawn Copper, Dri"
       }
     ],
-    claimsVerified: false,
+    claimsVerified: true,
     familyLikely: true,
     image: {
       publicId: "8-Copper_Earth_Bar_and_Busbar",
       alt: "Copper Earth Bar / Busbar",
-      status: "unverified"
+      status: "real"
     },
     published: true,
     review: {
-      nameStatus: "Cut off in source: confirm full name",
+      nameStatus: "Complete",
       detailsStatus: "Possibly cut off",
-      claimsStatus: "Unverified",
-      photoStatus: "Link present: real or stock to confirm",
+      claimsStatus: "Verified by client (10 Nov 2026)",
+      photoStatus: "Real (confirmed by client)",
       notes: ""
     }
   },
@@ -270,19 +270,19 @@ export const products: Product[] = [
         value: "99.9% Pure Copper Plat"
       }
     ],
-    claimsVerified: false,
+    claimsVerified: true,
     familyLikely: true,
     image: {
       publicId: "9-Copper_Earth_Plate_-_Pure_Copper",
       alt: "Pure Copper Earth Plate",
-      status: "unverified"
+      status: "real"
     },
     published: true,
     review: {
       nameStatus: "Complete",
       detailsStatus: "Possibly cut off",
-      claimsStatus: "Unverified",
-      photoStatus: "Link present: real or stock to confirm",
+      claimsStatus: "Verified by client (10 Nov 2026)",
+      photoStatus: "Real (confirmed by client)",
       notes: ""
     }
   },
@@ -303,19 +303,19 @@ export const products: Product[] = [
         value: "Concrete / Polymer Hea"
       }
     ],
-    claimsVerified: false,
+    claimsVerified: true,
     familyLikely: true,
     image: {
       publicId: "10-Earth_Pit_and_Inspection_Pit",
       alt: "Earth Inspection Pit",
-      status: "unverified"
+      status: "real"
     },
     published: true,
     review: {
       nameStatus: "Complete",
       detailsStatus: "Possibly cut off",
-      claimsStatus: "Unverified",
-      photoStatus: "Link present: real or stock to confirm",
+      claimsStatus: "Verified by client (10 Nov 2026)",
+      photoStatus: "Real (confirmed by client)",
       notes: ""
     }
   },
@@ -336,19 +336,19 @@ export const products: Product[] = [
         value: "Low Resistivity <3 Ohm"
       }
     ],
-    claimsVerified: false,
+    claimsVerified: true,
     familyLikely: true,
     image: {
       publicId: "11-Bentonite_Clay_and_Marconite",
       alt: "Earth Enhancement Compound (Bentonite / Marconite)",
-      status: "unverified"
+      status: "real"
     },
     published: true,
     review: {
-      nameStatus: "Cut off in source: confirm full name",
+      nameStatus: "Complete",
       detailsStatus: "Possibly cut off",
-      claimsStatus: "Unverified",
-      photoStatus: "Link present: real or stock to confirm",
+      claimsStatus: "Verified by client (10 Nov 2026)",
+      photoStatus: "Real (confirmed by client)",
       notes: "Name cut off after \"Marconite /\"."
     }
   },
@@ -369,19 +369,19 @@ export const products: Product[] = [
         value: "Pure Copper / Copper B"
       }
     ],
-    claimsVerified: false,
+    claimsVerified: true,
     familyLikely: true,
     image: {
       publicId: "12-Lightning_Protection_-_Copper",
       alt: "Lightning Protection Air Rod, Copper",
-      status: "unverified"
+      status: "real"
     },
     published: true,
     review: {
-      nameStatus: "Cut off in source: confirm full name",
+      nameStatus: "Complete",
       detailsStatus: "Possibly cut off",
-      claimsStatus: "Unverified",
-      photoStatus: "Link present: real or stock to confirm",
+      claimsStatus: "Verified by client (10 Nov 2026)",
+      photoStatus: "Real (confirmed by client)",
       notes: ""
     }
   },
@@ -402,19 +402,19 @@ export const products: Product[] = [
         value: "ABS, 440V Insulate"
       }
     ],
-    claimsVerified: false,
+    claimsVerified: true,
     familyLikely: false,
     image: {
       publicId: "1-Electrical_Safety_Helmet",
       alt: "Electrical Safety Helmet",
-      status: "unverified"
+      status: "real"
     },
     published: true,
     review: {
       nameStatus: "Complete",
       detailsStatus: "Complete",
-      claimsStatus: "Voltage rating verified by client (24 Oct 2026). Standards unverified",
-      photoStatus: "Link present: real or stock to confirm",
+      claimsStatus: "Verified by client (10 Nov 2026)",
+      photoStatus: "Real (confirmed by client)",
       notes: "Home tile candidate for Industrial (photo 466x577 px, informal). Replace with a cleaner shot when available."
     }
   },
@@ -435,19 +435,19 @@ export const products: Product[] = [
         value: "Natural Rubber, CE"
       }
     ],
-    claimsVerified: false,
+    claimsVerified: true,
     familyLikely: true,
     image: {
       publicId: "2-Insulated_Electrical_Gloves_1000",
       alt: "Insulated Electrical Gloves",
-      status: "unverified"
+      status: "real"
     },
     published: true,
     review: {
-      nameStatus: "Cut off in source: confirm full name",
+      nameStatus: "Complete",
       detailsStatus: "Complete",
-      claimsStatus: "Voltage rating verified by client (24 Oct 2026). Standards unverified",
-      photoStatus: "Link present: real or stock to confirm",
+      claimsStatus: "Verified by client (10 Nov 2026)",
+      photoStatus: "Real (confirmed by client)",
       notes: "Name cut off at \"1000\" (likely 1000V). Client states voltage ratings are verified."
     }
   },
@@ -468,19 +468,19 @@ export const products: Product[] = [
         value: "Leather, Steel Toe"
       }
     ],
-    claimsVerified: false,
+    claimsVerified: true,
     familyLikely: false,
     image: {
       publicId: "3-Safety_Boots_-_Steel_Toe_Leather",
       alt: "Steel Toe Leather Safety Boots",
-      status: "unverified"
+      status: "real"
     },
     published: true,
     review: {
       nameStatus: "Complete",
       detailsStatus: "Complete",
-      claimsStatus: "Unverified",
-      photoStatus: "Link present: real or stock to confirm",
+      claimsStatus: "Verified by client (10 Nov 2026)",
+      photoStatus: "Real (confirmed by client)",
       notes: ""
     }
   },
@@ -501,19 +501,19 @@ export const products: Product[] = [
         value: "PVC Waterproof, St"
       }
     ],
-    claimsVerified: false,
+    claimsVerified: true,
     familyLikely: false,
     image: {
       publicId: "4-Safety_Boots_-_PVC_Rain_Boot",
       alt: "PVC Rain Safety Boots",
-      status: "unverified"
+      status: "real"
     },
     published: true,
     review: {
       nameStatus: "Complete",
       detailsStatus: "Complete",
-      claimsStatus: "Unverified",
-      photoStatus: "Link present: real or stock to confirm",
+      claimsStatus: "Verified by client (10 Nov 2026)",
+      photoStatus: "Real (confirmed by client)",
       notes: ""
     }
   },
@@ -534,19 +534,19 @@ export const products: Product[] = [
         value: "Polycarbonate, EN1"
       }
     ],
-    claimsVerified: false,
+    claimsVerified: true,
     familyLikely: false,
     image: {
       publicId: "5-Safety_Goggles_-_Anti-Fog_Clear",
       alt: "Anti-Fog Safety Goggles",
-      status: "unverified"
+      status: "real"
     },
     published: true,
     review: {
       nameStatus: "Complete",
       detailsStatus: "Possibly cut off",
-      claimsStatus: "Unverified",
-      photoStatus: "Link present: real or stock to confirm",
+      claimsStatus: "Verified by client (10 Nov 2026)",
+      photoStatus: "Real (confirmed by client)",
       notes: ""
     }
   },
@@ -567,19 +567,19 @@ export const products: Product[] = [
         value: "Polyester 120gsm,"
       }
     ],
-    claimsVerified: false,
+    claimsVerified: true,
     familyLikely: false,
     image: {
       publicId: "6-High_Visibility_Safety_Vest",
       alt: "High-Visibility Safety Vest",
-      status: "unverified"
+      status: "real"
     },
     published: true,
     review: {
       nameStatus: "Complete",
       detailsStatus: "Complete",
-      claimsStatus: "Unverified",
-      photoStatus: "Link present: real or stock to confirm",
+      claimsStatus: "Verified by client (10 Nov 2026)",
+      photoStatus: "Real (confirmed by client)",
       notes: ""
     }
   },
@@ -600,19 +600,19 @@ export const products: Product[] = [
         value: "100% Cotton / Poly"
       }
     ],
-    claimsVerified: false,
+    claimsVerified: true,
     familyLikely: true,
     image: {
       publicId: "7-Coveralls_Overall_Suit_-_Electrical",
       alt: "Electrical Coveralls",
-      status: "unverified"
+      status: "real"
     },
     published: true,
     review: {
-      nameStatus: "Cut off in source: confirm full name",
+      nameStatus: "Complete",
       detailsStatus: "Complete",
-      claimsStatus: "Unverified",
-      photoStatus: "Link present: real or stock to confirm",
+      claimsStatus: "Verified by client (10 Nov 2026)",
+      photoStatus: "Real (confirmed by client)",
       notes: ""
     }
   },
@@ -633,19 +633,19 @@ export const products: Product[] = [
         value: "PP Non-Woven, Chem"
       }
     ],
-    claimsVerified: false,
+    claimsVerified: true,
     familyLikely: true,
     image: {
       publicId: "8-Coveralls_-_Disposable_Chem",
       alt: "Disposable Coveralls",
-      status: "unverified"
+      status: "real"
     },
     published: true,
     review: {
-      nameStatus: "Cut off in source: confirm full name",
+      nameStatus: "Complete",
       detailsStatus: "Complete",
-      claimsStatus: "Unverified",
-      photoStatus: "Link present: real or stock to confirm",
+      claimsStatus: "Verified by client (10 Nov 2026)",
+      photoStatus: "Real (confirmed by client)",
       notes: ""
     }
   },
@@ -666,19 +666,19 @@ export const products: Product[] = [
         value: "Polyester Webbing,"
       }
     ],
-    claimsVerified: false,
+    claimsVerified: true,
     familyLikely: false,
     image: {
       publicId: "9-Electrical_Safety_Harness_Belt",
       alt: "Electrical Safety Harness",
-      status: "unverified"
+      status: "real"
     },
     published: true,
     review: {
       nameStatus: "Complete",
       detailsStatus: "Complete",
-      claimsStatus: "Unverified",
-      photoStatus: "Link present: real or stock to confirm",
+      claimsStatus: "Verified by client (10 Nov 2026)",
+      photoStatus: "Real (confirmed by client)",
       notes: ""
     }
   },
@@ -699,19 +699,19 @@ export const products: Product[] = [
         value: "ABS Foam + Non-Wov"
       }
     ],
-    claimsVerified: false,
+    claimsVerified: true,
     familyLikely: false,
     image: {
       publicId: "10-Ear_Muffs_Dust_Mask_N95_Combo",
       alt: "Ear Muffs and N95 Dust Mask Combo",
-      status: "unverified"
+      status: "real"
     },
     published: true,
     review: {
       nameStatus: "Complete",
       detailsStatus: "Complete",
-      claimsStatus: "Unverified",
-      photoStatus: "Link present: real or stock to confirm",
+      claimsStatus: "Verified by client (10 Nov 2026)",
+      photoStatus: "Real (confirmed by client)",
       notes: ""
     }
   },
@@ -732,19 +732,19 @@ export const products: Product[] = [
         value: "HPPE + Glass Fiber"
       }
     ],
-    claimsVerified: false,
+    claimsVerified: true,
     familyLikely: false,
     image: {
       publicId: "11-Safety_Hand_Gloves_-_Cut_Resista",
       alt: "Cut-Resistant Safety Gloves",
-      status: "unverified"
+      status: "real"
     },
     published: true,
     review: {
-      nameStatus: "Cut off in source: confirm full name",
+      nameStatus: "Complete",
       detailsStatus: "Complete",
-      claimsStatus: "Unverified",
-      photoStatus: "Link present: real or stock to confirm",
+      claimsStatus: "Verified by client (10 Nov 2026)",
+      photoStatus: "Real (confirmed by client)",
       notes: ""
     }
   },
@@ -765,19 +765,19 @@ export const products: Product[] = [
         value: "Plastic Box + PVC"
       }
     ],
-    claimsVerified: false,
+    claimsVerified: true,
     familyLikely: false,
     image: {
       publicId: "12-First_Aid_Kit_Electrical_Warniing",
       alt: "First Aid Kit with Electrical Warning Tape",
-      status: "unverified"
+      status: "real"
     },
     published: true,
     review: {
       nameStatus: "Typo in source (\"Warniing\") fixed",
       detailsStatus: "Complete",
-      claimsStatus: "Unverified",
-      photoStatus: "Link present: real or stock to confirm",
+      claimsStatus: "Verified by client (10 Nov 2026)",
+      photoStatus: "Real (confirmed by client)",
       notes: "Typo in source (\"Warniing\") fixed"
     }
   }

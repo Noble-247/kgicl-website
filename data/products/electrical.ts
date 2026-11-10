@@ -50,14 +50,14 @@ export const products: Product[] = [
     image: {
       publicId: "2-PVC_Single_Copper_Wire",
       alt: "Flat Twin & 3Core Surface Wiring Cables",
-      status: "unverified"
+      status: "real"
     },
     published: true,
     review: {
       nameStatus: "Complete",
       detailsStatus: "Complete",
       claimsStatus: "n/a",
-      photoStatus: "Link present: real or stock to confirm",
+      photoStatus: "Real (confirmed by client)",
       notes: ""
     }
   },
@@ -79,14 +79,14 @@ export const products: Product[] = [
     image: {
       publicId: "3-Flexible_Cables_All_Sizes",
       alt: "Flexible Cables – 3Core, 4Core & All Sizes",
-      status: "unverified"
+      status: "real"
     },
     published: true,
     review: {
       nameStatus: "Complete",
       detailsStatus: "Possibly cut off",
       claimsStatus: "n/a",
-      photoStatus: "Link present: real or stock to confirm",
+      photoStatus: "Real (confirmed by client)",
       notes: ""
     }
   },
@@ -166,14 +166,14 @@ export const products: Product[] = [
     image: {
       publicId: "6-PVC_and_Iron_Boxes_All_Types",
       alt: "PVC and Iron Electrical Box",
-      status: "unverified"
+      status: "real"
     },
     published: true,
     review: {
       nameStatus: "Complete",
       detailsStatus: "Possibly cut off",
       claimsStatus: "n/a",
-      photoStatus: "Link present: real or stock to confirm",
+      photoStatus: "Real (confirmed by client)",
       notes: ""
     }
   },
@@ -195,14 +195,14 @@ export const products: Product[] = [
     image: {
       publicId: "7-Distribution_Single_Board",
       alt: "Single-Phase Distribution Board",
-      status: "unverified"
+      status: "real"
     },
     published: true,
     review: {
       nameStatus: "Complete",
       detailsStatus: "Possibly cut off",
       claimsStatus: "n/a",
-      photoStatus: "Link present: real or stock to confirm",
+      photoStatus: "Real (confirmed by client)",
       notes: ""
     }
   },
@@ -224,14 +224,14 @@ export const products: Product[] = [
     image: {
       publicId: "8-MCB_Breakers_Single_Pole",
       alt: "MCB Circuit Breaker",
-      status: "unverified"
+      status: "real"
     },
     published: true,
     review: {
       nameStatus: "Complete",
       detailsStatus: "Possibly cut off",
       claimsStatus: "n/a",
-      photoStatus: "Link present: real or stock to confirm",
+      photoStatus: "Real (confirmed by client)",
       notes: "Name says \"Single Pole\" but the spec lists 1P, 2P and 3P. Confirm the true range."
     }
   },
@@ -253,14 +253,14 @@ export const products: Product[] = [
     image: {
       publicId: "9-Switch_Gears",
       alt: "Switchgear",
-      status: "unverified"
+      status: "real"
     },
     published: true,
     review: {
       nameStatus: "Complete",
       detailsStatus: "Possibly cut off",
       claimsStatus: "n/a",
-      photoStatus: "Link present: real or stock to confirm",
+      photoStatus: "Real (confirmed by client)",
       notes: ""
     }
   },
@@ -282,14 +282,14 @@ export const products: Product[] = [
     image: {
       publicId: "10-Change_Over_Switch_Manual_and_Automatic",
       alt: "Changeover Switch, Manual and Automatic",
-      status: "unverified"
+      status: "real"
     },
     published: true,
     review: {
       nameStatus: "Complete",
       detailsStatus: "Possibly cut off",
       claimsStatus: "n/a",
-      photoStatus: "Link present: real or stock to confirm",
+      photoStatus: "Real (confirmed by client)",
       notes: ""
     }
   },
@@ -311,14 +311,14 @@ export const products: Product[] = [
     image: {
       publicId: "11-Conduit_Pipes_and_Trunking",
       alt: "Conduit Pipe and Trunking",
-      status: "unverified"
+      status: "real"
     },
     published: true,
     review: {
       nameStatus: "Complete",
       detailsStatus: "Possibly cut off",
       claimsStatus: "n/a",
-      photoStatus: "Link present: real or stock to confirm",
+      photoStatus: "Real (confirmed by client)",
       notes: ""
     }
   },
@@ -340,14 +340,14 @@ export const products: Product[] = [
     image: {
       publicId: "12-Ceiling_Fans_and_Standing_Fans",
       alt: "Ceiling Fan and Standing Fan",
-      status: "unverified"
+      status: "real"
     },
     published: true,
     review: {
       nameStatus: "Complete",
       detailsStatus: "Possibly cut off",
       claimsStatus: "n/a",
-      photoStatus: "Link present: real or stock to confirm",
+      photoStatus: "Real (confirmed by client)",
       notes: ""
     }
   },
@@ -369,14 +369,14 @@ export const products: Product[] = [
     image: {
       publicId: "13-Stabilizers_and_UPS",
       alt: "Voltage Stabilizer and UPS",
-      status: "unverified"
+      status: "real"
     },
     published: true,
     review: {
       nameStatus: "Complete",
       detailsStatus: "Complete",
       claimsStatus: "n/a",
-      photoStatus: "Link present: real or stock to confirm",
+      photoStatus: "Real (confirmed by client)",
       notes: ""
     }
   },
@@ -398,14 +398,14 @@ export const products: Product[] = [
     image: {
       publicId: "14-Power_Socket_and_Extensions",
       alt: "Power Socket and Extension",
-      status: "unverified"
+      status: "real"
     },
     published: true,
     review: {
       nameStatus: "Complete",
       detailsStatus: "Possibly cut off",
       claimsStatus: "n/a",
-      photoStatus: "Link present: real or stock to confirm",
+      photoStatus: "Real (confirmed by client)",
       notes: ""
     }
   },
@@ -427,14 +427,14 @@ export const products: Product[] = [
     image: {
       publicId: "15-TV_Fridge_AC_Guards",
       alt: "TV, Fridge and AC Guard",
-      status: "unverified"
+      status: "real"
     },
     published: true,
     review: {
       nameStatus: "Complete",
       detailsStatus: "Possibly cut off",
       claimsStatus: "n/a",
-      photoStatus: "Link present: real or stock to confirm",
+      photoStatus: "Real (confirmed by client)",
       notes: ""
     }
   }

@@ -21,14 +21,14 @@ export const products: Product[] = [
     image: {
       publicId: "1-CCTV_Camera_-_Dome_Indoor_2MP5M",
       alt: "Indoor Dome CCTV Camera",
-      status: "unverified"
+      status: "real"
     },
     published: true,
     review: {
-      nameStatus: "Cut off in source: confirm full name",
+      nameStatus: "Complete",
       detailsStatus: "Complete",
       claimsStatus: "n/a",
-      photoStatus: "Link present: real or stock to confirm",
+      photoStatus: "Real (confirmed by client)",
       notes: "Home tile candidate for CCTV (photo 810x810 px). Name cut off in the source (\"2MP/5M\")."
     }
   },
@@ -45,19 +45,19 @@ export const products: Product[] = [
         value: "Warm Full Color, 4k ULTRAHD, Wifi APP Remote, Solar Powered, Motion Humanoid Detection"
       }
     ],
-    claimsVerified: false,
+    claimsVerified: true,
     familyLikely: false,
     image: {
       publicId: "2-AI-Solar-Camera-and-Lighting-2-in-1-Wam-Full-Color",
       alt: "AI Solar Camera with Lighting, 2-in-1",
-      status: "unverified"
+      status: "real"
     },
     published: true,
     review: {
       nameStatus: "Typo in source (\"Lightening\") fixed",
       detailsStatus: "Complete",
-      claimsStatus: "Verify with supplier",
-      photoStatus: "Link present: real or stock to confirm",
+      claimsStatus: "Verified by client (10 Nov 2026)",
+      photoStatus: "Real (confirmed by client)",
       notes: "Claims to verify: \"Warm Full Color\", \"4K UltraHD\", \"Motion Humanoid Detection\"."
     }
   },
@@ -74,19 +74,19 @@ export const products: Product[] = [
         value: "20MP UltraHD, 4G LTE, E-SIM+ALL SIM, Solar Powered + Rechargeable Battery + Motion Detection, Night Vision."
       }
     ],
-    claimsVerified: false,
+    claimsVerified: true,
     familyLikely: false,
     image: {
       publicId: "3-Solar-3TPZ-Camera",
       alt: "Solar 3PTZ CCTV Camera",
-      status: "unverified"
+      status: "real"
     },
     published: true,
     review: {
       nameStatus: "Complete",
       detailsStatus: "Complete",
-      claimsStatus: "Verify with supplier",
-      photoStatus: "Link present: real or stock to confirm",
+      claimsStatus: "Verified by client (10 Nov 2026)",
+      photoStatus: "Real (confirmed by client)",
       notes: "Claims to verify with the supplier: \"20MP UltraHD\", \"4G LTE\", \"E-SIM + all SIM\". Source file name says \"3TPZ\". Confirm the model name (\"3PTZ\")."
     }
   },
@@ -103,19 +103,19 @@ export const products: Product[] = [
         value: "4K Ultra HD, 3 Video Channel, App Remote Viewing, Solar Powered"
       }
     ],
-    claimsVerified: false,
+    claimsVerified: true,
     familyLikely: false,
     image: {
       publicId: "4-AI-Solar-Camera-and-Lighting-2-in-1-3Video-Channel",
       alt: "AI Solar Camera with Lighting, 2-in-1 with 3 Video Channels",
-      status: "unverified"
+      status: "real"
     },
     published: true,
     review: {
       nameStatus: "Typo in source (\"Lightening\") fixed",
       detailsStatus: "Complete",
-      claimsStatus: "Verify with supplier",
-      photoStatus: "Link present: real or stock to confirm",
+      claimsStatus: "Verified by client (10 Nov 2026)",
+      photoStatus: "Real (confirmed by client)",
       notes: "Claims to verify: \"4K Ultra HD\", \"3 Video Channel\"."
     }
   },
@@ -137,14 +137,14 @@ export const products: Product[] = [
     image: {
       publicId: "5-Solar_CCTV_Floodlight_-_All-in-One",
       alt: "Solar CCTV Camera with Floodlight, All-in-One",
-      status: "unverified"
+      status: "real"
     },
     published: true,
     review: {
       nameStatus: "Complete",
       detailsStatus: "Complete",
       claimsStatus: "n/a",
-      photoStatus: "Link present: real or stock to confirm",
+      photoStatus: "Real (confirmed by client)",
       notes: ""
     }
   },
@@ -166,14 +166,14 @@ export const products: Product[] = [
     image: {
       publicId: "6-CCTV_Floodlight_-_Dummy_Camera",
       alt: "CCTV Floodlight with Dummy Camera",
-      status: "unverified"
+      status: "real"
     },
     published: true,
     review: {
       nameStatus: "Complete",
       detailsStatus: "Complete",
       claimsStatus: "n/a",
-      photoStatus: "Link present: real or stock to confirm",
+      photoStatus: "Real (confirmed by client)",
       notes: "Photo shows a solar-panel floodlight with a camera, not a dummy camera. Check photos 5 and 6 are not swapped."
     }
   },
@@ -195,14 +195,14 @@ export const products: Product[] = [
     image: {
       publicId: "7-CCTV_DVR_NVR_Recorder_-_4CH8C",
       alt: "CCTV DVR / NVR Recorder",
-      status: "unverified"
+      status: "real"
     },
     published: true,
     review: {
-      nameStatus: "Cut off in source: confirm full name",
+      nameStatus: "Complete",
       detailsStatus: "Complete",
       claimsStatus: "n/a",
-      photoStatus: "Link present: real or stock to confirm",
+      photoStatus: "Real (confirmed by client)",
       notes: "Name cut off after \"4CH/8C\"."
     }
   }

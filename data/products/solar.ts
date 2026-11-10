@@ -44,14 +44,14 @@ export const products: Product[] = [
     image: {
       publicId: "2-100W_10-eye",
       alt: "100W Solar Street Light, 10-Eye, KG-SL-100W",
-      status: "unverified"
+      status: "real"
     },
     published: true,
     review: {
       nameStatus: "Complete",
       detailsStatus: "Complete",
       claimsStatus: "n/a",
-      photoStatus: "Link present: real or stock to confirm",
+      photoStatus: "Real (confirmed by client)",
       notes: ""
     }
   },
@@ -96,14 +96,14 @@ export const products: Product[] = [
     image: {
       publicId: "3-100W_10-eye_D_SERIES",
       alt: "100W Solar Street Light, 10-Eye D-Series, KG-SL-100W-D",
-      status: "unverified"
+      status: "real"
     },
     published: true,
     review: {
       nameStatus: "Complete",
       detailsStatus: "Complete",
       claimsStatus: "n/a",
-      photoStatus: "Link present: real or stock to confirm",
+      photoStatus: "Real (confirmed by client)",
       notes: ""
     }
   },
@@ -148,14 +148,14 @@ export const products: Product[] = [
     image: {
       publicId: "4-100W_4-BAR",
       alt: "100W Solar Street Light, 4-Bar, KG-SL-100W-4BAR",
-      status: "unverified"
+      status: "real"
     },
     published: true,
     review: {
       nameStatus: "Complete",
       detailsStatus: "Complete",
       claimsStatus: "n/a",
-      photoStatus: "Link present: real or stock to confirm",
+      photoStatus: "Real (confirmed by client)",
       notes: ""
     }
   },
@@ -252,14 +252,14 @@ export const products: Product[] = [
     image: {
       publicId: "6-120W_12-eye_D_SERIES",
       alt: "120W Solar Street Light, 12-Eye D-Series, KG-SL-120W-D",
-      status: "unverified"
+      status: "real"
     },
     published: true,
     review: {
       nameStatus: "Complete",
       detailsStatus: "Complete",
       claimsStatus: "n/a",
-      photoStatus: "Link present: real or stock to confirm",
+      photoStatus: "Real (confirmed by client)",
       notes: ""
     }
   },
@@ -304,14 +304,14 @@ export const products: Product[] = [
     image: {
       publicId: "7-120W_4-Eye_Square_White",
       alt: "120W Solar Street Light, 4-Eye Square White, KG-SL-120W-4EYE",
-      status: "unverified"
+      status: "real"
     },
     published: true,
     review: {
       nameStatus: "Complete",
       detailsStatus: "Complete",
       claimsStatus: "n/a",
-      photoStatus: "Link present: real or stock to confirm",
+      photoStatus: "Real (confirmed by client)",
       notes: ""
     }
   },
@@ -356,14 +356,14 @@ export const products: Product[] = [
     image: {
       publicId: "8-120W_5-BAR",
       alt: "120W Solar Street Light, 5-Bar, KG-SL-120W-5BAR",
-      status: "unverified"
+      status: "real"
     },
     published: true,
     review: {
       nameStatus: "Complete",
       detailsStatus: "Complete",
       claimsStatus: "n/a",
-      photoStatus: "Link present: real or stock to confirm",
+      photoStatus: "Real (confirmed by client)",
       notes: ""
     }
   },
@@ -408,14 +408,14 @@ export const products: Product[] = [
     image: {
       publicId: "9-150W_14-eye",
       alt: "150W Solar Street Light, 14-Eye, KG-SL-150W",
-      status: "unverified"
+      status: "real"
     },
     published: true,
     review: {
       nameStatus: "Complete",
       detailsStatus: "Complete",
       claimsStatus: "n/a",
-      photoStatus: "Link present: real or stock to confirm",
+      photoStatus: "Real (confirmed by client)",
       notes: ""
     }
   },
@@ -460,14 +460,14 @@ export const products: Product[] = [
     image: {
       publicId: "10-150W_5-BAR",
       alt: "150W Solar Street Light, 5-Bar, KG-SL-150W-5BAR",
-      status: "unverified"
+      status: "real"
     },
     published: true,
     review: {
       nameStatus: "Complete",
       detailsStatus: "Complete",
       claimsStatus: "n/a",
-      photoStatus: "Link present: real or stock to confirm",
+      photoStatus: "Real (confirmed by client)",
       notes: ""
     }
   },
@@ -564,14 +564,14 @@ export const products: Product[] = [
     image: {
       publicId: "12-180W_6-BAR",
       alt: "180W Solar Street Light, 6-Bar, KG-SL-180W-6BAR",
-      status: "unverified"
+      status: "real"
     },
     published: true,
     review: {
       nameStatus: "Complete",
       detailsStatus: "Complete",
       claimsStatus: "n/a",
-      photoStatus: "Link present: real or stock to confirm",
+      photoStatus: "Real (confirmed by client)",
       notes: ""
     }
   },
@@ -668,14 +668,14 @@ export const products: Product[] = [
     image: {
       publicId: "14-200W_16-eye_D_SERIES",
       alt: "200W Solar Street Light, 16-Eye D-Series, KG-SL-200W-D",
-      status: "unverified"
+      status: "real"
     },
     published: true,
     review: {
       nameStatus: "Complete",
       detailsStatus: "Complete",
       claimsStatus: "n/a",
-      photoStatus: "Link present: real or stock to confirm",
+      photoStatus: "Real (confirmed by client)",
       notes: ""
     }
   },
@@ -720,14 +720,14 @@ export const products: Product[] = [
     image: {
       publicId: "15-300W_20-eye_D_SERIES",
       alt: "300W Solar Street Light, 20-Eye D-Series, KG-SL-300W-D",
-      status: "unverified"
+      status: "real"
     },
     published: true,
     review: {
       nameStatus: "Complete",
       detailsStatus: "Complete",
       claimsStatus: "n/a",
-      photoStatus: "Link present: real or stock to confirm",
+      photoStatus: "Real (confirmed by client)",
       notes: ""
     }
   },
@@ -772,14 +772,14 @@ export const products: Product[] = [
     image: {
       publicId: "16-300W_20-eye_FLAGSHIP",
       alt: "300W Solar Street Light, 20-Eye Flagship, KG-SL-300W",
-      status: "unverified"
+      status: "real"
     },
     published: true,
     review: {
       nameStatus: "Complete",
       detailsStatus: "Complete",
       claimsStatus: "n/a",
-      photoStatus: "Link present: real or stock to confirm",
+      photoStatus: "Real (confirmed by client)",
       notes: ""
     }
   },
@@ -824,14 +824,14 @@ export const products: Product[] = [
     image: {
       publicId: "17-80W_4-BAR",
       alt: "80W Solar Street Light, 4-Bar, KG-SL-80W-4BAR",
-      status: "unverified"
+      status: "real"
     },
     published: true,
     review: {
       nameStatus: "Complete",
       detailsStatus: "Complete",
       claimsStatus: "n/a",
-      photoStatus: "Link present: real or stock to confirm",
+      photoStatus: "Real (confirmed by client)",
       notes: ""
     }
   },
@@ -876,14 +876,14 @@ export const products: Product[] = [
     image: {
       publicId: "18-80W_8-eye",
       alt: "80W Solar Street Light, 8-Eye, KG-SL-80W",
-      status: "unverified"
+      status: "real"
     },
     published: true,
     review: {
       nameStatus: "Complete",
       detailsStatus: "Complete",
       claimsStatus: "n/a",
-      photoStatus: "Link present: real or stock to confirm",
+      photoStatus: "Real (confirmed by client)",
       notes: ""
     }
   }
