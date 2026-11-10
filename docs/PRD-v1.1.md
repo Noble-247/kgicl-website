@@ -301,7 +301,7 @@ Data lives in typed files and is validated with Zod during the build. A bad slug
 
 6.4 Product families
 
-Some source entries are families, not single products: PVC Single-Core Copper Wire (1 mm to 16 mm), LED Bulb (3 W to 50 W), Wall Switch and Socket (1 to 4 gang), Flexible Cable, and many CCTV, earthing and PPE items. A family gets one page with a variant table, and its card shows the range, not a single specification.
+Some source entries are families, not single products: PVC Single-Core Copper Wire (1 mm to 16 mm), LED Bulb (3 W to 50 W), Wall Switch and Socket (1 to 4 gang), Flexible Cables, and many CCTV, earthing and PPE items. A family gets one page with a variant table, and its card shows the range, not a single specification.
 
 6.5 Photo and claims status
 
@@ -699,8 +699,8 @@ Draft names and flags for all 63 products. Full detail, source rows and Cloudina
 | P-023  | CCTV Floodlight with Dummy Camera                           | CCTV & Security: Camera + Lighting                 | Check     |           |
 | P-024  | CCTV DVR / NVR Recorder                                     | CCTV & Security: Recorders & Accessories           | Check     | N         |
 | P-025  | PVC Single-Core Copper Wire                                 | Electrical Supplies: Cables & Wiring               | Real      | F5        |
-| P-026  | PVC Surface Wiring Cable                                    | Electrical Supplies: Cables & Wiring               | Check     |           |
-| P-027  | Flexible Cable                                              | Electrical Supplies: Cables & Wiring               | Check     | D         |
+| P-026  | Flat Twin & 3Core Surface Wiring Cables                     | Electrical Supplies: Cables & Wiring               | Check     |           |
+| P-027  | Flexible Cables - 3Core, 4Core & All Sizes                  | Electrical Supplies: Cables & Wiring               | Check     | D         |
 | P-028  | LED Bulb                                                    | Electrical Supplies: Lighting & Fans               | Real      | D F6      |
 | P-029  | Wall Switch and Socket                                      | Electrical Supplies: Switches, Sockets & Conduit   | Real      | F4        |
 | P-030  | PVC and Iron Electrical Box                                 | Electrical Supplies: Switches, Sockets & Conduit   | Check     | D         |
@@ -713,11 +713,11 @@ Draft names and flags for all 63 products. Full detail, source rows and Cloudina
 | P-037  | Voltage Stabilizer and UPS                                  | Electrical Supplies: Power Backup & Protection     | Check     |           |
 | P-038  | Power Socket and Extension                                  | Electrical Supplies: Switches, Sockets & Conduit   | Check     | D         |
 | P-039  | TV, Fridge and AC Guard                                     | Electrical Supplies: Power Backup & Protection     | Check     | D         |
-| P-040  | Pure Copper Earth Rod, Solid                                | Industrial Supply: Earthing & Lightning Protection | Check     | D C       |
-| P-041  | Copper Bonded Earth Rod                                     | Industrial Supply: Earthing & Lightning Protection | Check     | N D C     |
+| P-040  | Copper Thunder Arrestor                                     | Industrial Supply: Earthing & Lightning Protection | Check     | D C       |
+| P-041  | Copper Mat & Copper Earthing Tape                           | Industrial Supply: Earthing & Lightning Protection | Check     | N D C     |
 | P-042  | Bare Copper Earth Tape                                      | Industrial Supply: Earthing & Lightning Protection | Check     | D C       |
-| P-043  | Bare Copper Earth Wire                                      | Industrial Supply: Earthing & Lightning Protection | Check     | D C       |
-| P-044  | Insulated Copper Earth Cable                                | Industrial Supply: Earthing & Lightning Protection | Check     | D C       |
+| P-043  | 4ft and 6ft Copper Earthing Rods                            | Industrial Supply: Earthing & Lightning Protection | Check     | D C       |
+| P-044  | Insulated Copper Rods                                       | Industrial Supply: Earthing & Lightning Protection | Check     | D C       |
 | P-045  | Heavy Copper Earth Rod Clamp                                | Industrial Supply: Earthing & Lightning Protection | Check     | N D C     |
 | P-046  | Copper Earth Tape Clamp                                     | Industrial Supply: Earthing & Lightning Protection | Check     | D C       |
 | P-047  | Copper Earth Bar / Busbar                                   | Industrial Supply: Earthing & Lightning Protection | Check     | N D C     |

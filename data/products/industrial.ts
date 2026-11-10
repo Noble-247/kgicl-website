@@ -9,8 +9,13 @@ export const products: Product[] = [
     name: "Copper Thunder Arrestor",
     area: "industrial-supply",
     group: "earthing-lightning-protection",
-    summary: "Available on request",
-    specs: [],
+    summary: "1.1ft and 2ft",
+    specs: [
+      {
+        label: "Details",
+        value: "1.1ft and 2ft"
+      }
+    ],
     claimsVerified: false,
     familyLikely: true,
     image: {
@@ -21,11 +26,10 @@ export const products: Product[] = [
     published: true,
     review: {
       nameStatus: "Complete",
-      detailsStatus: "Pending confirmation",
+      detailsStatus: "Complete",
       claimsStatus: "Unverified",
       photoStatus: "Link present: real or stock to confirm",
-      notes:
-        "Renamed by client after review. Previous rod specifications removed pending confirmation."
+      notes: "Renamed by client after review. Spec supplied: 1.1ft and 2ft."
     }
   },
   {
@@ -54,7 +58,8 @@ export const products: Product[] = [
       detailsStatus: "Complete",
       claimsStatus: "Unverified",
       photoStatus: "Link present: real or stock to confirm",
-      notes: "Renamed by client after review. Sizes supplied: 20mm / 25mm."
+      notes:
+        "Renamed by client after review. Sizes supplied: 20mm / 25mm for both the copper mat and the copper earthing tape."
     }
   },
   {
@@ -126,8 +131,13 @@ export const products: Product[] = [
     name: "Insulated Copper Rods",
     area: "industrial-supply",
     group: "earthing-lightning-protection",
-    summary: "Available on request",
-    specs: [],
+    summary: "4ft, 6ft & 8ft",
+    specs: [
+      {
+        label: "Details",
+        value: "4ft, 6ft & 8ft"
+      }
+    ],
     claimsVerified: false,
     familyLikely: true,
     image: {
@@ -138,11 +148,10 @@ export const products: Product[] = [
     published: true,
     review: {
       nameStatus: "Complete",
-      detailsStatus: "Pending confirmation",
+      detailsStatus: "Complete",
       claimsStatus: "Unverified",
       photoStatus: "Link present: real or stock to confirm",
-      notes:
-        "Renamed by client after review. Previous cable specifications removed pending confirmation."
+      notes: "Renamed by client after review. Spec supplied: 4ft, 6ft & 8ft."
     }
   },
   {
