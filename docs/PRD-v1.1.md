@@ -713,11 +713,11 @@ Draft names and flags for all 63 products. Full detail, source rows and Cloudina
 | P-037  | Voltage Stabilizer and UPS                                  | Electrical Supplies: Power Backup & Protection     | Check     |           |
 | P-038  | Power Socket and Extension                                  | Electrical Supplies: Switches, Sockets & Conduit   | Check     | D         |
 | P-039  | TV, Fridge and AC Guard                                     | Electrical Supplies: Power Backup & Protection     | Check     | D         |
-| P-040  | Copper Thunder Arrestor                                     | Industrial Supply: Earthing & Lightning Protection | Check     | D C       |
-| P-041  | Copper Mat & Copper Earthing Tape                           | Industrial Supply: Earthing & Lightning Protection | Check     | N D C     |
+| P-040  | Copper Thunder Arrestor                                     | Industrial Supply: Earthing & Lightning Protection | Check     | C         |
+| P-041  | Copper Mat & Copper Earthing Tape                           | Industrial Supply: Earthing & Lightning Protection | Check     | N C       |
 | P-042  | Bare Copper Earth Tape                                      | Industrial Supply: Earthing & Lightning Protection | Check     | D C       |
-| P-043  | 4ft and 6ft Copper Earthing Rods                            | Industrial Supply: Earthing & Lightning Protection | Check     | D C       |
-| P-044  | Insulated Copper Rods                                       | Industrial Supply: Earthing & Lightning Protection | Check     | D C       |
+| P-043  | 4ft and 6ft Copper Earthing Rods                            | Industrial Supply: Earthing & Lightning Protection | Check     | C         |
+| P-044  | Insulated Copper Rods                                       | Industrial Supply: Earthing & Lightning Protection | Check     | C         |
 | P-045  | Heavy Copper Earth Rod Clamp                                | Industrial Supply: Earthing & Lightning Protection | Check     | N D C     |
 | P-046  | Copper Earth Tape Clamp                                     | Industrial Supply: Earthing & Lightning Protection | Check     | D C       |
 | P-047  | Copper Earth Bar / Busbar                                   | Industrial Supply: Earthing & Lightning Protection | Check     | N D C     |
